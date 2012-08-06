@@ -50,45 +50,45 @@
 ;;;; basics
 ;;;;
 
-(setq inhibit-startup-screen t		;; remove startup screen
-      scroll-conservatively 101		;; never recenter point when scrolling
-      initial-scratch-message nil	;; start with an empty scratch buffer
-      ring-bell-function (lambda ())	;; no annoying bell ringing
-      require-final-newline nil		;; don't force new line at end of file
+(setq inhibit-startup-screen t          ;; remove startup screen
+      scroll-conservatively 101         ;; never recenter point when scrolling
+      initial-scratch-message nil       ;; start with an empty scratch buffer
+      ring-bell-function (lambda ())    ;; no annoying bell ringing
+      require-final-newline nil         ;; don't force new line at end of file
       help-window-select t              ;; select help buffer when opened
       line-move-visual nil              ;; move point by logical lines
       default-major-mode 'text-mode
       show-trailing-whitespace t        ;; show trailing whitespace
-)
+      )
 
-(setq-default cursor-type 'bar		;; cursor style
-              ; indent-tabs-mode nil	;; indentation nerver inserts tabs
-	      )
+(setq-default cursor-type 'bar          ;; cursor style
+                                        ; indent-tabs-mode nil  ;; indentation nerver inserts tabs
+              )
 
-(fset 'yes-or-no-p 'y-or-n-p)	;; allow y or n as answers
+(fset 'yes-or-no-p 'y-or-n-p)   ;; allow y or n as answers
 
-(auto-compression-mode 1)	;; file editing inside archives
-(auto-image-file-mode 1)	;; display image file as image
+(auto-compression-mode 1)       ;; file editing inside archives
+(auto-image-file-mode 1)        ;; display image file as image
 
 ;;; basic appearance
-(column-number-mode 1)		;; show column in modeline
+(column-number-mode 1)          ;; show column in modeline
 (display-battery-mode -1)
 (display-time-mode -1)
-(line-number-mode 1)		;; show line number in modeline
+(line-number-mode 1)            ;; show line number in modeline
 
-(if (eq system-type 'darwin)	;; On OS X the menu bar does appear anyway, so
-    (menu-bar-mode 1)		;; I like it to be fully functional.
-  (menu-bar-mode -1))		;; (Even though I never use it.)
+(if (eq system-type 'darwin)    ;; On OS X the menu bar does appear anyway, so
+    (menu-bar-mode 1)           ;; I like it to be fully functional.
+  (menu-bar-mode -1))           ;; (Even though I never use it.)
 
-(scroll-bar-mode -1)		;; hide scrollbars
+(scroll-bar-mode -1)            ;; hide scrollbars
 (toggle-scroll-bar -1)
-(tool-bar-mode -1)		;; hide toolbar
-(blink-cursor-mode -1)		;; I don't like blinking cursors
+(tool-bar-mode -1)              ;; hide toolbar
+(blink-cursor-mode -1)          ;; I don't like blinking cursors
 (transient-mark-mode -1)
-(show-paren-mode 1)		;; highlight matching parenthesis
+(show-paren-mode 1)             ;; highlight matching parenthesis
 
-(mouse-wheel-mode -1)		;; I don't use the mouse at all, so I don't
-				;; want to scroll accidentally whenever I touch it.
+(mouse-wheel-mode -1)           ;; I don't use the mouse at all, so I don't
+;; want to scroll accidentally whenever I touch it.
 
 ;;; coding system
 (prefer-coding-system       'utf-8-unix)
@@ -149,30 +149,30 @@
 (add-hook 'paredit-mode-hook
           (lambda ()
             (define-keys paredit-mode-map
-                '((")" paredit-close-parenthesis)
-                  ("M-)" paredit-close-parenthesis-and-newline)
-                  ("}" paredit-close-curly)
-                  ("{" paredit-open-curly)
-                  ("M-{" paredit-wrap-curly)
-                  ("M-[" paredit-wrap-square)
-                  ("M-f" paredit-forward)
-                  ("C-M-f" forward-word)
-                  ("M-b" paredit-backward)
-                  ("C-M-b" backward-word)
-                  ("M-u" backward-up-list)
-                  ("C-M-u" upcase-word)
-                  ("M-ö" down-list)
-                  ("M-t" transpose-sexps)
-                  ("C-M-t" transpose-words)
-                  ("<M-backspace>" paredit-backward-kill-word)
-                  ("<C-backspace>" backward-kill-sexp)
-                  ("M-k" kill-sexp)
-                  ("M-a" slime-beginning-of-defun)
-                  ("M-e" slime-end-of-defun)
-                  ("C-M-a" backward-sentence)
-                  ("C-M-e" forward-sentence)
-                  ("M-q" indent-pp-sexp)
-                  ("C-M-q" fill-paragraph)))))
+              '((")" paredit-close-parenthesis)
+                ("M-)" paredit-close-parenthesis-and-newline)
+                ("}" paredit-close-curly)
+                ("{" paredit-open-curly)
+                ("M-{" paredit-wrap-curly)
+                ("M-[" paredit-wrap-square)
+                ("M-f" paredit-forward)
+                ("C-M-f" forward-word)
+                ("M-b" paredit-backward)
+                ("C-M-b" backward-word)
+                ("M-u" backward-up-list)
+                ("C-M-u" upcase-word)
+                ("M-ö" down-list)
+                ("M-t" transpose-sexps)
+                ("C-M-t" transpose-words)
+                ("<M-backspace>" paredit-backward-kill-word)
+                ("<C-backspace>" backward-kill-sexp)
+                ("M-k" kill-sexp)
+                ("M-a" slime-beginning-of-defun)
+                ("M-e" slime-end-of-defun)
+                ("C-M-a" backward-sentence)
+                ("C-M-e" forward-sentence)
+                ("M-q" indent-pp-sexp)
+                ("C-M-q" fill-paragraph)))))
 
 
 ;;;;
@@ -343,7 +343,7 @@ prevents using commands with prefix arguments."
 (add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
 (add-to-list 'load-path "~/.emacs.d/org-mode/contrib/lisp")
 (require 'org-install)
-;(require 'org-mac-iCal)
+                                        ;(require 'org-mac-iCal)
 
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
