@@ -425,6 +425,15 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; color-theme
+;;;; Emacs 24 has build-in theme support, so I removed
+;;;; the color-theme package.
+;;;;
+
+(load-theme 'tango-dark t)
+
+
+;;;;
 ;;;; misc functions
 ;;;;
 
