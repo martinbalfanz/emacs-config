@@ -181,7 +181,7 @@
 (defun indent-and-pc-complete (n)
   (interactive "p")
   (indent-for-tab-command)
-  (PC-lisp-complete-symbol))
+  (lisp-complete-symbol))
 
 (defun mb-eval-and-execute ()
   "Evaluate and execute current defun."
