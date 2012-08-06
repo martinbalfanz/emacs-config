@@ -426,6 +426,18 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; javascript
+;;;;
+
+(add-to-list 'load-path "~/.emacs.d/js2-mode")
+(require 'js2-mode)
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+(setq js2-pretty-multiline-declarations t)
+
+
+;;;;
 ;;;; color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.
