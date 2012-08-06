@@ -1,6 +1,12 @@
 * emacs-config
   My emacs configuration. Make sure to check the Makefile before using it.
 
+** example .emacs-personal
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Jon Doe"
+      user-mail-address "jon.doe@provider.com")
+#+END_SRC
+
 ** example .emacs-auth
 #+BEGIN_SRC emacs-lisp
 (setq erc-auth '(servername (:name "username" :password "password")

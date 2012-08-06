@@ -1,0 +1,3 @@
+[submodule ".emacs.d/paredit"]
+	path = .emacs.d/paredit
+	url = https://github.com/emacsmirror/paredit.git
