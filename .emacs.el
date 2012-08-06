@@ -271,6 +271,71 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; ibuffer
+;;;;
+
+(setq ibuffer-show-empty-filter-groups nil
+      ibuffer-expert nil)
+
+(setq ibuffer-saved-filter-groups
+      '(("default"
+         ("elisp" (or (name . "\\.el$")
+                      (mode . emacs-lisp-mode)))
+         ("org" (or (name . "\\.org$")
+                    (mode . org-mode)))
+         ("snippet" (or (name . "\\.yasnippet$")
+                        (mode . snippet-mode)))
+         ("pdf" (name . "\\.pdf$"))
+         ("markdown" (or (name . "\\.md$")
+                         (mode . markdown-mode)))
+         ("html" (or (name . "\\.html$")
+                     (mode . html-mode)))
+         ("css" (or (name . "\\.css$")
+                    (mode . css-mode)))
+         ("scss" (or (name . "\\.scss$")
+                     (name . "\\.sass$")
+                     (mode . scss-mode)
+                     (mode . sass-mode)))
+         ("less" (name . "\\.less$"))
+         ("javascript" (or (name . "\\.js")
+                           (mode . javascript-mode)
+                           (mode . js2-mode)
+                           (mode . espresso-mode)))
+         ("yml" (or (name . "\\.yml$")
+                    (mode . yaml-mode)))
+         ("erc" (mode . erc-mode))
+         ("twitter" (mode . twittering-mode))
+         ("clojure" (or (name . "\\.clj$")
+                        (mode . clojure-mode)))
+         ("dired" (mode . dired-mode))
+         ("gnus" (or
+                  (mode . message-mode)
+                  (mode . bbdb-mode)
+                  (mode . mail-mode)
+                  (mode . gnus-group-mode)
+                  (mode . gnus-summary-mode)
+                  (mode . gnus-article-mode)
+                  (name . "^\\.bbdb$")
+                  (name . "^\\.newsrc-dribble")))
+         ("special" (name . "^\\*.*\\*")))))
+
+(add-hook 'ibuffer-mode-hook
+          (lambda ()
+            (ibuffer-switch-to-saved-filter-groups "default")
+            (ibuffer-auto-mode 1)
+            (hl-line-mode 1)))
+
+(defadvice ibuffer
+  (around ibuffer-point-to-most-recent first () activate)
+  "Open ibuffer with cursor pointed to most recent buffer name."
+  (let ((recent-buffer-name (buffer-name)))
+    ad-do-it
+    (ibuffer-jump-to-buffer recent-buffer-name)))
+
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+;;;;
 ;;;; org-mode
 ;;;;
 
