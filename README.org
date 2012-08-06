@@ -1,0 +1,8 @@
+* emacs-config
+  My emacs configuration. Make sure to check the Makefile before using it.
+
+** example .emacs-auth
+#+BEGIN_SRC emacs-lisp
+(setq erc-auth '(servername (:name "username" :password "password")
+                 servername2 (:name "username2" :password "password2")))
+#+END_SRC
