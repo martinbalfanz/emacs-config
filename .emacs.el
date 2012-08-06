@@ -58,6 +58,7 @@
       help-window-select t              ;; select help buffer when opened
       line-move-visual nil              ;; move point by logical lines
       default-major-mode 'text-mode
+      show-trailing-whitespace t        ;; show trailing whitespace
 )
 
 (setq-default cursor-type 'bar		;; cursor style
