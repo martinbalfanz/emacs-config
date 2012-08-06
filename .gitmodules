@@ -13,3 +13,6 @@
 [submodule ".emacs.d/smex"]
 	path = .emacs.d/smex
 	url = https://github.com/nonsequitur/smex.git
+[submodule ".emacs.d/org-mode"]
+	path = .emacs.d/org-mode
+	url = git://orgmode.org/org-mode.git
