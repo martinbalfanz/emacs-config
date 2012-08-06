@@ -204,6 +204,22 @@
 
 
 ;;;;
+;;;; ielm
+;;;;
+
+(setq ielm-prompt "elisp> ")
+
+(add-hook 'ielm-mode-hook
+          (lambda ()
+            (eldoc-mode 1)
+            (setq comint-dynamic-complete-functions
+                  '(ielm-tab
+                    comint-replace-by-expanded-history
+                    ielm-complete-filename
+                    ielm-complete-symbol))))
+
+
+;;;;
 ;;;; misc functions
 ;;;;
 
