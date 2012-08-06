@@ -2,11 +2,13 @@
 LN = ln -s ~/emacs-config
 
 all: cleanup
-	$(LN)/.emacs ~/.emacs
+	$(LN)/.emacs.el ~/.emacs
 	$(LN)/.emacs.d ~/.emacs.d
 	$(LN)/.emacs-auth ~/.emacs-auth
+	$(LN)/.emacs-personal ~/.emacs-personal
 
 cleanup:
 	rm -f ~/.emacs
 	rm -rf ~/.emacs.d
 	rm -f ~/.emacs-auth
+	rm -f ~/.emacs-personal

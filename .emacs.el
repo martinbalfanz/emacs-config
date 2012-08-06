@@ -230,8 +230,8 @@ are in kbd format."
 ;;;; epilogue
 ;;;;
 
-(load "~/.emacs.d/.emacs-personal" t)
-(load "~/.emacs.d/.emacs-auth" t)
+(load "~/.emacs-personal" t)
+(load "~/.emacs-auth" t)
 
 (server-start)
 
