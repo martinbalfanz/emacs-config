@@ -62,7 +62,7 @@
       )
 
 (setq-default cursor-type 'bar          ;; cursor style
-                                        ; indent-tabs-mode nil  ;; indentation nerver inserts tabs
+	      indent-tabs-mode nil      ;; indentation nerver inserts tabs
               )
 
 (fset 'yes-or-no-p 'y-or-n-p)   ;; allow y or n as answers
