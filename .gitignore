@@ -2,3 +2,4 @@
 *#
 .emacs-auth
 .emacs-personal
+*.elc
