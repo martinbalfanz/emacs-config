@@ -220,6 +220,31 @@
 
 
 ;;;;
+;;;; eshell
+;;;;
+
+(add-hook 'eshell-mode-hook
+          (lambda ()
+            (define-keys eshell-mode-map
+              '(("C-a" eshell-maybe-bol)))))
+
+(defun eshell-maybe-bol ()
+  "Moves point behind the eshell prompt, or
+at the beginning of line, if already there."
+  (interactive)
+  (let ((p (point)))
+    (eshell-bol)
+    (when (= p (point))
+      (beginning-of-line))))
+
+(defun eshell-clear ()
+  "Clears the eshell buffer."
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
+
+
+;;;;
 ;;;; misc functions
 ;;;;
 
