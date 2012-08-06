@@ -1,3 +1,12 @@
 [submodule ".emacs.d/paredit"]
 	path = .emacs.d/paredit
 	url = https://github.com/emacsmirror/paredit.git
+[submodule ".emacs.d/magit"]
+	path = .emacs.d/magit
+	url = https://github.com/magit/magit.git
+[submodule ".emacs.d/mo-git-blame"]
+	path = .emacs.d/mo-git-blame
+	url = https://github.com/mbunkus/mo-git-blame.git
+[submodule ".emacs.d/magithub"]
+	path = .emacs.d/magithub
+	url = https://github.com/nex3/magithub.git

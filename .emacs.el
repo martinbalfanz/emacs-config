@@ -245,6 +245,20 @@ at the beginning of line, if already there."
 
 
 ;;;;
+;;;; magit
+;;;;
+
+(add-to-list 'load-path "~/.emacs.d/magit")
+(require 'magit)
+
+(add-to-list 'load-path "~/.emacs.d/mo-git-blame")
+(require 'mo-git-blame)
+
+(add-to-list 'load-path "~/.emacs.d/magithub")
+(require 'magithub)
+
+
+;;;;
 ;;;; misc functions
 ;;;;
 
