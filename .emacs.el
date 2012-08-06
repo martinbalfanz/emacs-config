@@ -245,6 +245,32 @@ at the beginning of line, if already there."
 
 
 ;;;;
+;;;; ido + smex
+;;;;
+
+(add-to-list 'load-path "~/.emacs.d/smex")
+
+(require 'ido)
+(ido-mode t)
+
+(when (require 'smex)
+  (smex-initialize)
+  (setq smex-save-file "~/.smex")
+  (smex-auto-update))
+
+(defun dhl-invoke-smex (x)
+  "Invokes smex, if called without a prefix argument,
+smex-major-mode-commands otherwise. Note that this
+prevents using commands with prefix arguments."
+  (interactive "p")
+  (if (= x 1)
+      (smex)
+    (smex-major-mode-commands)))
+
+(global-set-key (kbd "M-X") 'dhl-invoke-smex)
+
+
+;;;;
 ;;;; magit
 ;;;;
 
