@@ -55,6 +55,9 @@
       initial-scratch-message nil	;; start with an empty scratch buffer
       ring-bell-function (lambda ())	;; no annoying bell ringing
       require-final-newline nil		;; don't force new line at end of file
+      help-window-select t              ;; select help buffer when opened
+      line-move-visual nil              ;; move point by logical lines
+      default-major-mode 'text-mode
 )
 
 (setq-default cursor-type 'bar		;; cursor style
@@ -67,7 +70,6 @@
 (auto-image-file-mode 1)	;; display image file as image
 
 ;;; basic appearance
-
 (column-number-mode 1)		;; show column in modeline
 (display-battery-mode -1)
 (display-time-mode -1)
@@ -86,6 +88,15 @@
 
 (mouse-wheel-mode -1)		;; I don't use the mouse at all, so I don't
 				;; want to scroll accidentally whenever I touch it.
+
+;;; coding system
+(prefer-coding-system       'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-language-environment   'utf-8)
+(set-file-name-coding-system 'utf-8)
+(set-locale-environment "UTF-8")
 
 
 ;;;;
