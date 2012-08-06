@@ -62,7 +62,7 @@
       )
 
 (setq-default cursor-type 'bar          ;; cursor style
-	      indent-tabs-mode nil      ;; indentation nerver inserts tabs
+	      indent-tabs-mode nil      ;; indentation never inserts tabs
               )
 
 (fset 'yes-or-no-p 'y-or-n-p)   ;; allow y or n as answers
@@ -88,16 +88,16 @@
 (show-paren-mode 1)             ;; highlight matching parenthesis
 
 (mouse-wheel-mode -1)           ;; I don't use the mouse at all, so I don't
-;; want to scroll accidentally whenever I touch it.
+                                ;; want to scroll accidentally whenever I touch it.
 
 ;;; coding system
-(prefer-coding-system       'utf-8-unix)
-(set-default-coding-systems 'utf-8-unix)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-language-environment   'utf-8)
+(prefer-coding-system        'utf-8-unix)
+(set-default-coding-systems  'utf-8-unix)
+(set-terminal-coding-system  'utf-8)
+(set-keyboard-coding-system  'utf-8)
+(set-language-environment    'utf-8)
 (set-file-name-coding-system 'utf-8)
-(set-locale-environment "UTF-8")
+(set-locale-environment      "UTF-8")
 
 
 ;;;;
