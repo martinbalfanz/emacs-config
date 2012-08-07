@@ -36,6 +36,15 @@
 
 
 ;;;;
+;;;; use-package & diminsh
+;;;;
+
+(add-to-list 'load-path "~/.emacs.d/use-package")
+(require 'use-package)
+(use-package diminish)
+
+
+;;;;
 ;;;; OS X specific keybindings
 ;;;;
 
@@ -131,74 +140,83 @@
 ;;;; thanks to https://github.com/danlei
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/paredit")
+(use-package paredit
+  :load-path "~/.emacs.d/paredit"
+  :commands paredit-mode
+  :diminish paredit-mode
+  :init
+  (progn
+    (mapc (lambda (hook) (add-hook hook (lambda () (paredit-mode 1))))
+          '(slime-mode-hook
+            slime-repl-mode-hook
+            emacs-lisp-mode-hook
+            ielm-mode-hook
+            scheme-mode-hook
+            inferior-scheme-mode-hook
+            inferior-qi-mode-hook
+            qi-mode-hook))
+    (setq clojure-enable-paredit t))
 
-(when (require 'paredit "paredit" t)
-  (mapc (lambda (hook) (add-hook hook (lambda () (paredit-mode 1))))
-        '(slime-mode-hook
-          slime-repl-mode-hook
-          emacs-lisp-mode-hook
-          ielm-mode-hook
-          scheme-mode-hook
-          inferior-scheme-mode-hook
-          inferior-qi-mode-hook
-          qi-mode-hook))
-  (setq clojure-enable-paredit t))
-
-
-(add-hook 'paredit-mode-hook
-          (lambda ()
-            (define-keys paredit-mode-map
-              '((")" paredit-close-parenthesis)
-                ("M-)" paredit-close-parenthesis-and-newline)
-                ("}" paredit-close-curly)
-                ("{" paredit-open-curly)
-                ("M-{" paredit-wrap-curly)
-                ("M-[" paredit-wrap-square)
-                ("M-f" paredit-forward)
-                ("C-M-f" forward-word)
-                ("M-b" paredit-backward)
-                ("C-M-b" backward-word)
-                ("M-u" backward-up-list)
-                ("C-M-u" upcase-word)
-                ("M-ö" down-list)
-                ("M-t" transpose-sexps)
-                ("C-M-t" transpose-words)
-                ("<M-backspace>" paredit-backward-kill-word)
-                ("<C-backspace>" backward-kill-sexp)
-                ("M-k" kill-sexp)
-                ("M-a" slime-beginning-of-defun)
-                ("M-e" slime-end-of-defun)
-                ("C-M-a" backward-sentence)
-                ("C-M-e" forward-sentence)
-                ("M-q" indent-pp-sexp)
-                ("C-M-q" fill-paragraph)))))
+  :config
+  (define-keys paredit-mode-map
+    '((")" paredit-close-parenthesis)
+      ("M-)" paredit-close-parenthesis-and-newline)
+      ("}" paredit-close-curly)
+      ("{" paredit-open-curly)
+      ("M-{" paredit-wrap-curly)
+      ("M-[" paredit-wrap-square)
+      ("M-f" paredit-forward)
+      ("C-M-f" forward-word)
+      ("M-b" paredit-backward)
+      ("C-M-b" backward-word)
+      ("M-u" backward-up-list)
+      ("C-M-u" upcase-word)
+      ("M-ö" down-list)
+      ("M-t" transpose-sexps)
+      ("C-M-t" transpose-words)
+      ("<M-backspace>" paredit-backward-kill-word)
+      ("<C-backspace>" backward-kill-sexp)
+      ("M-k" kill-sexp)
+      ("M-a" slime-beginning-of-defun)
+      ("M-e" slime-end-of-defun)
+      ("C-M-a" backward-sentence)
+      ("C-M-e" forward-sentence)
+      ("M-q" indent-pp-sexp)
+      ("C-M-q" fill-paragraph))))
 
 
 ;;;;
-;;;; elisp
+;;;; emacs-lisp
 ;;;;
 
-(defun indent-and-pc-complete (n)
-  (interactive "p")
-  (indent-for-tab-command)
-  (lisp-complete-symbol))
+(use-package emacs-lisp-mode
+  :mode ("\\.el$" . emacs-lisp-mode)
+  :config
+  (progn
+    (defun indent-and-pc-complete (n)
+      (interactive "p")
+      (indent-for-tab-command)
+      (lisp-complete-symbol))
 
-(defun mb-eval-and-execute ()
-  "Evaluate and execute current defun."
-  (interactive)
-  (funcall (eval-defun-2)))
+    (defun mb-eval-and-execute ()
+      "Evaluate and execute current defun."
+      (interactive)
+      (funcall (eval-defun-2)))
 
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (eldoc-mode 1)
-            (define-keys emacs-lisp-mode-map
-              '(("TAB" indent-and-pc-complete)
-                ("C-c C-e" mb-eval-and-execute)))))
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda ()
+                (use-package eldoc-mode
+                  :diminish eldoc-mode
+                  :init (eldoc-mode 1))
+                (define-keys emacs-lisp-mode-map
+                  '(("TAB" indent-and-pc-complete)
+                    ("C-c C-e" mb-eval-and-execute)))))))
 
 (add-hook 'lisp-interaction-mode-hook
           (lambda ()
-            (eldoc-mode 1)
+            (use-package eldoc-mode
+              :diminish eldoc-mode
+              :init (eldoc-mode 1))
             (define-keys lisp-interaction-mode-map
               '(("TAB" indent-and-pc-complete)
                 ("<C-return>" eval-print-last-sexp)))))
@@ -208,233 +226,251 @@
 ;;;; ielm
 ;;;;
 
-(setq ielm-prompt "elisp> ")
+(use-package ielm
+  :bind ("C-c :" . ielm)
+  :config
+  (progn
+    (setq ielm-prompt "elisp> ")
 
-(add-hook 'ielm-mode-hook
-          (lambda ()
-            (eldoc-mode 1)
-            (setq comint-dynamic-complete-functions
-                  '(ielm-tab
-                    comint-replace-by-expanded-history
-                    ielm-complete-filename
-                    ielm-complete-symbol))))
+    (add-hook 'ielm-mode-hook
+              (lambda ()
+                (use-package eldoc-mode
+                  :diminish eldoc-mode
+                  :init (eldoc-mode 1))
+                (setq comint-dynamic-complete-functions
+                      '(ielm-tab
+                        comint-replace-by-expanded-history
+                        ielm-complete-filename
+                        ielm-complete-symbol))))))
 
 
 ;;;;
 ;;;; eshell
 ;;;;
 
-(add-hook 'eshell-mode-hook
-          (lambda ()
-            (define-keys eshell-mode-map
-              '(("C-a" eshell-maybe-bol)))))
+(use-package eshell
+  :defer t
+  :config
+  (progn
+    (add-hook 'eshell-mode-hook
+              (lambda ()
+                (define-keys eshell-mode-map
+                  '(("C-a" eshell-maybe-bol)))))
 
-(defun eshell-maybe-bol ()
-  "Moves point behind the eshell prompt, or
+    (defun eshell-maybe-bol ()
+      "Moves point behind the eshell prompt, or
 at the beginning of line, if already there."
-  (interactive)
-  (let ((p (point)))
-    (eshell-bol)
-    (when (= p (point))
-      (beginning-of-line))))
+      (interactive)
+      (let ((p (point)))
+        (eshell-bol)
+        (when (= p (point))
+          (beginning-of-line))))
 
-(defun eshell-clear ()
-  "Clears the eshell buffer."
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer)))
+    (defun eshell-clear ()
+      "Clears the eshell buffer."
+      (interactive)
+      (let ((inhibit-read-only t))
+        (erase-buffer)))))
 
 
 ;;;;
 ;;;; ido + smex
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/smex")
+(use-package ido
+  :init
+  (ido-mode t)
 
-(require 'ido)
-(ido-mode t)
+  :config
+  (progn
+    (use-package smex
+      :load-path "~/.emacs.d/smex"
+      :bind ("M-X" . dhl-invoke-smex)
+      :config
+      (progn
+        (smex-initialize)
+        (setq smex-save-file "~/.smex")
+        (smex-auto-update)
 
-(when (require 'smex)
-  (smex-initialize)
-  (setq smex-save-file "~/.smex")
-  (smex-auto-update))
-
-(defun dhl-invoke-smex (x)
-  "Invokes smex, if called without a prefix argument,
+        (defun dhl-invoke-smex (x)
+          "Invokes smex, if called without a prefix argument,
 smex-major-mode-commands otherwise. Note that this
 prevents using commands with prefix arguments."
-  (interactive "p")
-  (if (= x 1)
-      (smex)
-    (smex-major-mode-commands)))
+          (interactive "p")
+          (if (= x 1)
+              (smex)
+            (smex-major-mode-commands)))))))
 
-(global-set-key (kbd "M-X") 'dhl-invoke-smex)
 
 
 ;;;;
 ;;;; ibuffer
 ;;;;
 
-(setq ibuffer-show-empty-filter-groups nil
-      ibuffer-expert nil)
+(use-package ibuffer
+  :bind ("C-x C-b" . ibuffer)
+  :config
+  (progn
+    (setq ibuffer-show-empty-filter-groups nil
+          ibuffer-expert nil
+          ibuffer-saved-filter-groups '(("default"
+                                         ("elisp" (or (name . "\\.el$")
+                                                      (mode . emacs-lisp-mode)))
+                                         ("org" (or (name . "\\.org$")
+                                                    (mode . org-mode)))
+                                         ("snippet" (or (name . "\\.yasnippet$")
+                                                        (mode . snippet-mode)))
+                                         ("pdf" (name . "\\.pdf$"))
+                                         ("markdown" (or (name . "\\.md$")
+                                                         (mode . markdown-mode)))
+                                         ("html" (or (name . "\\.html$")
+                                                     (mode . html-mode)))
+                                         ("css" (or (name . "\\.css$")
+                                                    (mode . css-mode)))
+                                         ("scss" (or (name . "\\.scss$")
+                                                     (name . "\\.sass$")
+                                                     (mode . scss-mode)
+                                                     (mode . sass-mode)))
+                                         ("less" (name . "\\.less$"))
+                                         ("javascript" (or (name . "\\.js")
+                                                           (mode . javascript-mode)
+                                                           (mode . js2-mode)
+                                                           (mode . espresso-mode)))
+                                         ("yml" (or (name . "\\.yml$")
+                                                    (mode . yaml-mode)))
+                                         ("erc" (mode . erc-mode))
+                                         ("twitter" (mode . twittering-mode))
+                                         ("clojure" (or (name . "\\.clj$")
+                                                        (mode . clojure-mode)))
+                                         ("dired" (mode . dired-mode))
+                                         ("gnus" (or
+                                                  (mode . message-mode)
+                                                  (mode . bbdb-mode)
+                                                  (mode . mail-mode)
+                                                  (mode . gnus-group-mode)
+                                                  (mode . gnus-summary-mode)
+                                                  (mode . gnus-article-mode)
+                                                  (name . "^\\.bbdb$")
+                                                  (name . "^\\.newsrc-dribble")))
+                                         ("special" (name . "^\\*.*\\*")))))
+    (add-hook 'ibuffer-mode-hook
+              (lambda ()
+                (ibuffer-switch-to-saved-filter-groups "default")
+                (ibuffer-auto-mode 1)
+                (hl-line-mode 1)))
 
-(setq ibuffer-saved-filter-groups
-      '(("default"
-         ("elisp" (or (name . "\\.el$")
-                      (mode . emacs-lisp-mode)))
-         ("org" (or (name . "\\.org$")
-                    (mode . org-mode)))
-         ("snippet" (or (name . "\\.yasnippet$")
-                        (mode . snippet-mode)))
-         ("pdf" (name . "\\.pdf$"))
-         ("markdown" (or (name . "\\.md$")
-                         (mode . markdown-mode)))
-         ("html" (or (name . "\\.html$")
-                     (mode . html-mode)))
-         ("css" (or (name . "\\.css$")
-                    (mode . css-mode)))
-         ("scss" (or (name . "\\.scss$")
-                     (name . "\\.sass$")
-                     (mode . scss-mode)
-                     (mode . sass-mode)))
-         ("less" (name . "\\.less$"))
-         ("javascript" (or (name . "\\.js")
-                           (mode . javascript-mode)
-                           (mode . js2-mode)
-                           (mode . espresso-mode)))
-         ("yml" (or (name . "\\.yml$")
-                    (mode . yaml-mode)))
-         ("erc" (mode . erc-mode))
-         ("twitter" (mode . twittering-mode))
-         ("clojure" (or (name . "\\.clj$")
-                        (mode . clojure-mode)))
-         ("dired" (mode . dired-mode))
-         ("gnus" (or
-                  (mode . message-mode)
-                  (mode . bbdb-mode)
-                  (mode . mail-mode)
-                  (mode . gnus-group-mode)
-                  (mode . gnus-summary-mode)
-                  (mode . gnus-article-mode)
-                  (name . "^\\.bbdb$")
-                  (name . "^\\.newsrc-dribble")))
-         ("special" (name . "^\\*.*\\*")))))
-
-(add-hook 'ibuffer-mode-hook
-          (lambda ()
-            (ibuffer-switch-to-saved-filter-groups "default")
-            (ibuffer-auto-mode 1)
-            (hl-line-mode 1)))
-
-(defadvice ibuffer
-  (around ibuffer-point-to-most-recent first () activate)
-  "Open ibuffer with cursor pointed to most recent buffer name."
-  (let ((recent-buffer-name (buffer-name)))
-    ad-do-it
-    (ibuffer-jump-to-buffer recent-buffer-name)))
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+    (defadvice ibuffer
+      (around ibuffer-point-to-most-recent first () activate)
+      "Open ibuffer with cursor pointed to most recent buffer name."
+      (let ((recent-buffer-name (buffer-name)))
+        ad-do-it
+        (ibuffer-jump-to-buffer recent-buffer-name)))))
 
 
 ;;;;
 ;;;; org-mode
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/org-mode/lisp")
-(add-to-list 'load-path "~/.emacs.d/org-mode/contrib/lisp")
-(require 'org-install)
+(use-package org-install
+  :load-path ("~/.emacs.d/org-mode/lisp"
+              "~/.emacs.d/org-mode/contrib/lisp")
+  :mode ("\\.org$" . org-mode)
+  :config
+  (progn
                                         ;(require 'org-mac-iCal)
+    (defvar mb-org-file-path-prefix "~/org/"
+      "Path to my org-files.")
 
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+    (defvar mb-org-file-list
+      '("business.org"
+        "personal.org"
+        "university.org"
+        "research.org")
+      "List of files to be included in org-agenda.")
 
-(defvar mb-org-file-path-prefix "~/org/"
-  "Path to my org-files.")
+    (setq org-agenda-files
+          (mapcar (lambda (s) (concat mb-org-file-path-prefix s))
+                  mb-org-file-list))
 
-(defvar mb-org-file-list
-  '("business.org"
-    "personal.org"
-    "university.org"
-    "research.org")
-  "List of files to be included in org-agenda.")
+    (setq org-default-notes-file
+          (concat mb-org-file-path-prefix "notes.org"))
 
-(setq org-agenda-files
-      (mapcar (lambda (s) (concat mb-org-file-path-prefix s))
-              mb-org-file-list))
+    (setq org-log-reschedule 'time
+          org-log-redeadline 'time
+          org-clock-persist 'history
+          org-clock-modeline-total 'current
+          org-clock-idle-time 10
+          org-hierarchical-todo-statistics nil
+          org-table-export-default-format "orgtbl-to-csv")
 
-(setq org-default-notes-file
-      (concat mb-org-file-path-prefix "notes.org"))
+    (setq org-agenda-include-diary t)
 
-(setq org-log-reschedule 'time
-      org-log-redeadline 'time
-      org-clock-persist 'history
-      org-clock-modeline-total 'current
-      org-clock-idle-time 10
-      org-hierarchical-todo-statistics nil
-      org-table-export-default-format "orgtbl-to-csv")
+    (add-hook 'org-agenda-cleanup-fancy-diary-hook
+              (lambda ()
+                (goto-char (point-min))
+                (save-excursion
+                  (while (re-search-forward "^[a-z]" nil t)
+                    (goto-char (match-beginning 0))
+                    (insert "0:00-24:00 ")))
+                (while (re-search-forward "^ [a-z]" nil t)
+                  (goto-char (match-beginning 0))
+                  (save-excursion
+                    (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
+                  (insert (match-string 0)))))
 
-(setq org-agenda-include-diary t)
+    (org-clock-persistence-insinuate)
 
-(add-hook 'org-agenda-cleanup-fancy-diary-hook
-          (lambda ()
-            (goto-char (point-min))
-            (save-excursion
-              (while (re-search-forward "^[a-z]" nil t)
-                (goto-char (match-beginning 0))
-                (insert "0:00-24:00 ")))
-            (while (re-search-forward "^ [a-z]" nil t)
-              (goto-char (match-beginning 0))
-              (save-excursion
-                (re-search-backward "^[0-9]+:[0-9]+-[0-9]+:[0-9]+ " nil t))
-              (insert (match-string 0)))))
+    (setq org-todo-keywords
+          '((type "TODO" "WAITING" "WIP" "TESTING" "|" "DONE" "DELEGATED" "CANCELED" "VOID")
+            (sequence "PROJECT" "|" "FINISHED")
+            (sequence "INVOICE" "SENT" "|" "RCVD")))
 
-(org-clock-persistence-insinuate)
+    (add-hook 'org-mode-hook
+              (lambda ()
+                (auto-fill-mode)
+                (setq org-hide-leading-stars t
+                      adaptive-fill-mode t
+                      org-log-done t)))
 
-(setq org-todo-keywords
-      '((type "TODO" "WAITING" "WIP" "TESTING" "|" "DONE" "DELEGATED" "CANCELED" "VOID")
-        (sequence "PROJECT" "|" "FINISHED")
-        (sequence "INVOICE" "SENT" "|" "RCVD")))
-
-(add-hook 'org-mode-hook
-          (lambda ()
-            (auto-fill-mode)
-            (setq org-hide-leading-stars t
-                  adaptive-fill-mode t
-                  org-log-done t)))
-
-(add-hook 'org-agenda-mode-hook
-          (lambda ()
-            (hl-line-mode 1)))
-
-(require 'org-mime)
-(setq org-mime-library 'semi)
-(setq org-src-fontify-natively t)
-(require 'org-toc)
+    (add-hook 'org-agenda-mode-hook
+              (lambda ()
+                (hl-line-mode 1)))
+    (require 'org-mime)
+    (setq org-mime-library 'semi)
+    (setq org-src-fontify-natively t)
+    (require 'org-toc)))
 
 
 ;;;;
-;;;; magit
+;;;; magit / magithub / mo-git-blame
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/magit")
-(require 'magit)
+(use-package magit
+  :load-path "~/.emacs.d/magit"
+  :commands (magit-status
+             magit-log
+             magit-branch-manager)
+  :config
+  (progn
+    (use-package magithub
+      :load-path "~/.emacs.d/magitub")))
 
-(add-to-list 'load-path "~/.emacs.d/mo-git-blame")
-(require 'mo-git-blame)
-
-(add-to-list 'load-path "~/.emacs.d/magithub")
-(require 'magithub)
+(use-package mo-git-blame
+  :load-path "~/.emacs.d/mo-git-blame"
+  :commands (mo-git-blame-current
+             mo-git-blame-file))
 
 
 ;;;;
 ;;;; javascript
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/js2-mode")
-(require 'js2-mode)
-
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-
-(setq js2-pretty-multiline-declarations t)
+(use-package js2-mode
+  :load-path "~/.emacs.d/js2-mode"
+  :mode ("\\.js$" . js2-mode)
+  :config
+  (progn
+    (setq js2-pretty-multiline-declarations t)))
 
 
 ;;;;
