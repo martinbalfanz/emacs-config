@@ -191,7 +191,7 @@
 
 (use-package emacs-lisp-mode
   :mode ("\\.el$" . emacs-lisp-mode)
-  :config
+  :init
   (progn
     (defun indent-and-pc-complete (n)
       (interactive "p")
@@ -205,18 +205,16 @@
 
     (add-hook 'emacs-lisp-mode-hook
               (lambda ()
-                (use-package eldoc-mode
-                  :diminish eldoc-mode
-                  :init (eldoc-mode 1))
+                (eldoc-mode 1)
+                (diminish 'eldoc-mode)
                 (define-keys emacs-lisp-mode-map
                   '(("TAB" indent-and-pc-complete)
                     ("C-c C-e" mb-eval-and-execute)))))))
 
 (add-hook 'lisp-interaction-mode-hook
           (lambda ()
-            (use-package eldoc-mode
-              :diminish eldoc-mode
-              :init (eldoc-mode 1))
+            (eldoc-mode 1)
+            (diminish 'eldoc-mode)
             (define-keys lisp-interaction-mode-map
               '(("TAB" indent-and-pc-complete)
                 ("<C-return>" eval-print-last-sexp)))))
@@ -231,12 +229,10 @@
   :config
   (progn
     (setq ielm-prompt "elisp> ")
-
     (add-hook 'ielm-mode-hook
               (lambda ()
-                (use-package eldoc-mode
-                  :diminish eldoc-mode
-                  :init (eldoc-mode 1))
+                (eldoc-mode 1)
+                (diminish 'eldoc-mode)
                 (setq comint-dynamic-complete-functions
                       '(ielm-tab
                         comint-replace-by-expanded-history
