@@ -1,4 +1,6 @@
 *~
 *#
+#*
 .emacs-auth
 *.elc
+tmp/

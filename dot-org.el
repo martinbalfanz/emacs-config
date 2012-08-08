@@ -30,7 +30,7 @@
       org-log-redeadline 'time
       org-clock-persist 'history
       org-clock-modeline-total 'current
-      org-clock-persist-file (expand-file-name "../tmp/org-clock-save.el" user-init-file)
+      org-clock-persist-file (expand-file-name "org-clock-save.el" mb-tmp-dir)
       org-clock-idle-time 10
       org-hierarchical-todo-statistics nil
       org-table-export-default-format "orgtbl-to-csv")

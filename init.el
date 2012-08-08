@@ -15,6 +15,12 @@
 (add-to-list 'load-path (expand-file-name ".." user-init-file))
 ;; dir of user site-lisp
 (add-to-list 'load-path user-emacs-directory)
+;; dir for temporary files
+(defvar mb-tmp-dir (expand-file-name "../tmp" user-init-file)
+  "Directory for temporary files.
+   e.g. used for: - org-mode persistent clock
+                  - savehist
+                  - desktop")
 
 ;; setting paths for OS X (homebrew)
 (when (eq system-type 'darwin)
@@ -122,8 +128,9 @@
 
 (desktop-save-mode 1)
 
-(setq desktop-dirname "~/"
+(setq desktop-dirname mb-tmp-dir
       desktop-base-file-name ".emacs.desktop"
+      savehist-file (expand-file-name "history" mb-tmp-dir)
       history-length 500)
 
 (mapc (lambda (global)
