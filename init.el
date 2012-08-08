@@ -480,7 +480,9 @@ prevents using commands with prefix arguments."
   :config
   (progn
     (setq css-indent-offset 2
-          cssm-indent-level '2C-)
+          cssm-indent-level '2)
+    (define-keys css-mode-map
+      '(("<return>" newline-and-indent)))
     (add-hook 'css-mode-hook
               (lambda ()
                 (paredit-mode 1)))))
@@ -499,8 +501,9 @@ prevents using commands with prefix arguments."
   (setq truncate-lines 1
         auto-fill-mode -1)
   (turn-off-auto-fill)
-  (local-set-key
-   (kbd "C->") 'sgml-close-tag))
+  (define-keys html-mode-map
+    '(("C->" sgml-close-tag)
+      ("<return>" newline-and-indent))))
 
 (add-hook 'html-mode-hook 'mb-html-mode-hook)
 
