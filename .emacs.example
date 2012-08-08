@@ -3,6 +3,6 @@
 (setq user-full-name "Jon Doe"
       user-mail-address "jon.doe@mail.com"
       user-init-file "~/emacs-config/init.el"
-      user-emacs-directory "~/emacs-config/.emacs.d")
+      user-emacs-directory "~/emacs-config/site-lisp")
 
 (load user-init-file)
