@@ -466,6 +466,9 @@ prevents using commands with prefix arguments."
   :commands (magit-status
              magit-log
              magit-branch-manager)
+  :bind (("C-. m s" . magit-status)
+         ("C-. m b" . magit-branch-manager)
+         ("C-. m l" . magit-log))
   :config
   (progn
     (use-package magithub
