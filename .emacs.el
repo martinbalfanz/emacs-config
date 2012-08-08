@@ -41,6 +41,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/use-package")
 (require 'use-package)
+(eval-when-compile
+  (setq use-package-verbose (null byte-compile-current-file)))
+
 (use-package diminish)
 
 
@@ -296,7 +299,6 @@ prevents using commands with prefix arguments."
           (if (= x 1)
               (smex)
             (smex-major-mode-commands)))))))
-
 
 
 ;;;;
