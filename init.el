@@ -506,6 +506,18 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; zencoding
+;;;;
+
+(use-package zencoding-mode
+  :load-path "~/.emacs.d/zencoding"
+  :init
+  (progn
+    (add-hook 'nxml-mode-hook 'zencoding-mode)
+    (add-hook 'html-mode-hook 'zencoding-mode)))
+
+
+;;;;
 ;;;; color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.

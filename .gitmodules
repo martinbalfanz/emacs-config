@@ -22,3 +22,6 @@
 [submodule ".emacs.d/use-package"]
 	path = .emacs.d/use-package
 	url = https://github.com/jwiegley/use-package.git
+[submodule ".emacs.d/zencoding"]
+	path = .emacs.d/zencoding
+	url = https://github.com/rooney/zencoding.git
