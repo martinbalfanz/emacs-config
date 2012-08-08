@@ -391,6 +391,7 @@ prevents using commands with prefix arguments."
   :load-path ("org-mode/lisp"
               "org-mode/contrib/lisp")
   :mode ("\\.org$" . org-mode)
+  :bind ("C-c a" . org-agenda)
   :config
   (progn
                                         ;(require 'org-mac-iCal)
