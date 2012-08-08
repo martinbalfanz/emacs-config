@@ -487,6 +487,25 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; html
+;;;;
+
+(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
+(add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
+
+(setq sgml-basic-offset 2)
+
+(defun mb-html-mode-hook ()
+  (setq truncate-lines 1
+        auto-fill-mode -1)
+  (turn-off-auto-fill)
+  (local-set-key
+   (kbd "C->") 'sgml-close-tag))
+
+(add-hook 'html-mode-hook 'mb-html-mode-hook)
+
+
+;;;;
 ;;;; color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.
