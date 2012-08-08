@@ -472,6 +472,21 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; css
+;;;;
+
+(use-package css-mode
+  :mode ("\\.css$" . css-mode)
+  :config
+  (progn
+    (setq css-indent-offset 2
+          cssm-indent-level '2C-)
+    (add-hook 'css-mode-hook
+              (lambda ()
+                (paredit-mode 1)))))
+
+
+;;;;
 ;;;; color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.
