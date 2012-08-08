@@ -148,6 +148,15 @@
 
 
 ;;;;
+;;;; expand-region
+;;;;
+
+(use-package expand-region
+  :load-path "expand-region"
+  :bind ("C-#" . er/expand-region))
+
+
+;;;;
 ;;;; paredit
 ;;;; thanks to https://github.com/danlei
 ;;;;
