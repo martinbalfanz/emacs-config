@@ -139,6 +139,15 @@
 
 
 ;;;;
+;;;; ace-jump-mode
+;;;;
+
+(use-package ace-jump-mode
+  :load-path "ace-jump-mode"
+  :bind ("C-. j" . ace-jump-mode))
+
+
+;;;;
 ;;;; paredit
 ;;;; thanks to https://github.com/danlei
 ;;;;
