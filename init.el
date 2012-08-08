@@ -551,6 +551,12 @@ prevents using commands with prefix arguments."
 ;;;; misc functions
 ;;;;
 
+(defun indent-buffer ()
+  "Reindents the whole buffer."
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max)))
+
 (defun insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
    two prefix arguments, write out the day and month name."
