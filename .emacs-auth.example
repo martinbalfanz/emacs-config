@@ -1,0 +1,4 @@
+;;; -*- mode: emacs-lisp -*-
+
+(setq erc-auth '(servername (:name "username" :password "password")
+                 servername2 (:name "username2" :password "password2")))

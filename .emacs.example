@@ -1,0 +1,8 @@
+;;; -*- mode: emacs-lisp -*-
+
+(setq user-full-name "Jon Doe"
+      user-mail-address "jon.doe@mail.com"
+      user-init-file "~/emacs-config/init.el"
+      user-emacs-directory "~/emacs-config/.emacs.d")
+
+(load user-init-file)

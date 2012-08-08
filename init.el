@@ -1,4 +1,4 @@
-;;;;; -*- emacs-lisp -*-
+;;;;; -*- mode: emacs-lisp -*-
 ;;;;;
 ;;;;; Emacs Configuration File (.emacs)
 ;;;;;
@@ -11,7 +11,7 @@
 ;;;; paths
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path user-emacs-directory)
 
 ;; setting paths for OS X (homebrew)
 (when (eq system-type 'darwin)
@@ -39,7 +39,7 @@
 ;;;; use-package & diminsh
 ;;;;
 
-(add-to-list 'load-path "~/.emacs.d/use-package")
+(add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
 (require 'use-package)
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
@@ -144,7 +144,7 @@
 ;;;;
 
 (use-package paredit
-  :load-path "~/.emacs.d/paredit"
+  :load-path "paredit"
   :commands paredit-mode
   :diminish paredit-mode
   :init
@@ -283,7 +283,7 @@ at the beginning of line, if already there."
   :config
   (progn
     (use-package smex
-      :load-path "~/.emacs.d/smex"
+      :load-path "smex"
       :bind ("M-X" . dhl-invoke-smex)
       :config
       (progn
@@ -370,8 +370,8 @@ prevents using commands with prefix arguments."
 ;;;;
 
 (use-package org-install
-  :load-path ("~/.emacs.d/org-mode/lisp"
-              "~/.emacs.d/org-mode/contrib/lisp")
+  :load-path ("org-mode/lisp"
+              "org-mode/contrib/lisp")
   :mode ("\\.org$" . org-mode)
   :config
   (progn
@@ -444,17 +444,17 @@ prevents using commands with prefix arguments."
 ;;;;
 
 (use-package magit
-  :load-path "~/.emacs.d/magit"
+  :load-path "magit"
   :commands (magit-status
              magit-log
              magit-branch-manager)
   :config
   (progn
     (use-package magithub
-      :load-path "~/.emacs.d/magitub")))
+      :load-path "magitub")))
 
 (use-package mo-git-blame
-  :load-path "~/.emacs.d/mo-git-blame"
+  :load-path "mo-git-blame"
   :commands (mo-git-blame-current
              mo-git-blame-file))
 
@@ -464,7 +464,7 @@ prevents using commands with prefix arguments."
 ;;;;
 
 (use-package js2-mode
-  :load-path "~/.emacs.d/js2-mode"
+  :load-path "js2-mode"
   :mode ("\\.js$" . js2-mode)
   :config
   (progn
@@ -513,7 +513,7 @@ prevents using commands with prefix arguments."
 ;;;;
 
 (use-package zencoding-mode
-  :load-path "~/.emacs.d/zencoding"
+  :load-path "zencoding"
   :init
   (progn
     (add-hook 'nxml-mode-hook 'zencoding-mode)
@@ -567,7 +567,6 @@ are in kbd format."
 ;;;; epilogue
 ;;;;
 
-(load "~/.emacs-personal" t)
 (load "~/.emacs-auth" t)
 
 (server-start)
