@@ -40,3 +40,6 @@
 [submodule "site-lisp/twittering-mode"]
 	path = site-lisp/twittering-mode
 	url = https://github.com/hayamiz/twittering-mode.git
+[submodule "site-lisp/theme-solarized"]
+	path = site-lisp/theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git

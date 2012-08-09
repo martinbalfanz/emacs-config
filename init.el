@@ -615,12 +615,16 @@ prevents using commands with prefix arguments."
 ;;;; the color-theme package.
 ;;;;
 
-(load-theme 'tango-dark t)
+(add-to-list 'custom-theme-load-path (expand-file-name "theme-solarized" user-emacs-directory))
+(load-theme 'solarized-dark t)
 
 
 ;;;;
 ;;;; epilogue
 ;;;;
+
+(setq custom-file (expand-file-name "../settings.el" user-init-file))
+(load custom-file t)
 
 (load "~/.emacs-auth" t)
 
