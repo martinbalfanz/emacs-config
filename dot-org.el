@@ -70,3 +70,5 @@
 
 (setq org-mime-library 'semi)
 (setq org-src-fontify-natively t)
+
+(provide 'dot-org)

@@ -449,7 +449,8 @@ prevents using commands with prefix arguments."
 
     (add-hook 'js2-mode-hook
               (lambda ()
-                (paredit-mode 1))
+                (paredit-mode 1)
+                (local-set-key (kbd "<return>") 'newline-and-indent))
               t)))
 
 ;; js2-hightlight-vars-mode
