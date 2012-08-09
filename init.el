@@ -122,6 +122,14 @@
 
 
 ;;;;
+;;;; global key bindings
+;;;;
+
+(global-set-keys '(("C-k" mb-kill-and-join-forward)
+                   ("C-o" mb-newline-beneath)
+                   ("C-S-o" mb-newline-above)))
+
+;;;;
 ;;;; session management
 ;;;; Note: may not work in aquamacs.
 ;;;;
@@ -560,6 +568,27 @@ are in kbd format."
           (destructuring-bind (key function) keybinding
             (global-set-key (read-kbd-macro key) function)))
         keybindings))
+
+(defun mb-kill-and-join-forward (&optional arg)
+  "If at end of line, join with following; otherwise kill line.
+Deletes whitespace at join."
+  (interactive "P")
+  (if (and (eolp) (not (bolp)))
+      (delete-indentation t)
+    (kill-line arg)))
+
+(defun mb-newline-beneath ()
+  "Add a new newline beneath the current line."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
+(defun mb-newline-above ()
+  "Add a newline above the current line."
+  (interactive)
+  (previous-line)
+  (end-of-line)
+  (newline-and-indent))
 
 
 ;;;;
