@@ -122,6 +122,67 @@
 
 
 ;;;;
+;;;; misc functions
+;;;;
+
+(defun indent-buffer ()
+  "Reindents the whole buffer."
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max)))
+
+(defun insert-date (prefix)
+  "Insert the current date. With prefix-argument, use ISO format. With
+   two prefix arguments, write out the day and month name."
+  (interactive "P")
+  (let ((format (cond ((not prefix) "%d.%m.%Y")
+                      ((not prefix) "%d.%m.%y")
+                      ((equal prefix '(4)) "%Y-%m-%d")
+                      ((equal prefix '(16)) "%A, %d. %B %Y")))
+        (system-time-locale "de_DE"))
+    (insert (format-time-string format))))
+
+(defun define-keys (mode-map keybindings)
+  "Takes a mode map, and a list of (key function-designator)
+lists. The functions are bound to the keys in the given mode-map.
+Keys are in kbd format."
+  (mapc (lambda (keybinding)
+          (destructuring-bind (key function) keybinding
+            (define-key mode-map (read-kbd-macro key) function)))
+        keybindings))
+
+(defun global-set-keys (keybindings)
+  "Takes a list of (key function-designator) lists.
+The functions are globally bound to the keys. Keys
+are in kbd format."
+  (mapc (lambda (keybinding)
+          (destructuring-bind (key function) keybinding
+            (global-set-key (read-kbd-macro key) function)))
+        keybindings))
+
+(defun mb-kill-and-join-forward (&optional arg)
+  "If at end of line, join with following; otherwise kill line.
+Deletes whitespace at join."
+  (interactive "P")
+  (if (and (eolp) (not (bolp)))
+      (delete-indentation t)
+    (kill-line arg)))
+
+(defun mb-newline-beneath ()
+  "Add a new newline beneath the current line."
+  (interactive)
+  (end-of-line)
+  (newline-and-indent))
+
+(defun mb-newline-above ()
+  "Add a newline above the current line."
+  (interactive)
+  (previous-line)
+  (end-of-line)
+  (newline-and-indent))
+
+
+;;;;
 ;;;; global key bindings
 ;;;;
 
@@ -528,67 +589,6 @@ prevents using commands with prefix arguments."
 ;;;;
 
 (load-theme 'tango-dark t)
-
-
-;;;;
-;;;; misc functions
-;;;;
-
-(defun indent-buffer ()
-  "Reindents the whole buffer."
-  (interactive)
-  (delete-trailing-whitespace)
-  (indent-region (point-min) (point-max)))
-
-(defun insert-date (prefix)
-  "Insert the current date. With prefix-argument, use ISO format. With
-   two prefix arguments, write out the day and month name."
-  (interactive "P")
-  (let ((format (cond ((not prefix) "%d.%m.%Y")
-                      ((not prefix) "%d.%m.%y")
-                      ((equal prefix '(4)) "%Y-%m-%d")
-                      ((equal prefix '(16)) "%A, %d. %B %Y")))
-        (system-time-locale "de_DE"))
-    (insert (format-time-string format))))
-
-(defun define-keys (mode-map keybindings)
-  "Takes a mode map, and a list of (key function-designator)
-lists. The functions are bound to the keys in the given mode-map.
-Keys are in kbd format."
-  (mapc (lambda (keybinding)
-          (destructuring-bind (key function) keybinding
-            (define-key mode-map (read-kbd-macro key) function)))
-        keybindings))
-
-(defun global-set-keys (keybindings)
-  "Takes a list of (key function-designator) lists.
-The functions are globally bound to the keys. Keys
-are in kbd format."
-  (mapc (lambda (keybinding)
-          (destructuring-bind (key function) keybinding
-            (global-set-key (read-kbd-macro key) function)))
-        keybindings))
-
-(defun mb-kill-and-join-forward (&optional arg)
-  "If at end of line, join with following; otherwise kill line.
-Deletes whitespace at join."
-  (interactive "P")
-  (if (and (eolp) (not (bolp)))
-      (delete-indentation t)
-    (kill-line arg)))
-
-(defun mb-newline-beneath ()
-  "Add a new newline beneath the current line."
-  (interactive)
-  (end-of-line)
-  (newline-and-indent))
-
-(defun mb-newline-above ()
-  "Add a newline above the current line."
-  (interactive)
-  (previous-line)
-  (end-of-line)
-  (newline-and-indent))
 
 
 ;;;;
