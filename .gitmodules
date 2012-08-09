@@ -37,3 +37,6 @@
 [submodule "site-lisp/mark-multiple"]
 	path = site-lisp/mark-multiple
 	url = https://github.com/magnars/mark-multiple.el.git
+[submodule "site-lisp/twittering-mode"]
+	path = site-lisp/twittering-mode
+	url = https://github.com/hayamiz/twittering-mode.git

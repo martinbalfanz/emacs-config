@@ -461,6 +461,33 @@ prevents using commands with prefix arguments."
         ad-do-it
         (ibuffer-jump-to-buffer recent-buffer-name)))))
 
+;;;;
+;;;; twittering-mode
+;;;;
+
+(use-package twittering-mode
+  :load-path "twittering-mode"
+  :commands twit
+  :config
+  (progn
+    (setq twittering-icon-mode t
+          twittering-timer-interval 150
+          twittering-number-of-tweets-on-retrieval 100
+          Twittering-use-ssl t
+          twittering-use-master-password nil
+          twittering-scroll-mode t
+          twittering-initial-timeline-spec-string '(":home"
+                                                    ":replies"
+                                                    ":favorites"
+                                                    ":direct_messages"))
+    (twittering-enable-unread-status-notifier)
+
+    (define-keys twittering-mode-map
+      '(("n" twittering-goto-next-status)
+        ("p" twittering-goto-previous-status)
+        ("j" twittering-goto-next-status-of-user)
+        ("k" twittering-goto-previous-status-of-user)))))
+
 
 ;;;;
 ;;;; org-mode
