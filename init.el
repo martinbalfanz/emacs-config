@@ -648,6 +648,16 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; time-stamp
+;;;;
+
+(setq time-stamp-active t
+      time-stamp-line-limit 10
+      time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%U)")
+(add-hook 'write-file-hooks 'time-stamp t)
+
+
+;;;;
 ;;;; color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.
