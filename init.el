@@ -11,16 +11,18 @@
 ;;;; paths
 ;;;;
 
-;; dir of init.el
-(add-to-list 'load-path (expand-file-name ".." user-init-file))
-;; dir of user site-lisp
-(add-to-list 'load-path user-emacs-directory)
-;; dir for temporary files
-(defvar mb-tmp-dir (expand-file-name "../tmp" user-init-file)
+(defvar user-init-directory (file-name-directory user-init-file)
+  "Directory of init-file.")
+(defvar user-tmp-directory (expand-file-name "tmp" user-init-directory)
   "Directory for temporary files.
    e.g. used for: - org-mode persistent clock
                   - savehist
                   - desktop")
+
+;; dir of init.el
+(add-to-list 'load-path user-init-directory)
+;; dir of user site-lisp
+(add-to-list 'load-path user-emacs-directory)
 
 ;; setting paths for OS X (homebrew)
 (when (eq system-type 'darwin)
@@ -190,6 +192,7 @@ Deletes whitespace at join."
                    ("C-o" mb-newline-beneath)
                    ("C-S-o" mb-newline-above)))
 
+
 ;;;;
 ;;;; session management
 ;;;; Note: may not work in aquamacs.
@@ -197,9 +200,9 @@ Deletes whitespace at join."
 
 (desktop-save-mode 1)
 
-(setq desktop-dirname mb-tmp-dir
+(setq desktop-dirname user-tmp-directory
       desktop-base-file-name ".emacs.desktop"
-      savehist-file (expand-file-name "history" mb-tmp-dir)
+      savehist-file (expand-file-name "history" user-tmp-directory)
       history-length 500)
 
 (mapc (lambda (global)
@@ -623,7 +626,7 @@ prevents using commands with prefix arguments."
 ;;;; epilogue
 ;;;;
 
-(setq custom-file (expand-file-name "../settings.el" user-init-file))
+(setq custom-file (expand-file-name "settings.el" user-init-directory))
 (load custom-file t)
 
 (load "~/.emacs-auth" t)
