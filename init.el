@@ -671,6 +671,33 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; w3m
+;;;;
+
+(use-package w3m
+  :load-path "w3m"
+  :commands (w3m
+             w3m-search
+             w3m-browse-url
+             w3m-browse-url-new-session)
+  :init
+  (progn
+    (setq w3m-command "/usr/local/bin/w3m"
+          w3m-coding-system 'utf-8
+          w3m-file-coding-system 'utf-8
+          w3m-file-name-coding-system 'utf-8
+          w3m-input-coding-system 'utf-8
+          w3m-output-coding-system 'utf-8
+          w3m-terminal-coding-system 'utf-8
+          w3m-use-cookies t
+          w3m-home-page "http://news.ycombinator.com")
+    (add-hook 'w3m-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-<return>") 'w3m-external-view-this-url)
+                (local-set-key (kbd "C-u C-<return>" 'w3m-external-view-current-url))))))
+
+
+;;;;
 ;;;; color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.
