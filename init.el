@@ -183,6 +183,13 @@ Deletes whitespace at join."
   (end-of-line)
   (newline-and-indent))
 
+(defun mb-beginning-of-line ()
+  "Toggle point between beginning of line and first non-whitespace."
+  (interactive)
+  (if (bolp)
+      (back-to-indentation)
+    (beginning-of-line)))
+
 
 ;;;;
 ;;;; global key bindings
@@ -190,7 +197,8 @@ Deletes whitespace at join."
 
 (global-set-keys '(("C-k" mb-kill-and-join-forward)
                    ("C-o" mb-newline-beneath)
-                   ("C-S-o" mb-newline-above)))
+                   ("C-S-o" mb-newline-above)
+                   ("C-a" mb-beginning-of-line)))
 
 
 ;;;;
