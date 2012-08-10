@@ -656,6 +656,19 @@ prevents using commands with prefix arguments."
       time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%U)")
 (add-hook 'write-file-hooks 'time-stamp t)
 
+;;;;
+;;;; helm
+;;;;
+
+(use-package helm
+  :disabled t
+  :load-path "helm"
+  :commands (helm-mini
+             helm-mode)
+  :config
+  (progn
+    (require 'helm-config)))
+
 
 ;;;;
 ;;;; color-theme
