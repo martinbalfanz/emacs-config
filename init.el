@@ -500,6 +500,16 @@ prevents using commands with prefix arguments."
         (ibuffer-jump-to-buffer recent-buffer-name)))))
 
 ;;;;
+;;;; erc
+;;;; get erc-extras from http://ftp.gnu.org/old-gnu/erc/
+;;;;
+
+(use-package dot-erc
+  :load-path "erc-5.3-extras"
+  :commands erc)
+
+
+;;;;
 ;;;; twittering-mode
 ;;;;
 
@@ -583,7 +593,7 @@ prevents using commands with prefix arguments."
 
     (add-hook 'js2-mode-hook
               (lambda ()
-                (paredit-mode 1)
+                ;; (paredit-mode 1)
                 (local-set-key (kbd "<return>") 'newline-and-indent))
               t)))
 
@@ -612,7 +622,8 @@ prevents using commands with prefix arguments."
       '(("<return>" newline-and-indent)))
     (add-hook 'css-mode-hook
               (lambda ()
-                (paredit-mode 1)))))
+                ;; (paredit-mode 1)
+                ))))
 
 
 ;;;;
