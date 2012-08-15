@@ -547,6 +547,16 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; markdown
+;;;; http://jblevins.org/projects/markdown-mode/
+;;;;
+
+(use-package markdown-mode
+  :load-path "markdown-mode"
+  :mode ("\\.md$" . markdown-mode))
+
+
+;;;;
 ;;;; magit / magithub / mo-git-blame
 ;;;;
 

@@ -49,3 +49,6 @@
 [submodule "site-lisp/w3m"]
 	path = site-lisp/w3m
 	url = https://github.com/emacsmirror/w3m.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
