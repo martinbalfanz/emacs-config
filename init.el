@@ -557,6 +557,15 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; sibilant
+;;;;
+
+(use-package sibilant-mode
+  :load-path "sibilantjs/misc"
+  :mode ("\\.sibilant$" . sibilant-mode))
+
+
+;;;;
 ;;;; magit / magithub / mo-git-blame
 ;;;;
 
