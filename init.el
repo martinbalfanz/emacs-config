@@ -425,7 +425,7 @@ at the beginning of line, if already there."
                    slime-fancy
                    slime-references
                    slime-indentation))
-                
+
                 (define-keys slime-mode-map
                   '(("<return>" paredit-newline)
                     ("C-<return>" other-window)
@@ -436,7 +436,7 @@ at the beginning of line, if already there."
     (setq slime-net-coding-system 'utf-8-unix
           slime-enable-evaluate-in-emacs t
 
-          slime-lisp-implementations 
+          slime-lisp-implementations
           '((ccl ("ccl" "-K utf-8"))
             (sbcl ("sbcl" "--core"))
             (clisp ("clisp" "-E utf-8" "-modern")))
