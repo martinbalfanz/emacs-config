@@ -288,6 +288,7 @@ Deletes whitespace at join."
           '(slime-mode-hook
             slime-repl-mode-hook
             emacs-lisp-mode-hook
+            lisp-mode-hook
             ielm-mode-hook
             scheme-mode-hook
             inferior-scheme-mode-hook
@@ -405,6 +406,42 @@ at the beginning of line, if already there."
       (interactive)
       (let ((inhibit-read-only t))
         (erase-buffer)))))
+
+
+;;;;
+;;;; slime
+;;;;
+
+(use-package slime
+  :load-path ("slime"
+              "slime/contrib")
+  :commands (slime
+             slime-mode)
+  :init
+  (add-hook 'slime-mode-hook
+            #'(lambda ()
+                (slime-setup
+                 '(slime-asdf
+                   slime-fancy
+                   slime-references
+                   slime-indentation))
+                
+                (define-keys slime-mode-map
+                  '(("<return>" paredit-newline)
+                    ("C-<return>" other-window)
+                    ("C-h F" info-lookup-symbol)))))
+
+  :config
+  (progn
+    (setq slime-net-coding-system 'utf-8-unix
+          slime-enable-evaluate-in-emacs t
+
+          slime-lisp-implementations 
+          '((ccl ("ccl" "-K utf-8"))
+            (sbcl ("sbcl" "--core"))
+            (clisp ("clisp" "-E utf-8" "-modern")))
+
+          slime-default-lisp 'ccl)))
 
 
 ;;;;
