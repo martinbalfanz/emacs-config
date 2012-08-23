@@ -328,35 +328,39 @@ Deletes whitespace at join."
 ;;;; emacs-lisp
 ;;;;
 
-(use-package emacs-lisp-mode
-  :mode ("\\.el$" . emacs-lisp-mode)
-  :init
-  (progn
-    (defun indent-and-pc-complete (n)
-      (interactive "p")
-      (indent-for-tab-command)
-      (lisp-complete-symbol))
+(defun dhl-lisp-indent-and-complete (n)
+  (interactive "p")
+  (indent-for-tab-command)
+  (lisp-complete-symbol))
 
-    (defun mb-eval-and-execute ()
-      "Evaluate and execute current defun."
-      (interactive)
-      (funcall (eval-defun-2)))
+(defun dhl-lisp-eval-print-defun ()
+  (interactive)
+  (end-of-defun)
+  (eval-print-last-sexp))
 
-    (add-hook 'emacs-lisp-mode-hook
-              (lambda ()
-                (eldoc-mode 1)
-                (diminish 'eldoc-mode)
-                (define-keys emacs-lisp-mode-map
-                  '(("TAB" indent-and-pc-complete)
-                    ("C-c C-e" mb-eval-and-execute)))))))
+(defun mb-eval-and-execute ()
+  "Evaluate and execute current defun."
+  (interactive)
+  (funcall (eval-defun-2)))
 
-(add-hook 'lisp-interaction-mode-hook
+(add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (eldoc-mode 1)
             (diminish 'eldoc-mode)
-            (define-keys lisp-interaction-mode-map
-              '(("TAB" indent-and-pc-complete)
-                ("<C-return>" eval-print-last-sexp)))))
+            (define-keys emacs-lisp-mode-map
+              '(("TAB" dhl-lisp-indent-and-complete)
+                ("<C-return>" dhl-lisp-eval-print-defun)
+                ("C-c C-e" mb-eval-and-execute)))))
+
+(add-hook 'lisp-mode-hook ;; 'lisp-interaction-mode-hook
+          (lambda ()
+            (eldoc-mode 1)
+            (diminish 'eldoc-mode)
+            (define-keys ;; lisp-interaction-mode-map
+              lisp-mode-map
+              '(("TAB" dhl-lisp-indent-and-execute)
+                ("<C-return>" dhl-lisp-eval-print-defun)
+                ("C-c C-e" mb-eval-and-execute)))))
 
 
 ;;;;
@@ -428,7 +432,7 @@ at the beginning of line, if already there."
 
                 (define-keys slime-mode-map
                   '(("<return>" paredit-newline)
-                    ("C-<return>" other-window)
+                    ;; ("C-<return>" other-window)
                     ("C-h F" info-lookup-symbol)))))
 
   :config
@@ -727,6 +731,7 @@ prevents using commands with prefix arguments."
       time-stamp-line-limit 10
       time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%U)")
 (add-hook 'write-file-hooks 'time-stamp t)
+
 
 ;;;;
 ;;;; helm
