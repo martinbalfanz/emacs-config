@@ -714,7 +714,6 @@ prevents using commands with prefix arguments."
 
 ;;;;
 ;;;; yasnippet
-;;;; some parts from https://github.com/jwiegley/dot-emacs/blob/master/init.el
 ;;;;
 
 (use-package yasnippet
@@ -736,24 +735,8 @@ prevents using commands with prefix arguments."
 
     (setq yas/prompt-functions '(yas/dropdown-prompt yas/ido-prompt))
 
-    (defun yas/new-snippet (&optional choose-instead-of-guess)
-      (interactive "P")
-      (let ((guessed-directories (yas/guess-snippet-directories)))
-        (switch-to-buffer "*new snippet*")
-        (erase-buffer)
-        (kill-all-local-variables)
-        (snippet-mode)
-        (set (make-local-variable 'yas/guessed-modes)
-             (mapcar #'(lambda (d)
-                         (intern (yas/table-name (car d))))
-                     guessed-directories))
-        (unless (and choose-instead-of-guess
-                     (not (y-or-n-p "Insert a snippet with useful headers? ")))
-          (yas/expand-snippet "\n# -*- mode: snippet -*-\n# name: $1\n# --\n$0"))))
-
     (bind-key "<tab>" 'yas/next-field-or-maybe-expand yas/keymap)
     (bind-key "C-c y TAB" 'yas/expand)
-    (bind-key "C-c y n" 'yas/new-snippet)
     (bind-key "C-c y f" 'yas/find-snippets)
     (bind-key "C-c y r" 'yas/reload-all)
     (bind-key "C-c y v" 'yas/visit-snippet-file)))
