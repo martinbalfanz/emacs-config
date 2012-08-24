@@ -55,7 +55,8 @@
 (eval-when-compile
   (setq use-package-verbose (null byte-compile-current-file)))
 
-(use-package diminish)
+(use-package diminish
+  :load-path "diminish")
 
 
 ;;;;

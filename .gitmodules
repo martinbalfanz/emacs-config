@@ -86,3 +86,7 @@
 	path = site-lisp/annot
 	url = https://github.com/emacsmirror/annot.git
         ignore = dirty
+[submodule "site-lisp/diminish"]
+	path = site-lisp/diminish
+	url = https://github.com/emacsmirror/diminish.git
+        ignore = dirty
