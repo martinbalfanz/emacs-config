@@ -717,11 +717,11 @@ prevents using commands with prefix arguments."
 ;;;;
 
 (use-package yasnippet
-  :if (not noninteractive)
+  ;; :if (not noninteractive)
   :load-path "yasnippet"
   :commands (yas/minor-mode
              yas/expand)
-  :mode ("/emacs-config/snippets/" . snippet-mode)
+  ;; :mode ("~/emacs-config/snippets/" . snippet-mode)
   :init
   (progn
     (mapc (lambda (hook) (add-hook hook (lambda () (yas/minor-mode 1))))
