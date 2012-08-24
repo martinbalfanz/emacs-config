@@ -748,6 +748,22 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; annot
+;;;;
+
+(use-package annot
+  :load-path "annot/src"
+  :commands (annot-edit/add
+             annot-remove
+             annot-edit
+             annot-add-image)
+  :bind (("C-x a" . annot-edit/add)
+         ("C-x C-a" . annot-edit/add)
+         ("C-x r" . annot-remove)
+         ("C-x w" . annot-add-image)))
+
+
+;;;;
 ;;;; w3m
 ;;;;
 

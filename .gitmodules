@@ -82,3 +82,6 @@
 	path = site-lisp/mu
 	url = https://github.com/djcb/mu.git
         ignore = dirty
+[submodule "site-lisp/annot"]
+	path = site-lisp/annot
+	url = git@github.com:anthracite/annot.git
