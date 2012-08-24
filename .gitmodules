@@ -90,3 +90,7 @@
 	path = site-lisp/diminish
 	url = https://github.com/emacsmirror/diminish.git
         ignore = dirty
+[submodule "site-lisp/yasnippet"]
+	path = site-lisp/yasnippet
+	url = https://github.com/capitaomorte/yasnippet.git
+        ignore = dirty
