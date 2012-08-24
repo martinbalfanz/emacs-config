@@ -84,4 +84,5 @@
         ignore = dirty
 [submodule "site-lisp/annot"]
 	path = site-lisp/annot
-	url = git@github.com:anthracite/annot.git
+	url = https://github.com/emacsmirror/annot.git
+        ignore = dirty
