@@ -78,3 +78,7 @@
 	path = site-lisp/slime
 	url = https://github.com/emacsmirror/slime.git
 	ignore = dirty
+[submodule "site-lisp/mu"]
+	path = site-lisp/mu
+	url = https://github.com/djcb/mu.git
+        ignore = dirty
