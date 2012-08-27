@@ -591,6 +591,24 @@ prevents using commands with prefix arguments."
 
 
 ;;;;
+;;;; auto-complete
+;;;;
+
+(use-package auto-complete-config
+  :commands auto-complete-mode
+  :load-path ("popup-el"
+              "auto-complete"
+              "auto-complete/dict")
+  :config
+  (progn
+    ;; (ac-set-trigger-key "TAB")
+    (setq ;; ac-auto-start nil
+     ac-use-quick-help t
+     ac-use-comphist t
+     ac-ignore-case 'smart)))
+
+
+;;;;
 ;;;; org-mode
 ;;;;
 

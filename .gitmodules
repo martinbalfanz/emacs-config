@@ -94,3 +94,11 @@
 	path = site-lisp/yasnippet
 	url = https://github.com/capitaomorte/yasnippet.git
         ignore = dirty
+[submodule "site-lisp/auto-complete"]
+	path = site-lisp/auto-complete
+	url = https://github.com/m2ym/auto-complete.git
+        ignore = dirty
+[submodule "site-lisp/popup-el"]
+	path = site-lisp/popup-el
+	url = https://github.com/m2ym/popup-el.git
+        ignore = dirty
