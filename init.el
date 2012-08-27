@@ -104,9 +104,10 @@
     (menu-bar-mode 1)           ;; I like it to be fully functional.
   (menu-bar-mode -1))           ;; (Even though I never use it.)
 
-(scroll-bar-mode -1)            ;; hide scrollbars
-(toggle-scroll-bar -1)
-(tool-bar-mode -1)              ;; hide toolbar
+(when window-system
+  (scroll-bar-mode -1)          ;; hide scrollbars
+  (toggle-scroll-bar -1)
+  (tool-bar-mode -1))           ;; hide toolbar
 (blink-cursor-mode -1)          ;; I don't like blinking cursors
 (transient-mark-mode -1)
 (show-paren-mode 1)             ;; highlight matching parenthesis
