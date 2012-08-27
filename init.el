@@ -863,6 +863,10 @@ prevents using commands with prefix arguments."
 (setq custom-file (expand-file-name "settings.el" user-init-directory))
 (load custom-file t)
 
+(setq source-directory (expand-file-name "~/Documents/code/emacs")
+      find-function-C-source-directory (concat source-directory "/src")
+      find-function-source-path (cons source-directory load-path))
+
 (load "~/.emacs-auth" t)
 
 (server-start)
