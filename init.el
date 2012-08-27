@@ -606,7 +606,9 @@ prevents using commands with prefix arguments."
     (setq ;; ac-auto-start nil
      ac-use-quick-help t
      ac-use-comphist t
-     ac-ignore-case 'smart)))
+     ac-ignore-case 'smart
+     ;; ac-fuzzy-enable t
+     )))
 
 
 ;;;;
@@ -801,6 +803,16 @@ prevents using commands with prefix arguments."
   :config
   (progn
     (require 'helm-config)))
+
+
+;;;;
+;;;; fuzzy-el
+;;;;
+
+(use-package fuzzy
+  :load-path "fuzzy-el"
+  :init
+  (turn-on-fuzzy-isearch))
 
 
 ;;;;
