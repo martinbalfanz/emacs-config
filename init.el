@@ -353,6 +353,7 @@ Deletes whitespace at join."
 
 (use-package ielm
   :bind ("C-c :" . ielm)
+  :commands ielm
   :config
   (progn
     (setq ielm-prompt "elisp> ")
