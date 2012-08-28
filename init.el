@@ -634,6 +634,11 @@ prevents using commands with prefix arguments."
           mu4e-headers-visible-lines 15
           mu4e-split-view 'horizontal)
 
+    (add-hook 'mu4e-headers-mode-hook
+              (lambda ()
+                (setq cursor-type nil)) ;; hide cursor in headers view
+              t)
+
     ;;_ message view
     (setq ;; mu4e-html2text-command "html2text -utf8 -nobs -style compact -width 72"
           mu4e-html2text-command "w3m -dump -cols 80 -T text/html"
