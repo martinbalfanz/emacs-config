@@ -4,12 +4,11 @@
 ;;;;;
 ;;;;;
 
+;;;;_. Initialization
 (require 'cl)
 
 
-;;;;
-;;;; paths
-;;;;
+;;;;_ , paths
 
 (defvar user-init-directory (file-name-directory user-init-file)
   "Directory of init-file.")
@@ -46,9 +45,7 @@
           "/usr/local/Library/Contributions/examples")))
 
 
-;;;;
-;;;; use-package & diminsh
-;;;;
+;;;;_ , use-package & diminsh
 
 (add-to-list 'load-path (expand-file-name "use-package" user-emacs-directory))
 (require 'use-package)
@@ -59,9 +56,7 @@
   :load-path "diminish")
 
 
-;;;;
-;;;; OS X specific keybindings
-;;;;
+;;;;_ , OS X specific keybindings
 
 ;; only for carbon emacs
 (when (not (featurep 'aquamacs))
@@ -70,9 +65,7 @@
         mac-command-modifier 'meta
         mac-option-modifier nil))
 
-;;;;
-;;;; basics
-;;;;
+;;;;_ , basics
 
 (setq inhibit-startup-screen t          ;; remove startup screen
       scroll-conservatively 101         ;; never recenter point when scrolling
@@ -125,9 +118,7 @@
 (set-locale-environment      "UTF-8")
 
 
-;;;;
-;;;; misc functions
-;;;;
+;;;;_ , misc functions
 
 (defun indent-buffer ()
   "Reindents the whole buffer."
@@ -193,9 +184,7 @@ Deletes whitespace at join."
     (beginning-of-line)))
 
 
-;;;;
-;;;; global key bindings
-;;;;
+;;;;_ , global key bindings
 
 (global-set-keys '(("C-k" mb-kill-and-join-forward)
                    ("C-o" mb-newline-beneath)
@@ -203,10 +192,8 @@ Deletes whitespace at join."
                    ("C-a" mb-beginning-of-line)))
 
 
-;;;;
-;;;; session management
+;;;;_ , session management
 ;;;; Note: may not work in aquamacs.
-;;;;
 
 (desktop-save-mode 1)
 
@@ -230,27 +217,22 @@ Deletes whitespace at join."
 (savehist-mode 1)
 
 
-;;;;
-;;;; ace-jump-mode
-;;;;
+;;;;_. Packages
+;;;;_ , ace-jump-mode
 
 (use-package ace-jump-mode
   :load-path "ace-jump-mode"
   :bind ("C-. j" . ace-jump-mode))
 
 
-;;;;
-;;;; expand-region
-;;;;
+;;;;_ , expand-region
 
 (use-package expand-region
   :load-path "expand-region"
   :bind ("C-#" . er/expand-region))
 
 
-;;;;
-;;;; occur
-;;;;
+;;;;_ , occur
 
 (add-hook 'occur-mode-hook
           (lambda ()
@@ -275,10 +257,8 @@ Deletes whitespace at join."
   (other-window 1))
 
 
-;;;;
-;;;; paredit
+;;;;_ , paredit
 ;;;; thanks to https://github.com/danlei
-;;;;
 
 (use-package paredit
   :load-path "paredit"
@@ -332,9 +312,7 @@ Deletes whitespace at join."
         ("C-M-q" fill-paragraph)))))
 
 
-;;;;
-;;;; emacs-lisp
-;;;;
+;;;;_ , emacs-lisp
 
 (defun dhl-lisp-indent-and-complete (n)
   (interactive "p")
@@ -371,9 +349,7 @@ Deletes whitespace at join."
                 ("C-c C-e" mb-eval-and-execute)))))
 
 
-;;;;
-;;;; ielm
-;;;;
+;;;;_ , ielm
 
 (use-package ielm
   :bind ("C-c :" . ielm)
@@ -391,9 +367,7 @@ Deletes whitespace at join."
                         ielm-complete-symbol))))))
 
 
-;;;;
-;;;; eshell
-;;;;
+;;;;_ , eshell
 
 (use-package eshell
   :defer t
@@ -420,9 +394,7 @@ at the beginning of line, if already there."
         (erase-buffer)))))
 
 
-;;;;
-;;;; slime
-;;;;
+;;;;_ , slime
 
 (use-package slime
   :load-path ("slime"
@@ -456,9 +428,7 @@ at the beginning of line, if already there."
           slime-default-lisp 'ccl)))
 
 
-;;;;
-;;;; ido + smex
-;;;;
+;;;;_ , ido + smex
 
 (use-package ido
   :init
@@ -485,9 +455,7 @@ prevents using commands with prefix arguments."
             (smex-major-mode-commands)))))))
 
 
-;;;;
-;;;; ibuffer
-;;;;
+;;;;_ , ibuffer
 
 (use-package ibuffer
   :bind ("C-x C-b" . ibuffer)
@@ -553,19 +521,15 @@ prevents using commands with prefix arguments."
         ad-do-it
         (ibuffer-jump-to-buffer recent-buffer-name)))))
 
-;;;;
-;;;; erc
+;;;;_ , erc
 ;;;; get erc-extras from http://ftp.gnu.org/old-gnu/erc/
-;;;;
 
 (use-package dot-erc
   :load-path "erc-5.3-extras"
   :commands erc)
 
 
-;;;;
-;;;; twittering-mode
-;;;;
+;;;;_ , twittering-mode
 
 (use-package twittering-mode
   :load-path "twittering-mode"
@@ -591,9 +555,7 @@ prevents using commands with prefix arguments."
         ("k" twittering-goto-previous-status-of-user)))))
 
 
-;;;;
-;;;; auto-complete
-;;;;
+;;;;_ , auto-complete
 
 (use-package auto-complete-config
   :commands auto-complete-mode
@@ -611,37 +573,40 @@ prevents using commands with prefix arguments."
      )))
 
 
-;;;;
-;;;; org-mode
-;;;;
+;;;;_ , org-mode
 
 (use-package dot-org
   :mode ("\\.org$" . org-mode)
   :bind ("C-c a" . org-agenda))
 
 
-;;;;
-;;;; markdown
+;;;;_ , outline-mode
+
+(use-package outline
+  :commands (outline-mode
+             outline-minor-mode)
+  :init
+  (add-hook 'outline-minor-mode-hook
+	    (lambda ()
+	      (define-key outline-minor-mode-map [(control tab)] 'org-cycle)
+	      (define-key outline-minor-mode-map [(shift tab)] 'org-global-cycle))))
+
+;;;;_ , markdown
 ;;;; http://jblevins.org/projects/markdown-mode/
-;;;;
 
 (use-package markdown-mode
   :load-path "markdown-mode"
   :mode ("\\.md$" . markdown-mode))
 
 
-;;;;
-;;;; sibilant
-;;;;
+;;;;_ , sibilant
 
 (use-package sibilant-mode
   :load-path "sibilantjs/misc"
   :mode ("\\.sibilant$" . sibilant-mode))
 
 
-;;;;
-;;;; magit / magithub / mo-git-blame
-;;;;
+;;;;_ , magit / magithub / mo-git-blame
 
 (use-package magit
   :load-path "magit"
@@ -662,17 +627,13 @@ prevents using commands with prefix arguments."
              mo-git-blame-file))
 
 
-;;;;
-;;;; mark-multiple
-;;;;
+;;;;_ , mark-multiple
 
 (use-package mark-multiple
   :load-path "mark-multiple")
 
 
-;;;;
-;;;; javascript
-;;;;
+;;;;_ , javascript
 
 (use-package js2-mode
   :load-path "js2-mode"
@@ -701,9 +662,7 @@ prevents using commands with prefix arguments."
   :init (add-hook 'js2-mode-hook 'js2-highlight-vars-mode t))
 
 
-;;;;
-;;;; css
-;;;;
+;;;;_ , css
 
 (use-package css-mode
   :mode ("\\.css$" . css-mode)
@@ -719,9 +678,7 @@ prevents using commands with prefix arguments."
                 ))))
 
 
-;;;;
-;;;; html
-;;;;
+;;;;_ , html
 
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
 (add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
@@ -739,9 +696,7 @@ prevents using commands with prefix arguments."
 (add-hook 'html-mode-hook 'mb-html-mode-hook)
 
 
-;;;;
-;;;; yasnippet
-;;;;
+;;;;_ , yasnippet
 
 (use-package yasnippet
   ;; :if (not noninteractive)
@@ -769,9 +724,7 @@ prevents using commands with prefix arguments."
     (bind-key "C-c y v" 'yas/visit-snippet-file)))
 
 
-;;;;
-;;;; zencoding
-;;;;
+;;;;_ , zencoding
 
 (use-package zencoding-mode
   :load-path "zencoding"
@@ -781,9 +734,7 @@ prevents using commands with prefix arguments."
     (add-hook 'html-mode-hook 'zencoding-mode)))
 
 
-;;;;
-;;;; time-stamp
-;;;;
+;;;;_ , time-stamp
 
 (setq time-stamp-active t
       time-stamp-line-limit 10
@@ -791,9 +742,7 @@ prevents using commands with prefix arguments."
 (add-hook 'write-file-hooks 'time-stamp t)
 
 
-;;;;
-;;;; helm
-;;;;
+;;;;_ , helm
 
 (use-package helm
   :disabled t
@@ -805,9 +754,7 @@ prevents using commands with prefix arguments."
     (require 'helm-config)))
 
 
-;;;;
-;;;; fuzzy-el
-;;;;
+;;;;_ , fuzzy-el
 
 (use-package fuzzy
   :load-path "fuzzy-el"
@@ -815,9 +762,7 @@ prevents using commands with prefix arguments."
   (turn-on-fuzzy-isearch))
 
 
-;;;;
-;;;; annot
-;;;;
+;;;;_ , annot
 
 (use-package annot
   :load-path "annot/src"
@@ -831,9 +776,7 @@ prevents using commands with prefix arguments."
          ("C-x w" . annot-add-image)))
 
 
-;;;;
-;;;; w3m
-;;;;
+;;;;_ , w3m
 
 (use-package w3m
   :load-path "w3m"
@@ -858,19 +801,15 @@ prevents using commands with prefix arguments."
                 (local-set-key (kbd "C-u C-<return>" 'w3m-external-view-current-url))))))
 
 
-;;;;
-;;;; color-theme
+;;;;_ , color-theme
 ;;;; Emacs 24 has build-in theme support, so I removed
 ;;;; the color-theme package.
-;;;;
 
 (add-to-list 'custom-theme-load-path (expand-file-name "theme-solarized" user-emacs-directory))
 (load-theme 'solarized-dark t)
 
 
-;;;;
-;;;; epilogue
-;;;;
+;;;;_. Epilogue
 
 (setq custom-file (expand-file-name "settings.el" user-init-directory))
 (load custom-file t)
@@ -882,5 +821,11 @@ prevents using commands with prefix arguments."
 (load "~/.emacs-auth" t)
 
 (server-start)
+
+;; Local Variables:
+;;   mode: emacs-lisp
+;;   mode: outline-minor
+;;   outline-regexp: "^;;;;_\\([,. ]+\\)"
+;; End:
 
 ;;;; .emacs ends here
