@@ -609,23 +609,23 @@ prevents using commands with prefix arguments."
           mu4e-get-mail-command "true"
           mu4e-maildir (expand-file-name "~/Maildir")
           mu4e-mu-binary "/usr/local/bin/mu"
-          mu4e-mu-home nil
-          mu4e-my-email-addresses user-mail-addresses
+          mu4e-mu-home nil ;; default dir
+          mu4e-my-email-addresses user-mail-addresses ;; defined in .emacs
           mu4e-update-interval 300)
 
-    ;;_ , compse
+    ;;_ compse
     ;; mu4e-sent-messages-behavior 'delete
     ;; message-signature (concat
     ;;                    "Foo X. Bar\n"
     ;;                    "http://www.example.com\n")
 
-    ;;_ , folders
+    ;;_ folders
     (setq mu4e-drafts-folder "/drafts"
           mu4e-sent-folder "/sent"
           mu4e-trash-folder "/trash"
           )
 
-    ;;_ , headers
+    ;;_ headers
     (setq mu4e-headers-date-format "%Y-%m-%d -- %H:%M:%S"
           ;; mu4e-headers-fields '((:date . 25) (:flags . 6) (:from . 22) (:subject))
           mu4e-headers-fields '((:from . 22) (:subject))
@@ -634,7 +634,7 @@ prevents using commands with prefix arguments."
           mu4e-headers-visible-lines 15
           mu4e-split-view 'horizontal)
 
-    ;;_ , message view
+    ;;_ message view
     (setq ;; mu4e-html2text-command "html2text -utf8 -nobs -style compact -width 72"
           mu4e-html2text-command "w3m -dump -cols 80 -T text/html"
           mu4e-show-images t
