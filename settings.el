@@ -11,4 +11,5 @@
  ;; If there is more than one, they won't work right.
  '(js2-highlight-vars-face ((t (:inherit highlight))))
  '(match ((t (:inherit highlight))))
+ '(mu4e-header-highlight-face ((t (:inherit highlight :underline nil :weight bold))))
  '(w3m-image-anchor ((t (:inherit highlight)))))

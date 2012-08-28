@@ -592,6 +592,61 @@ prevents using commands with prefix arguments."
 	      (define-key outline-minor-mode-map [(control tab)] 'org-cycle)
 	      (define-key outline-minor-mode-map [(shift tab)] 'org-global-cycle))))
 
+
+;;;;_ , mu4e
+
+(use-package mu4e
+  :load-path "mu/mu4e"
+  :commands mu4e
+  :config
+  (progn
+    (setq mu4e-attachment-dir (expand-file-name "~/Downloads")
+          mu4e-confirm-quit nil
+
+          ;; offlineimap runs in the background, so I don't need
+          ;; mu4e to run it on update.
+          ;; mu4e-get-mail-command "offlineimap -u ttyui"
+          mu4e-get-mail-command "true"
+          mu4e-maildir (expand-file-name "~/Maildir")
+          mu4e-mu-binary "/usr/local/bin/mu"
+          mu4e-mu-home nil
+          mu4e-my-email-addresses user-mail-addresses
+          mu4e-update-interval 300)
+
+    ;;_ , compse
+    ;; mu4e-sent-messages-behavior 'delete
+    ;; message-signature (concat
+    ;;                    "Foo X. Bar\n"
+    ;;                    "http://www.example.com\n")
+
+    ;;_ , folders
+    (setq mu4e-drafts-folder "/drafts"
+          mu4e-sent-folder "/sent"
+          mu4e-trash-folder "/trash"
+          )
+
+    ;;_ , headers
+    (setq mu4e-headers-date-format "%Y-%m-%d -- %H:%M:%S"
+          ;; mu4e-headers-fields '((:date . 25) (:flags . 6) (:from . 22) (:subject))
+          mu4e-headers-fields '((:from . 22) (:subject))
+          mu4e-headers-leave-behavior 'ask
+          mu4e-headers-visible-columns 60
+          mu4e-headers-visible-lines 15
+          mu4e-split-view 'horizontal)
+
+    ;;_ , message view
+    (setq ;; mu4e-html2text-command "html2text -utf8 -nobs -style compact -width 72"
+          mu4e-html2text-command "w3m -dump -cols 80 -T text/html"
+          mu4e-show-images t
+          mu4e-view-image-max-width 800
+          mu4e-view-date-format "%c" ;; locale's date and time format
+          mu4e-view-fields '(:from :to :cc :subject :flags :date :maildir :attachments :signature)
+          mu4e-view-hide-cited nil
+          mu4e-view-prefer-html nil
+          mu4e-view-show-addresses t)
+  ))
+
+
 ;;;;_ , markdown
 ;;;; http://jblevins.org/projects/markdown-mode/
 
