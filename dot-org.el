@@ -4,6 +4,7 @@
 
 (add-to-list 'load-path (expand-file-name "org-mode/lisp" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "org-mode/contrib/lisp" user-emacs-directory))
+(add-to-list 'Info-default-directory-list (expand-file-name "org-mode/info" user-emacs-directory))
 
 (require 'org-install)
 (require 'org-mime)
