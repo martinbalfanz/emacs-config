@@ -4,3 +4,4 @@
 .emacs-auth
 *.elc
 tmp/
+site-lisp/ac-comphist.dat
