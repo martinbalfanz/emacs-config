@@ -176,12 +176,12 @@ Deletes whitespace at join."
   (end-of-line)
   (newline-and-indent))
 
-(defun mb-beginning-of-line ()
+(defun mb-beginning-of-line (&optional arg)
   "Toggle point between beginning of line and first non-whitespace."
-  (interactive)
-  (if (bolp)
+  (interactive "P")
+  (if (and (bolp) (not arg))
       (back-to-indentation)
-    (beginning-of-line)))
+    (beginning-of-line arg)))
 
 
 ;;;;_ , global key bindings
