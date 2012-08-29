@@ -895,11 +895,11 @@ prevents using commands with prefix arguments."
           w3m-output-coding-system 'utf-8
           w3m-terminal-coding-system 'utf-8
           w3m-use-cookies t
-          w3m-home-page "http://news.ycombinator.com")
-    (add-hook 'w3m-mode-hook
-              (lambda ()
-                (local-set-key (kbd "C-<return>") 'w3m-external-view-this-url)
-                (local-set-key (kbd "C-u C-<return>" 'w3m-external-view-current-url))))))
+          w3m-home-page "http://news.ycombinator.com"))
+  :config
+  (define-keys w3m-mode-map
+    '(("C-<return>" w3m-external-view-this-url)
+      ("C-u C-<return>" w3m-external-view-current-url))))
 
 
 ;;;;_ , color-theme
