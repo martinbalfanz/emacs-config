@@ -106,3 +106,6 @@
 	path = site-lisp/fuzzy-el
 	url = https://github.com/m2ym/fuzzy-el.git
         ignore = dirty
+[submodule "site-lisp/sr-speedbar"]
+	path = site-lisp/sr-speedbar
+	url = https://github.com/emacsmirror/sr-speedbar.git

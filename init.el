@@ -837,6 +837,16 @@ prevents using commands with prefix arguments."
          ("C-x w" . annot-add-image)))
 
 
+;;;;_ , sr-speedbar
+
+(use-package sr-speedbar
+  :load-path "sr-speedbar"
+  :commands (sr-speedbar-open
+             sr-speedbar-close
+             sr-speedbar-toggle)
+  :bind ("C-. s" . sr-speedbar-toggle))
+
+
 ;;;;_ , w3m
 
 (use-package w3m
