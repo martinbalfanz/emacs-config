@@ -423,7 +423,8 @@ at the beginning of line, if already there."
 
           slime-lisp-implementations
           '((ccl ("ccl" "-K utf-8"))
-            (sbcl ("sbcl" "--core"))
+            (abcl ("abcl"))
+            (sbcl ("sbcl" "--core") :coding-system utf-8-unix)
             (clisp ("clisp" "-E utf-8" "-modern")))
 
           slime-default-lisp 'ccl)))
