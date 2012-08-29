@@ -627,9 +627,9 @@ prevents using commands with prefix arguments."
           )
 
     ;;_ headers
-    (setq mu4e-headers-date-format "%Y-%m-%d -- %H:%M:%S"
-          ;; mu4e-headers-fields '((:date . 25) (:flags . 6) (:from . 22) (:subject))
-          mu4e-headers-fields '((:from . 22) (:subject))
+    (setq mu4e-headers-date-format "%Y-%m-%d [%H:%M]"
+          mu4e-headers-fields '((:date . 20) (:flags . 6) (:from . 22) (:subject))
+          ;; mu4e-headers-fields '((:from . 22) (:subject))
           mu4e-headers-leave-behavior 'ask
           mu4e-headers-visible-columns 60
           mu4e-headers-visible-lines 15
