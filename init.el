@@ -851,6 +851,32 @@ prevents using commands with prefix arguments."
     (setq speedbar-use-images nil)))
 
 
+;;;;_ , emms
+
+(use-package emms-setup
+  :disabled t
+  :load-path "emms/lisp"
+  :commands (emms
+             emms-play-directory
+             emms-play-directory-tree)
+  :config
+  (progn
+    (require 'emms-player-mplayer)
+    (emms-standard)
+    (emms-default-players)
+
+    (setq emms-player-list '(emms-player-vlc
+                             emms-player-mplayer
+                             emms-player-mplayer-playlist
+                             ;;emms-player-mpg123
+                             emms-player-mpg321)
+          emms-source-file-default-directory "~/Music/iTunes/iTunes Media/Music")
+
+    (bind-key "C-. e n" 'emms-next)
+    (bind-key "C-. e p" 'emms-previous)
+    (bind-key "C-. e SPC" 'emms-pause)))
+
+
 ;;;;_ , w3m
 
 (use-package w3m

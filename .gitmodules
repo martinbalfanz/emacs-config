@@ -109,3 +109,9 @@
 [submodule "site-lisp/sr-speedbar"]
 	path = site-lisp/sr-speedbar
 	url = https://github.com/emacsmirror/sr-speedbar.git
+        ignore = dirty
+[submodule "site-lisp/emms"]
+	path = site-lisp/emms
+	url = http://git.sv.gnu.org/r/emms.git
+        ignore = dirty
+
