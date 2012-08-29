@@ -845,7 +845,10 @@ prevents using commands with prefix arguments."
   :commands (sr-speedbar-open
              sr-speedbar-close
              sr-speedbar-toggle)
-  :bind ("C-. s" . sr-speedbar-toggle))
+  :bind ("C-. s" . sr-speedbar-toggle)
+  :config
+  (progn
+    (setq speedbar-use-images nil)))
 
 
 ;;;;_ , w3m
