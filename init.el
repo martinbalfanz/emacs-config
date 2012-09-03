@@ -431,6 +431,19 @@ at the beginning of line, if already there."
           slime-default-lisp 'ccl)))
 
 
+;;;;_ , hyperspec
+
+(use-package hyperspec
+  :bind ("C-. h l" . hyperspec-lookup)
+  :init
+  (defadvice hyperspec-lookup (around hyperspec-lookup-with-emacs-w3m first () activate)
+    "Use emacs-w3m to lookup hyperspec."
+    (let ((browse-url-browser-function 'w3m-browse-url)
+          (common-lisp-hyperspec-root (expand-file-name "~/HyperSpec/HyperSpec/"))
+          (common-lisp-hyperspec-symbol-table (expand-file-name "~/HyperSpec/HyperSpec/Data/Map_Sym.txt")))
+      ad-do-it)))
+
+
 ;;;;_ , ido + smex
 
 (use-package ido
