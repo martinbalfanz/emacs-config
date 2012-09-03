@@ -342,6 +342,7 @@ Deletes whitespace at join."
           (lambda ()
             (eldoc-mode 1)
             (diminish 'eldoc-mode)
+            (slime-mode 1)
             (define-keys ;; lisp-interaction-mode-map
               lisp-mode-map
               '(("TAB" dhl-lisp-indent-and-execute)
@@ -564,6 +565,27 @@ prevents using commands with prefix arguments."
   :load-path ("popup-el"
               "auto-complete"
               "auto-complete/dict")
+  :init
+  (progn
+    (mapc (lambda (hook) (add-hook hook (lambda () (auto-complete-mode 1))))
+          '(css-mode-hook
+            html-mode-hook
+            js2-mode-hook
+            emacs-lisp-mode-hook
+            lisp-mode-hook
+            slime-mode-hook
+            slime-repl-mode-hook))
+
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda ()
+                (setq ac-sources '(ac-source-features
+                                   ac-source-functions
+                                   ac-source-yasnippet
+                                   ac-source-variables
+                                   ac-source-symbols
+                                   ac-source-abbrev
+                                   ac-source-dictionary
+                                   ac-source-words-in-same-mode-buffers)))))
   :config
   (progn
     ;; (ac-set-trigger-key "TAB")
@@ -572,7 +594,26 @@ prevents using commands with prefix arguments."
      ac-use-comphist t
      ac-ignore-case 'smart
      ;; ac-fuzzy-enable t
-     )))
+     )
+
+    (setq-default ac-sources '(ac-source-yasnippet
+                               ac-source-abbrev
+                               ac-source-dictionary
+                               ac-source-words-in-same-mode-buffers))
+
+    (add-to-list 'ac-modes 'slime-repl-mode)))
+
+(use-package ac-slime
+  :load-path "ac-slime"
+  :commands (set-up-slime-ac
+             ac-source-slime-simple
+             ac-slime-fuzzy)
+  :init
+  (progn
+     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+     (eval-after-load "auto-complete"
+       '(add-to-list 'ac-modes 'slime-repl-mode))))
 
 
 ;;;;_ , org-mode
@@ -771,7 +812,9 @@ prevents using commands with prefix arguments."
     (mapc (lambda (hook) (add-hook hook (lambda () (yas/minor-mode 1))))
           '(css-mode-hook
             html-mode-hook
-            js2-mode-hook)))
+            js2-mode-hook
+            emacs-lisp-mode-hook
+            lisp-mode-hook)))
   :config
   (progn
     (yas/load-directory (expand-file-name "yasnippet/snippets" user-emacs-directory))

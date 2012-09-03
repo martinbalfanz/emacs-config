@@ -114,4 +114,7 @@
 	path = site-lisp/emms
 	url = http://git.sv.gnu.org/r/emms.git
         ignore = dirty
-
+[submodule "site-lisp/ac-slime"]
+	path = site-lisp/ac-slime
+	url = https://github.com/purcell/ac-slime.git
+        ignore = dirty
