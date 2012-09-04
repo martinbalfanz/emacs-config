@@ -126,3 +126,11 @@
 	path = site-lisp/rainbow-mode
 	url = https://github.com/emacsmirror/rainbow-mode.git
 	ignore = dirty
+[submodule "site-lisp/google-contacts"]
+	path = site-lisp/google-contacts
+	url = http://git.naquadah.org/git/google-contacts.el.git
+	ignore = dirty
+[submodule "site-lisp/oauth2"]
+	path = site-lisp/oauth2
+	url = https://github.com/emacsmirror/oauth2.git
+	ignore = dirty
