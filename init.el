@@ -958,6 +958,14 @@ just images (e.g. pdf documents), I needed a way to access them."
   :commands (rainbow-delimiters-mode))
 
 
+;;;;_ , rainbow-mode
+
+(use-package rainbow-mode
+  :diminish rainbow-mode
+  :load-path "rainbow-mode"
+  :commands (rainbow-mode))
+
+
 ;;;;_ , emms
 
 (use-package emms-setup

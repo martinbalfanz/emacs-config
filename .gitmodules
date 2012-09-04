@@ -122,3 +122,7 @@
 	path = site-lisp/rainbow-delimiters
 	url = https://github.com/jlr/rainbow-delimiters.git
 	ignore = dirty
+[submodule "site-lisp/rainbow-mode"]
+	path = site-lisp/rainbow-mode
+	url = https://github.com/emacsmirror/rainbow-mode.git
+	ignore = dirty
