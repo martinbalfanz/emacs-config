@@ -704,7 +704,51 @@ prevents using commands with prefix arguments."
           mu4e-view-hide-cited nil
           mu4e-view-prefer-html nil
           mu4e-view-show-addresses t)
-  ))
+
+    (defun mu4e~view-construct-attachments-header (msg)
+      "This function overrides the default behaviour.
+Since programs like Apple Mail can inline more attachement types than
+just images (e.g. pdf documents), I needed a way to access them."
+      (setq mu4e~view-attach-map ;; buffer local
+            (make-hash-table :size 64 :weakness nil))
+      (let* ((id 0)
+             (attachments
+              (remove-if
+               (lambda (part)
+                 (and (string-match "^[0-9]+\.part$" (plist-get part :name))
+                      (not (member 'attachment (plist-get part :type)))
+                      (not (string-match "^image" (plist-get part :mime-type)))))
+               (plist-get msg :parts)))
+             (attstr
+              (mapconcat
+               (lambda (part)
+                 (let ((index (plist-get part :index))
+                       (name (plist-get part :name))
+                       (size (plist-get part :size))
+                       (map (make-sparse-keymap)))
+                   (incf id)
+                   (puthash id index mu4e~view-attach-map)
+                   (define-key map [mouse-2]
+                     (mu4e~view-open-save-attach-func msg id nil))
+                   (define-key map [?\M-\r]
+                     (mu4e~view-open-save-attach-func msg id nil))
+                   (define-key map [S-mouse-2]
+                     (mu4e~view-open-save-attach-func msg id t))
+                   (define-key map (kbd "<S-return>")
+                     (mu4e~view-open-save-attach-func msg id t))
+                   (concat
+                    (propertize (format "[%d]" id)
+                                'face 'mu4e-view-attach-number-face)
+                    (propertize name 'face 'mu4e-view-link-face
+                                'keymap map 'mouse-face 'highlight)
+                    (when (and size (> size 0))
+                      (concat (format "(%s)"
+                                      (propertize (mu4e-display-size size)
+                                                  'face 'mu4e-view-header-key-face)))))))
+               attachments ", ")))
+        (when attachments
+          (mu4e~view-construct-header :attachments attstr t))))
+    ))
 
 
 ;;;;_ , markdown
