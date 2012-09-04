@@ -835,7 +835,7 @@ just images (e.g. pdf documents), I needed a way to access them."
     (add-hook 'css-mode-hook
               (lambda ()
                 ;; (paredit-mode 1)
-                ))))
+                (rainbow-mode 1)))))
 
 
 ;;;;_ , html
