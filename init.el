@@ -969,6 +969,7 @@ just images (e.g. pdf documents), I needed a way to access them."
 ;;;;_ , google-contacts
 
 (use-package google-contacts
+  :disabled t
   :load-path ("google-contacts"
               "oauth2")
   :commands (google-contacts))
