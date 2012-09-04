@@ -126,4 +126,7 @@
 	path = site-lisp/rainbow-mode
 	url = https://github.com/emacsmirror/rainbow-mode.git
 	ignore = dirty
-
+[submodule "site-lisp/theme-tomorrow"]
+	path = site-lisp/theme-tomorrow
+	url = https://github.com/chriskempson/tomorrow-theme.git
+	ignore = dirty

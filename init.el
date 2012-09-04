@@ -1024,7 +1024,8 @@ just images (e.g. pdf documents), I needed a way to access them."
 ;;;; the color-theme package.
 
 (add-to-list 'custom-theme-load-path (expand-file-name "theme-solarized" user-emacs-directory))
-(load-theme 'solarized-dark t)
+(add-to-list 'custom-theme-load-path (expand-file-name "theme-tomorrow/GNU Emacs" user-emacs-directory))
+(load-theme 'tomorrow-night t)
 
 
 ;;;;_. Epilogue
