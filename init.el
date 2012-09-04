@@ -951,6 +951,13 @@ just images (e.g. pdf documents), I needed a way to access them."
     (setq speedbar-use-images nil)))
 
 
+;;;;_ , rainbow-delimiters
+
+(use-package rainbow-delimiters
+  :load-path "rainbow-delimiters"
+  :commands (rainbow-delimiters-mode))
+
+
 ;;;;_ , emms
 
 (use-package emms-setup

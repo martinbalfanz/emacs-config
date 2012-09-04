@@ -118,3 +118,7 @@
 	path = site-lisp/ac-slime
 	url = https://github.com/purcell/ac-slime.git
 	ignore = dirty
+[submodule "site-lisp/rainbow-delimiters"]
+	path = site-lisp/rainbow-delimiters
+	url = https://github.com/jlr/rainbow-delimiters.git
+	ignore = dirty
