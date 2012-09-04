@@ -444,11 +444,14 @@ at the beginning of line, if already there."
       ad-do-it)))
 
 
-;;;;_ , ido + smex
+;;;;_ , ido
 
 (use-package ido
   :init
   (ido-mode t))
+
+
+;;;;_ , smex
 
 (use-package smex
   :load-path "smex"
