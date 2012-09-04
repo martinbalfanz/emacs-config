@@ -448,27 +448,26 @@ at the beginning of line, if already there."
 
 (use-package ido
   :init
-  (ido-mode t)
+  (ido-mode t))
 
+(use-package smex
+  :load-path "smex"
+  :bind ("M-X" . dhl-invoke-smex)
+  :requires ido
   :config
   (progn
-    (use-package smex
-      :load-path "smex"
-      :bind ("M-X" . dhl-invoke-smex)
-      :config
-      (progn
-        (smex-initialize)
-        (setq smex-save-file "~/.smex")
-        (smex-auto-update)
+    (smex-initialize)
+    (setq smex-save-file "~/.smex")
+    (smex-auto-update)
 
-        (defun dhl-invoke-smex (x)
-          "Invokes smex, if called without a prefix argument,
+    (defun dhl-invoke-smex (x)
+      "Invokes smex, if called without a prefix argument,
 smex-major-mode-commands otherwise. Note that this
 prevents using commands with prefix arguments."
-          (interactive "p")
-          (if (= x 1)
-              (smex)
-            (smex-major-mode-commands)))))))
+      (interactive "p")
+      (if (= x 1)
+          (smex)
+        (smex-major-mode-commands)))))
 
 
 ;;;;_ , ibuffer
