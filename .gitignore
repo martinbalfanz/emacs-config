@@ -5,5 +5,4 @@
 *.elc
 tmp/
 site-lisp/ac-comphist.dat
-site-lispoauth2.plstore
-site-lisp/url
+

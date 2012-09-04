@@ -968,15 +968,6 @@ just images (e.g. pdf documents), I needed a way to access them."
   :commands (rainbow-mode))
 
 
-;;;;_ , google-contacts
-
-(use-package google-contacts
-  :disabled t
-  :load-path ("google-contacts"
-              "oauth2")
-  :commands (google-contacts))
-
-
 ;;;;_ , emms
 
 (use-package emms-setup
