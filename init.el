@@ -994,6 +994,14 @@ just images (e.g. pdf documents), I needed a way to access them."
     (bind-key "C-. e SPC" 'emms-pause)))
 
 
+
+;;;;_ , sunrise-commander
+
+(use-package sunrise-commander
+  :load-path "sunrise-commander"
+  :commands sunrise)
+
+
 ;;;;_ , w3m
 
 (use-package w3m

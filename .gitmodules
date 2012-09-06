@@ -130,3 +130,7 @@
 	path = site-lisp/theme-tomorrow
 	url = https://github.com/chriskempson/tomorrow-theme.git
 	ignore = dirty
+[submodule "site-lisp/sunrise-commander"]
+	path = site-lisp/sunrise-commander
+	url = https://github.com/escherdragon/sunrise-commander.git
+	ignore = dirty
