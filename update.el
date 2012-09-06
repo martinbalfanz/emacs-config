@@ -7,6 +7,20 @@
 (when (= 1 (length command-line-args-left))
   (setq cline-dir (car command-line-args-left)))
 
+(defun git-repo-p (dir)
+  "Check if DIR is a git repository."
+  (let* ((dir (expand-file-name dir))
+         (git-status (shell-command-to-string
+                      (concat "cd " dir
+                              " && git status"))))
+    (not (string-match ".*Not a git repository.*" git-status))))
+
+(defun dot-git-exists-p (dir)
+  "Check if there is a `.git` directory or file in DIR.
+If t, this is likely to be the top-level dir of a repository."
+  (let ((dir-list (directory-files (expand-file-name dir))))
+    (member ".git" dir-list)))
+
 (defun first-level-dirs (dir)
   "Find all first-level directories in DIR."
   (unless (file-directory-p (expand-file-name dir))
@@ -31,9 +45,13 @@
   (let ((submodules (if dir (first-level-dirs dir)
                       (first-level-dirs "~/emacs-config/site-lisp"))))
     (dolist (submodule submodules)
-      (message (concat "Updating " submodule))
-      (shell-command (concat "cd " submodule))
-      (shell-command (concat "git pull origin " (get-current-branch)))))
+      (if (and (git-repo-p submodule)
+               (dot-git-exists-p submodule))
+          (progn
+            (message (concat "Updating " submodule))
+            (shell-command (concat "cd " submodule))
+            (shell-command (concat "git pull origin " (get-current-branch))))
+        (message (concat "=======> " submodule " is no submodule.")))))
   (message "Done."))
 
 (update-submodules cline-dir)
