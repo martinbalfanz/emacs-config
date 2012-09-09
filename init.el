@@ -1036,6 +1036,24 @@ just images (e.g. pdf documents), I needed a way to access them."
 (load-theme 'tomorrow-night t)
 
 
+;;;;_ , dim parentheses
+
+(defface paren-face
+  '((((class color) (background dark)) (:foreground "grey25"))
+    (((class color) (background light)) (:foreground "grey80")))
+  "Face used to dim parentheses.")
+
+(mapc (lambda (hook) (add-hook hook (lambda () (font-lock-add-keywords nil '(("(\\|)" . 'paren-face))))))
+      '(slime-mode-hook
+        slime-repl-mode-hook
+        emacs-lisp-mode-hook
+        lisp-mode-hook
+        ielm-mode-hook
+        scheme-mode-hook
+        inferior-scheme-mode-hook
+        inferior-qi-mode-hook
+        qi-mode-hook))
+
 ;;;;_. Epilogue
 
 (setq custom-file (expand-file-name "settings.el" user-init-directory))
