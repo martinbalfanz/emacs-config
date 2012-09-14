@@ -134,3 +134,7 @@
 	path = site-lisp/sunrise-commander
 	url = https://github.com/escherdragon/sunrise-commander.git
 	ignore = dirty
+[submodule "site-lisp/bitlbee"]
+	path = site-lisp/bitlbee
+	url = https://github.com/emacsmirror/bitlbee.git
+	ignore = dirty
