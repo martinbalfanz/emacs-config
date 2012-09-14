@@ -768,7 +768,7 @@ just images (e.g. pdf documents), I needed a way to access them."
   :mode ("\\.sibilant$" . sibilant-mode))
 
 
-;;;;_ , magit / magithub / mo-git-blame
+;;;;_ , magit / magithub / mo-git-blame / gist
 
 (use-package magit
   :load-path "magit"
@@ -787,6 +787,12 @@ just images (e.g. pdf documents), I needed a way to access them."
   :load-path "mo-git-blame"
   :commands (mo-git-blame-current
              mo-git-blame-file))
+
+(use-package gist
+  :load-path ("gist" "gh.el" "pcache" "logito")
+  :bind (("C-. g l" . gist-list)
+         ("C-. g p" . gist-region-or-buffer)
+         ("C-. g s" . gist-region-or-buffer-private)))
 
 
 ;;;;_ , mark-multiple
