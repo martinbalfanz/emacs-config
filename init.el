@@ -430,6 +430,7 @@ at the beginning of line, if already there."
 
           slime-default-lisp 'ccl)))
 
+(setq inferior-lisp-program "ccl")
 
 ;;;;_ , hyperspec
 
