@@ -736,7 +736,8 @@ prevents using commands with prefix arguments."
           mu4e-mu-binary "/usr/local/bin/mu"
           mu4e-mu-home nil ;; default dir
           mu4e-my-email-addresses user-mail-addresses ;; defined in .emacs
-          mu4e-update-interval 300)
+          mu4e-update-interval 300
+          mu4e-search-results-limit 5000)
 
     ;;_ compse
     ;; mu4e-sent-messages-behavior 'delete
