@@ -402,7 +402,8 @@ at the beginning of line, if already there."
   :load-path ("slime"
               "slime/contrib")
   :commands (slime
-             slime-mode)
+             slime-mode
+             slime-connect)
   :init
   (add-hook 'slime-mode-hook
             #'(lambda ()
@@ -886,6 +887,7 @@ just images (e.g. pdf documents), I needed a way to access them."
     (add-hook 'js2-mode-hook
               (lambda ()
                 ;; (paredit-mode 1)
+                (slime-js-minor-mode 1)
                 (local-set-key (kbd "<return>") 'newline-and-indent))
               t)))
 
@@ -906,6 +908,13 @@ just images (e.g. pdf documents), I needed a way to access them."
   :disabled t
   :load-path "nodejs-mode"
   :commands (nodejs))
+
+
+;;;;_ , swank-js
+
+(use-package swank-js
+  :load-path "swank-js"
+  :commands (slime-js-minor-mode))
 
 
 ;;;;_ , css
