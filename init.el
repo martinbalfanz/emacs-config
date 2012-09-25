@@ -900,6 +900,14 @@ just images (e.g. pdf documents), I needed a way to access them."
   :init (add-hook 'js2-mode-hook 'js2-highlight-vars-mode t))
 
 
+;;;;_ , nodejs-mode
+
+(use-package nodejs-mode
+  :disabled t
+  :load-path "nodejs-mode"
+  :commands (nodejs))
+
+
 ;;;;_ , css
 
 (use-package css-mode

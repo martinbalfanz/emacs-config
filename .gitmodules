@@ -154,3 +154,7 @@
 	path = site-lisp/logito
 	url = https://github.com/sigma/logito.git
 	ignore = dirty
+[submodule "site-lisp/nodejs-mode"]
+	path = site-lisp/nodejs-mode
+	url = https://github.com/abicky/nodejs-mode.el.git
+	ignore = dirty
