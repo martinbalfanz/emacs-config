@@ -166,3 +166,7 @@
 	path = site-lisp/ess
 	url = https://github.com/emacs-ess/ESS.git
 	ignore = dirty
+[submodule "site-lisp/haml-mode"]
+	path = site-lisp/haml-mode
+	url = https://github.com/nex3/haml-mode.git
+	ignore = dirty

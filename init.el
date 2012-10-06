@@ -951,6 +951,14 @@ just images (e.g. pdf documents), I needed a way to access them."
 (add-hook 'html-mode-hook 'mb-html-mode-hook)
 
 
+;;;;_ , haml
+
+(use-package haml-mode
+  :load-path "haml-mode"
+  :commands haml-mode
+  :mode ("\\.haml$" . haml-mode))
+
+
 ;;;;_ , yasnippet
 
 (use-package yasnippet
