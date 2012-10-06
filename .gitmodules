@@ -170,3 +170,11 @@
 	path = site-lisp/haml-mode
 	url = https://github.com/nex3/haml-mode.git
 	ignore = dirty
+[submodule "site-lisp/sass-mode"]
+	path = site-lisp/sass-mode
+	url = https://github.com/nex3/sass-mode.git
+	ignore = dirty
+[submodule "site-lisp/scss-mode"]
+	path = site-lisp/scss-mode
+	url = https://github.com/antonj/scss-mode/
+	ignore = dirty

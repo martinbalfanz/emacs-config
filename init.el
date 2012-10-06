@@ -933,6 +933,32 @@ just images (e.g. pdf documents), I needed a way to access them."
                 (rainbow-mode 1)))))
 
 
+;;;;_ , sass
+
+(use-package sass-mode
+  :load-path "sass-mode"
+  :commands sass-mode
+  :mode ("\\.sass$" . sass-mode)
+  :config
+  (progn
+    (add-hook 'sass-mode-hook
+              (lambda ()
+                (rainbow-mode 1)))))
+
+
+;;;;_ , scss
+
+(use-package scss-mode
+  :load-path "scss-mode"
+  :commands scss-mode
+  :mode ("\\.scss$" . scss-mode)
+  :config
+  (progn
+    (add-hook 'scss-mode-hook
+              (lambda ()
+                (rainbow-mode 1)))))
+
+
 ;;;;_ , html
 
 (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
