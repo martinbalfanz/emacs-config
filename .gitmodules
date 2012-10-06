@@ -162,3 +162,7 @@
 	path = site-lisp/swank-js
 	url = https://github.com/swank-js/swank-js.git
 	ignore = dirty
+[submodule "site-lisp/ess"]
+	path = site-lisp/ess
+	url = https://github.com/emacs-ess/ESS.git
+	ignore = dirty
