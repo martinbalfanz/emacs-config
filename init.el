@@ -917,6 +917,17 @@ just images (e.g. pdf documents), I needed a way to access them."
   :commands (slime-js-minor-mode))
 
 
+;;;;_ , coffeescript
+
+(use-package coffee-mode
+  :load-path "coffee-mode"
+  :mode ("\\.coffee" . coffee-mode)
+  :commands coffee-mode
+  :config
+  (progn
+    (setq coffee-tab-width 2)))
+
+
 ;;;;_ , css
 
 (use-package css-mode

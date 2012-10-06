@@ -178,3 +178,7 @@
 	path = site-lisp/scss-mode
 	url = https://github.com/antonj/scss-mode/
 	ignore = dirty
+[submodule "site-lisp/coffee-mode"]
+	path = site-lisp/coffee-mode
+	url = https://github.com/defunkt/coffee-mode.git
+	ignore = dirty
