@@ -636,7 +636,7 @@ prevents using commands with prefix arguments."
 
 ;;;;_ , org-mode
 
-(use-package org-install
+(use-package org
   :load-path ("org-mode/lisp"
               "org-mode/contrib/lisp")
   :mode ("\\.org$" . org-mode)
