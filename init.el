@@ -875,6 +875,12 @@ just images (e.g. pdf documents), I needed a way to access them."
   :load-path "mark-multiple")
 
 
+;;;;_ , dash.el
+
+(use-package dash
+  :load-path "dash.el")
+
+
 ;;;;_ , javascript
 
 (use-package js2-mode
