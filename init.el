@@ -76,6 +76,7 @@
       line-move-visual nil              ;; move point by logical lines
       default-major-mode 'text-mode
       show-trailing-whitespace t        ;; show trailing whitespace
+      debug-on-error t                  ;; show backtrace on error
       )
 
 (setq-default cursor-type 'bar          ;; cursor style
