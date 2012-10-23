@@ -864,7 +864,9 @@ just images (e.g. pdf documents), I needed a way to access them."
   :load-path ("gist" "gh.el" "pcache" "logito")
   :bind (("C-. g l" . gist-list)
          ("C-. g p" . gist-region-or-buffer)
-         ("C-. g s" . gist-region-or-buffer-private)))
+         ("C-. g s" . gist-region-or-buffer-private))
+  :config
+  (hl-line-mode 1))
 
 
 ;;;;_ , mark-multiple
