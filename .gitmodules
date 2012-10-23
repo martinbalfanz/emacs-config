@@ -182,3 +182,7 @@
 	path = site-lisp/coffee-mode
 	url = https://github.com/defunkt/coffee-mode.git
 	ignore = dirty
+[submodule "site-lisp/dash.el"]
+	path = site-lisp/dash.el
+	url = https://github.com/magnars/dash.el.git
+	ignore = dirty
