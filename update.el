@@ -49,8 +49,7 @@ If t, this is likely to be the top-level dir of a repository."
                (dot-git-exists-p submodule))
           (progn
             (message (concat "Updating " submodule))
-            (shell-command (concat "cd " submodule))
-            (shell-command (concat "git pull origin " (get-current-branch))))
+            (shell-command (concat "cd " submodule " && git pull origin " (get-current-branch))))
         (message (concat "=======> " submodule " is no submodule.")))))
   (message "Done."))
 
