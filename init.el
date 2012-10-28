@@ -1201,6 +1201,15 @@ just images (e.g. pdf documents), I needed a way to access them."
         inferior-qi-mode-hook
         qi-mode-hook))
 
+
+;;;;_ , golden-ratio
+(use-package golden-ratio
+  :load-path "golden-ratio.el"
+  :commands (golden-ratio
+             golden-ratio-enable
+             golden-ratio-disable))
+
+
 ;;;;_. Epilogue
 
 (setq custom-file (expand-file-name "settings.el" user-init-directory))

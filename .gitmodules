@@ -186,3 +186,7 @@
 	path = site-lisp/dash.el
 	url = https://github.com/magnars/dash.el.git
 	ignore = dirty
+[submodule "site-lisp/golden-ratio.el"]
+	path = site-lisp/golden-ratio.el
+	url = https://github.com/roman/golden-ratio.el.git
+	ignore = dirty
