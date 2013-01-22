@@ -190,3 +190,19 @@
 	path = site-lisp/golden-ratio.el
 	url = https://github.com/roman/golden-ratio.el.git
 	ignore = dirty
+[submodule "site-lisp/multiple-cursors"]
+	path = site-lisp/multiple-cursors
+	url = https://github.com/magnars/multiple-cursors.el
+	ignore = dirty
+[submodule "site-lisp/cedet"]
+	path = site-lisp/cedet
+	url = https://github.com/emacsmirror/cedet.git
+	ignore = dirty
+[submodule "site-lisp/clojure-mode"]
+	path = site-lisp/clojure-mode
+	url = https://github.com/technomancy/clojure-mode.git
+	ignore = dirty
+[submodule "site-lisp/nrepl"]
+	path = site-lisp/nrepl
+	url = https://github.com/kingtim/nrepl.el.git
+	ignore = dirty
