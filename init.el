@@ -1202,6 +1202,12 @@ just images (e.g. pdf documents), I needed a way to access them."
         qi-mode-hook))
 
 
+;;;;_ , est.el
+
+(use-package est
+  :load-path "est.el")
+
+
 ;;;;_ , golden-ratio
 (use-package golden-ratio
   :load-path "golden-ratio.el"

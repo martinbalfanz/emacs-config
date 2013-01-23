@@ -206,3 +206,7 @@
 	path = site-lisp/nrepl
 	url = https://github.com/kingtim/nrepl.el.git
 	ignore = dirty
+[submodule "site-lisp/est.el"]
+	path = site-lisp/est.el
+	url = https://github.com/anthracite/est.el.git
+	ignore = dirty
