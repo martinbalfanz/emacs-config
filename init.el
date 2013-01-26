@@ -80,7 +80,7 @@
       )
 
 (setq-default cursor-type 'bar          ;; cursor style
-	      indent-tabs-mode nil      ;; indentation never inserts tabs
+              indent-tabs-mode nil      ;; indentation never inserts tabs
               )
 
 (fset 'yes-or-no-p 'y-or-n-p)   ;; allow y or n as answers
@@ -135,7 +135,7 @@
                       ((not prefix) "%d.%m.%y")
                       ((equal prefix '(4)) "%Y-%m-%d")
                       ((equal prefix '(16)) "%A, %d. %B %Y")))
-        (system-time-locale "de_DE"))
+        (system-time-locale "en_US"))
     (insert (format-time-string format))))
 
 (defun define-keys (mode-map keybindings)
@@ -185,12 +185,19 @@ Deletes whitespace at join."
     (beginning-of-line arg)))
 
 
+;;;;_ , winner-mode
+(winner-mode 1)
+(windmove-default-keybindings)
+
+
 ;;;;_ , global key bindings
 
 (global-set-keys '(("C-k" mb-kill-and-join-forward)
                    ("C-o" mb-newline-beneath)
                    ("C-S-o" mb-newline-above)
-                   ("C-a" mb-beginning-of-line)))
+                   ("C-a" mb-beginning-of-line)
+                   ;; ("C-. d" insert-date)
+                   ))
 
 
 ;;;;_ , session management
@@ -269,7 +276,9 @@ Deletes whitespace at join."
   (progn
     (mapc (lambda (hook) (add-hook hook (lambda () (paredit-mode 1))))
           '(slime-mode-hook
-            slime-repl-mode-hook
+            ;; slime-repl-mode-hook
+            clojure-mode-hook
+            nrepl-mode-hook
             emacs-lisp-mode-hook
             lisp-mode-hook
             ielm-mode-hook
@@ -445,6 +454,21 @@ at the beginning of line, if already there."
           (common-lisp-hyperspec-root (expand-file-name "~/HyperSpec/HyperSpec/"))
           (common-lisp-hyperspec-symbol-table (expand-file-name "~/HyperSpec/HyperSpec/Data/Map_Sym.txt")))
       ad-do-it)))
+
+
+;;;;_ , clojure
+
+(use-package clojure-mode
+  :load-path "clojure-mode")
+
+
+;;;;_ , nrepl
+
+(use-package nrepl
+  :load-path "nrepl"
+  :init
+  (progn
+    (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)))
 
 
 ;;;;_ , ido
@@ -628,10 +652,10 @@ prevents using commands with prefix arguments."
              ac-slime-fuzzy)
   :init
   (progn
-     (add-hook 'slime-mode-hook 'set-up-slime-ac)
-     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-     (eval-after-load "auto-complete"
-       '(add-to-list 'ac-modes 'slime-repl-mode))))
+    (add-hook 'slime-mode-hook 'set-up-slime-ac)
+    (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+    (eval-after-load "auto-complete"
+      '(add-to-list 'ac-modes 'slime-repl-mode))))
 
 
 ;;;;_ , org-mode
@@ -677,7 +701,8 @@ prevents using commands with prefix arguments."
       '("business.org"
         "personal.org"
         "university.org"
-        "research.org")
+        "research.org"
+        "todo.org")
       "List of files to be included in org-agenda.")
 
     (setq org-agenda-files
@@ -703,10 +728,14 @@ prevents using commands with prefix arguments."
     (setq org-todo-keywords
           '((type "TODO" "WAITING" "WIP" "TESTING" "|" "DONE" "DELEGATED" "CANCELED" "VOID")
             (sequence "PROJECT" "|" "FINISHED")
-            (sequence "INVOICE" "SENT" "|" "RCVD")))
+            (sequence "INVOICE" "SENT" "|" "RCVD")
+            (sequence "BUG" "ISSUE" "FEATURE" "|" "FIXED")))
 
     (setq org-mime-library 'semi)
-    (setq org-src-fontify-natively t)))
+    (setq org-src-fontify-natively t)
+
+    ;; reset clocksum-format to old version
+    (setq org-time-clocksum-format '(:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t))))
 
 
 ;;;;_ , outline-mode
@@ -875,6 +904,11 @@ just images (e.g. pdf documents), I needed a way to access them."
   :load-path "mark-multiple")
 
 
+;;;;_ , multiple-cursors
+
+(use-package multiple-cursors
+  :load-path "multiple-cursors")
+
 ;;;;_ , dash.el
 
 (use-package dash
@@ -921,7 +955,7 @@ just images (e.g. pdf documents), I needed a way to access them."
 
 ;;;;_ , swank-js
 
-(use-package swank-js
+(use-package slime-js
   :load-path "swank-js"
   :commands (slime-js-minor-mode))
 
@@ -1169,9 +1203,14 @@ just images (e.g. pdf documents), I needed a way to access them."
           w3m-use-cookies t
           w3m-home-page "http://news.ycombinator.com"))
   :config
-  (define-keys w3m-mode-map
-    '(("C-<return>" w3m-external-view-this-url)
-      ("C-u C-<return>" w3m-external-view-current-url))))
+  (progn
+    (require 'w3m-lnum)
+    (w3m-lnum-mode 1)
+
+    (define-keys w3m-mode-map
+      '(("C-<return>" w3m-external-view-this-url)
+        ("C-u C-<return>" w3m-external-view-current-url)
+        ("f" w3m-lnum-goto)))))
 
 
 ;;;;_ , color-theme
