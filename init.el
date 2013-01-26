@@ -1015,8 +1015,8 @@ just images (e.g. pdf documents), I needed a way to access them."
 
 ;;;;_ , html
 
-(add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
-(add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html$" . html-mode))
+;; (add-to-list 'auto-mode-alist '("\\.htm$" . html-mode))
 
 (setq sgml-basic-offset 2)
 
@@ -1077,6 +1077,16 @@ just images (e.g. pdf documents), I needed a way to access them."
   (progn
     (add-hook 'nxml-mode-hook 'zencoding-mode)
     (add-hook 'html-mode-hook 'zencoding-mode)))
+
+
+;;;;_ , web-mode
+
+(use-package web-mode
+  :load-path "web-mode"
+  :init
+  (progn
+    (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.htm$" . web-mode))))
 
 
 ;;;;_ , time-stamp
@@ -1245,6 +1255,13 @@ just images (e.g. pdf documents), I needed a way to access them."
 
 (use-package est
   :load-path "est.el")
+
+
+;;;;_ , powerline
+
+(use-package powerline
+  :load-path "powerline"
+  :disabled t)
 
 
 ;;;;_ , golden-ratio

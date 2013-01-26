@@ -210,3 +210,11 @@
 	path = site-lisp/est.el
 	url = https://github.com/anthracite/est.el.git
 	ignore = dirty
+[submodule "site-lisp/powerline"]
+	path = site-lisp/powerline
+	url = https://github.com/jonathanchu/emacs-powerline.git
+	ignore = dirty
+[submodule "site-lisp/web-mode"]
+	path = site-lisp/web-mode
+	url = https://github.com/fxbois/web-mode.git
+	ignore = dirty
