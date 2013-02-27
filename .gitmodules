@@ -218,3 +218,47 @@
 	path = site-lisp/web-mode
 	url = https://github.com/fxbois/web-mode.git
 	ignore = dirty
+[submodule "site-lisp/flycheck"]
+	path = site-lisp/flycheck
+	url = https://github.com/lunaryorn/flycheck.git
+	ignore = dirty
+[submodule "site-lisp/s.el"]
+	path = site-lisp/s.el
+	url = https://github.com/magnars/s.el
+	ignore = dirty
+[submodule "site-lisp/elnode"]
+	path = site-lisp/elnode
+	url = https://github.com/nicferrier/elnode.git
+	ignore = dirty
+[submodule "site-lisp/emacs-fakir"]
+	path = site-lisp/emacs-fakir
+	url = https://github.com/nicferrier/emacs-fakir.git
+	ignore = dirty
+[submodule "site-lisp/emacs-kv"]
+	path = site-lisp/emacs-kv
+	url = https://github.com/nicferrier/emacs-kv.git
+	ignore = dirty
+[submodule "site-lisp/emacs-web"]
+	path = site-lisp/emacs-web
+	url = https://github.com/nicferrier/emacs-web.git
+	ignore = dirty
+[submodule "site-lisp/emacs-db"]
+	path = site-lisp/emacs-db
+	url = https://github.com/nicferrier/emacs-db.git
+	ignore = dirty
+[submodule "site-lisp/esxml"]
+	path = site-lisp/esxml
+	url = https://github.com/tali713/esxml.git
+	ignore = dirty
+[submodule "site-lisp/elwikicreole"]
+	path = site-lisp/elwikicreole
+	url = https://github.com/nicferrier/elwikicreole.git
+	ignore = dirty
+[submodule "site-lisp/emacs-uuid"]
+	path = site-lisp/emacs-uuid
+	url = https://github.com/nicferrier/emacs-uuid.git
+	ignore = dirty
+[submodule "site-lisp/emacs-oauth"]
+	path = site-lisp/emacs-oauth
+	url = https://github.com/psanford/emacs-oauth.git
+	ignore = dirty
