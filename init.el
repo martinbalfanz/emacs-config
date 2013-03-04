@@ -1131,6 +1131,73 @@ just images (e.g. pdf documents), I needed a way to access them."
          ("C-x w" . annot-add-image)))
 
 
+;;;;_ , deft
+
+(use-package deft
+  :load-path "deft"
+  :init
+  (progn
+    (add-hook 'deft-mode-hook
+              (lambda ()
+                (hl-line-mode 1))))
+  :config
+  (progn
+    (defvar deft-default-filename (format-time-string "%Y-%m-%d-%H%M%S")
+      "Default filename for new files without SLUG.")
+
+    (setq deft-extension "org"
+          deft-text-mode 'org-mode
+          deft-strip-title-regexp "^#.TITLE:[ ]*"
+          deft-auto-save-interval 15.0)
+
+    (defun deft-next-line ()
+      "Move cursor to next line and open file in other window."
+      (interactive)
+      (next-line 1)
+      (deft-open-file-other-window))
+
+    (defun deft-previous-line ()
+      "Move cursor to previous line and open file in other window."
+      (interactive)
+      (previous-line 1)
+      (deft-open-file-other-window))
+
+    (defun deft-new-file-default-name ()
+      "Create file with default file name."
+      (interactive)
+      (deft-new-file-named deft-default-filename))
+
+    (defun deft-parse-summary (contents title)
+      "Parse the file CONTENTS, given the TITLE, and extract a summary.
+The summary is a string extracted from the contents following the
+title without comments."
+      (let* ((summary-without-comments (replace-regexp-in-string "^#.*$" "" contents))
+             (summary (replace-regexp-in-string "[\n\t]" " " summary-without-comments)))
+        (if (and (not deft-use-filename-as-title) title)
+            (if (string-match (regexp-quote title) summary)
+                (deft-chomp (substring summary (match-end 0) nil))
+              "")
+          summary)))
+
+    (defadvice deft-new-file-named
+      (after mb-deft-insert-org-template last () activate)
+      "Create new file and insert org-mode template."
+      (let* ((timestamp (concat "[" (format-time-string "%Y-%m-%d %H:%M") "]"))
+            (tmpl (concat "#+TITLE: 
+#+DATE: " timestamp "
+#+TAGS:
+
+")))
+        (goto-char (point-min))
+        (insert tmpl)
+        (goto-char 10)))
+
+    (define-keys deft-mode-map
+      '(("C-n" deft-next-line)
+        ("C-p" deft-previous-line)
+        ("C-u C-<return>" deft-new-file-default-name)))))
+
+
 ;;;;_ , sr-speedbar
 
 (use-package sr-speedbar
