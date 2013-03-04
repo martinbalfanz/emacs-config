@@ -1145,10 +1145,14 @@ just images (e.g. pdf documents), I needed a way to access them."
     (defvar deft-default-filename (format-time-string "%Y-%m-%d-%H%M%S")
       "Default filename for new files without SLUG.")
 
+    (defvar deft-export-directory (expand-file-name "~/Google Drive/deft/public/")
+      "Directory where readable format is exported.")
+
     (setq deft-extension "org"
           deft-text-mode 'org-mode
           deft-strip-title-regexp "^#.TITLE:[ ]*"
-          deft-auto-save-interval 15.0)
+          deft-auto-save-interval 15.0
+          deft-directory "~/Google Drive/deft")
 
     (defun deft-next-line ()
       "Move cursor to next line and open file in other window."
@@ -1168,16 +1172,12 @@ just images (e.g. pdf documents), I needed a way to access them."
       (deft-new-file-named deft-default-filename))
 
     (defun deft-parse-summary (contents title)
-      "Parse the file CONTENTS, given the TITLE, and extract a summary.
+      "Parse the file CONTENTS and extract a summary.
 The summary is a string extracted from the contents following the
 title without comments."
-      (let* ((summary-without-comments (replace-regexp-in-string "^#.*$" "" contents))
-             (summary (replace-regexp-in-string "[\n\t]" " " summary-without-comments)))
-        (if (and (not deft-use-filename-as-title) title)
-            (if (string-match (regexp-quote title) summary)
-                (deft-chomp (substring summary (match-end 0) nil))
-              "")
-          summary)))
+      (let* ((summary (replace-regexp-in-string "^#.*$" "" contents))
+             (summary (replace-regexp-in-string "[\n\t ]+" " " summary)))
+        summary))
 
     (defadvice deft-new-file-named
       (after mb-deft-insert-org-template last () activate)
@@ -1191,6 +1191,14 @@ title without comments."
         (goto-char (point-min))
         (insert tmpl)
         (goto-char 10)))
+
+    (defadvice deft-open-file
+      (after mb-deft-generate-html-after-save last () activate)
+      "After saving, generate readable file and save it to DEFT-EXPORT-DIRECTORY."
+      (add-hook 'after-save-hook
+                (lambda ()
+                  (org-export-as-ascii 3 nil nil nil nil deft-export-directory))
+                t t))
 
     (define-keys deft-mode-map
       '(("C-n" deft-next-line)
