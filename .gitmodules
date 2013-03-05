@@ -266,3 +266,7 @@
 	path = site-lisp/deft
 	url = git://jblevins.org/git/deft.git
 	ignore = dirty
+[submodule "site-lisp/emacs-calfw"]
+	path = site-lisp/emacs-calfw
+	url = https://github.com/kiwanami/emacs-calfw.git
+	ignore = dirty
