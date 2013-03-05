@@ -77,13 +77,18 @@
       default-major-mode 'text-mode
       show-trailing-whitespace t        ;; show trailing whitespace
       debug-on-error t                  ;; show backtrace on error
-      )
+      backup-directory-alist `(("." . ,(expand-file-name
+                                        "~/.emacs-backups/")))
+      vc-make-backup-files t)
 
 (setq-default cursor-type 'bar          ;; cursor style
               indent-tabs-mode nil      ;; indentation never inserts tabs
               )
 
-(fset 'yes-or-no-p 'y-or-n-p)   ;; allow y or n as answers
+(fset 'yes-or-no-p 'y-or-n-p)           ;; allow y or n as answers
+
+(put 'narrow-to-region 'disabled nil)   ;; enable narrowing
+(put 'erase-buffer 'disabled nil)
 
 (auto-compression-mode 1)       ;; file editing inside archives
 (auto-image-file-mode 1)        ;; display image file as image
