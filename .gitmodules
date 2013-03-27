@@ -32,7 +32,7 @@
 	ignore = dirty
 [submodule "site-lisp/zencoding"]
 	path = site-lisp/zencoding
-	url = https://github.com/rooney/zencoding.git
+	url = https://github.com/smihica/zencoding.git
 	ignore = dirty
 [submodule "site-lisp/ace-jump-mode"]
 	path = site-lisp/ace-jump-mode
