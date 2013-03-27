@@ -286,3 +286,7 @@
 	path = site-lisp/yaml-mode
 	url = https://github.com/yoshiki/yaml-mode.git
 	ignore = dirty
+[submodule "site-lisp/tagedit"]
+	path = site-lisp/tagedit
+	url = https://github.com/magnars/tagedit.git
+	ignore = dirty
