@@ -137,7 +137,6 @@
    two prefix arguments, write out the day and month name."
   (interactive "P")
   (let ((format (cond ((not prefix) "%d.%m.%Y")
-                      ((not prefix) "%d.%m.%y")
                       ((equal prefix '(4)) "%Y-%m-%d")
                       ((equal prefix '(16)) "%A, %d. %B %Y")))
         (system-time-locale "en_US"))
