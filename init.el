@@ -132,6 +132,22 @@
   (delete-trailing-whitespace)
   (indent-region (point-min) (point-max)))
 
+(defun indent-defun ()
+  "Indent the current defun."
+  (interactive)
+  (save-excursion
+    (mark-defun)
+    (indent-region (region-beginning) (region-end))))
+
+(defun google ()
+  "Google the selected region if any, display a query prompt otherwise."
+  (interactive)
+  (browse-url
+   (concat
+    "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
+    (url-hexify-string
+     (read-string "Google: ")))))
+
 (defun insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
    two prefix arguments, write out the day and month name."
@@ -187,6 +203,15 @@ Deletes whitespace at join."
   (if (and (bolp) (not arg))
       (back-to-indentation)
     (beginning-of-line arg)))
+
+(defun buffer-contains-regex-p (regex)
+  "Check if buffer contains a given REGEX."
+  (save-excursion
+    (save-match-data
+      (goto-char (point-min))
+      (if (search-forward-regexp regex nil t)
+          t
+        nil))))
 
 
 ;;;;_ , winner-mode
