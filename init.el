@@ -252,6 +252,23 @@ Deletes whitespace at join."
           (lambda () (desktop-save-in-desktop-dir)))
 
 (savehist-mode 1)
+;;;;_ , reading-mode
+(define-minor-mode reading-mode
+  "A minor mode providing a better reading experience."
+  nil " Reading" nil
+  (if reading-mode
+      (progn
+        (variable-pitch-mode 1)
+        (setq line-spacing 5))
+    (variable-pitch-mode nil)
+    (setq line-spacing (default-value 'line-spacing))))
+
+
+;;;;_ , info-mode
+(add-hook 'info-mode-hook
+          (lambda ()
+            (reading-mode 1))
+          t)
 
 
 ;;;;_. Packages
@@ -1334,6 +1351,9 @@ title without comments."
 (add-to-list 'custom-theme-load-path (expand-file-name "theme-solarized" user-emacs-directory))
 (add-to-list 'custom-theme-load-path (expand-file-name "theme-tomorrow/GNU Emacs" user-emacs-directory))
 (load-theme 'tomorrow-night t)
+;;;;_ , font
+(set-face-font 'variable-pitch "Georgia-16")
+
 
 
 ;;;;_ , dim parentheses
