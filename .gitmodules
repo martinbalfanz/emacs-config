@@ -290,3 +290,19 @@
 	path = site-lisp/tagedit
 	url = https://github.com/magnars/tagedit.git
 	ignore = dirty
+[submodule "site-lisp/gocode"]
+	path = site-lisp/gocode
+	url = https://github.com/nsf/gocode.git
+	ignore = dirty
+[submodule "site-lisp/redshank"]
+	path = site-lisp/redshank
+	url = http://www.foldr.org/~michaelw/projects/redshank.git
+	ignore = dirty
+[submodule "site-lisp/outshine"]
+	path = site-lisp/outshine
+	url = https://github.com/tj64/outshine.git
+	ignore = dirty
+[submodule "site-lisp/keyinfo"]
+	path = site-lisp/keyinfo
+	url = https://github.com/tj64/keyinfo.git
+	ignore = dirty
