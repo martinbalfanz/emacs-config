@@ -146,7 +146,9 @@
    (concat
     "http://www.google.com/search?ie=utf-8&oe=utf-8&q="
     (url-hexify-string
-     (read-string "Google: ")))))
+     (if (region-active-p)
+         (buffer-substring (region-beginning) (region-end))
+       (read-string "Google: "))))))
 
 (defun insert-date (prefix)
   "Insert the current date. With prefix-argument, use ISO format. With
