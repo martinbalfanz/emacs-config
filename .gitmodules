@@ -136,7 +136,7 @@
 	ignore = dirty
 [submodule "site-lisp/bitlbee"]
 	path = site-lisp/bitlbee
-	url = https://github.com/emacsmirror/bitlbee.git
+	url = https://github.com/pjones/elisp.git
 	ignore = dirty
 [submodule "site-lisp/gist"]
 	path = site-lisp/gist
