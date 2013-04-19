@@ -310,3 +310,15 @@
 	path = site-lisp/smartparens
 	url = https://github.com/Fuco1/smartparens.git
 	ignore = dirty
+[submodule "site-lisp/visual-regexp.el"]
+	path = site-lisp/visual-regexp.el
+	url = https://github.com/benma/visual-regexp.el.git
+	ignore = dirty
+[submodule "site-lisp/visual-regexp-steroids.el"]
+	path = site-lisp/visual-regexp-steroids.el
+	url = https://github.com/benma/visual-regexp-steroids.el.git
+	ignore = dirty
+[submodule "site-lisp/zenburn-emacs"]
+	path = site-lisp/zenburn-emacs
+	url = https://github.com/bbatsov/zenburn-emacs.git
+	ignore = dirty
