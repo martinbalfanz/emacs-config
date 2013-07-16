@@ -322,3 +322,15 @@
 	path = site-lisp/zenburn-emacs
 	url = https://github.com/bbatsov/zenburn-emacs.git
 	ignore = dirty
+[submodule "site-lisp/litable"]
+	path = site-lisp/litable
+	url = https://github.com/Fuco1/litable.git
+	ignore = dirty
+[submodule "site-lisp/lispyscript-mode"]
+	path = site-lisp/lispyscript-mode
+	url = https://github.com/krisajenkins/lispyscript-mode.git
+	ignore = dirty
+[submodule "site-lisp/auctex"]
+	path = site-lisp/auctex
+	url = git://git.sv.gnu.org/auctex.git
+	ignore = dirty
