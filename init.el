@@ -1217,35 +1217,40 @@ just images (e.g. pdf documents), I needed a way to access them."
     (defun deft-new-file-default-name ()
       "Create file with default file name."
       (interactive)
-      (deft-new-file-named deft-default-filename))
+      (deft-new-file-named (deft-default-filename)))
 
     (defun deft-parse-summary (contents title)
       "Parse the file CONTENTS and extract a summary.
 The summary is a string extracted from the contents following the
 title without comments."
-      (let* ((summary (replace-regexp-in-string "^#.*$" "" contents))
-             (summary (replace-regexp-in-string "[\n\t ]+" " " summary)))
+      (let* ((summary-without-comments (replace-regexp-in-string "^#.*$" "" contents))
+             (summary (replace-regexp-in-string "[\n\t ]+" " " summary-without-comments)))
         summary))
 
     (defadvice deft-new-file-named
       (after mb-deft-insert-org-template last () activate)
       "Create new file and insert org-mode template."
       (let* ((timestamp (concat "[" (format-time-string "%Y-%m-%d %H:%M") "]"))
-            (tmpl (concat "#+TITLE: 
+            (tmpl (concat "#+TITLE:
 #+DATE: " timestamp "
-#+TAGS:
+#+AUTHOR: " user-full-name "
+#+EMAIL: " user-mail-address "
+#+EXPORT_EXCLUDE_TAGS: private
+#+KEYWORDS:
 
 ")))
         (goto-char (point-min))
         (insert tmpl)
-        (goto-char 10)))
+        (goto-char 9)))
 
     (defadvice deft-open-file
-      (after mb-deft-generate-html-after-save last () activate)
+      (after mb-deft-generate-readable-after-save last () activate)
       "After saving, generate readable file and save it to DEFT-EXPORT-DIRECTORY."
       (add-hook 'after-save-hook
                 (lambda ()
-                  (org-export-as-ascii 3 nil nil nil nil deft-export-directory))
+                  (let ((my-file (org-ascii-export-to-ascii)))
+                    (copy-file my-file (format "%s/%s" deft-export-directory my-file) t t)
+                    (delete-file my-file)))
                 t t))
 
     (define-keys deft-mode-map
