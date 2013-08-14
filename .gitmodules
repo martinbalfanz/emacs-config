@@ -334,3 +334,43 @@
 	path = site-lisp/auctex
 	url = git://git.sv.gnu.org/auctex.git
 	ignore = dirty
+[submodule "site-lisp/Saxxy"]
+	path = site-lisp/Saxxy
+	url = https://github.com/konr/Saaxy.git
+	ignore = dirty
+[submodule "site-lisp/tomatinho"]
+	path = site-lisp/tomatinho
+	url = https://github.com/konr/tomatinho.git
+	ignore = dirty
+[submodule "site-lisp/ack-and-a-half"]
+	path = site-lisp/ack-and-a-half
+	url = https://github.com/jhelwig/ack-and-a-half.git
+	ignore = dirty
+[submodule "site-lisp/ack-el"]
+	path = site-lisp/ack-el
+	url = https://github.com/leoliu/ack-el.git
+	ignore = dirty
+[submodule "site-lisp/rinari"]
+	path = site-lisp/rinari
+	url = https://github.com/eschulte/rinari.git
+	ignore = dirty
+[submodule "site-lisp/inf-ruby"]
+	path = site-lisp/inf-ruby
+	url = https://github.com/nonsequitur/inf-ruby.git
+	ignore = dirty
+[submodule "site-lisp/jump.el"]
+	path = site-lisp/jump.el
+	url = https://github.com/eschulte/jump.el.git
+	ignore = dirty
+[submodule "site-lisp/ert"]
+	path = site-lisp/ert
+	url = https://github.com/nex3/ert.git
+	ignore = dirty
+[submodule "site-lisp/org-trello"]
+	path = site-lisp/org-trello
+	url = https://github.com/ardumont/org-trello.git
+	ignore = dirty
+[submodule "site-lisp/emacs-request"]
+	path = site-lisp/emacs-request
+	url = https://github.com/tkf/emacs-request.git
+	ignore = dirty
