@@ -374,3 +374,55 @@
 	path = site-lisp/emacs-request
 	url = https://github.com/tkf/emacs-request.git
 	ignore = dirty
+[submodule "site-lisp/emacs-slim"]
+	path = site-lisp/emacs-slim
+	url = https://github.com/slim-template/emacs-slim.git
+	ignore = dirty
+[submodule "site-lisp/sentence-highlight"]
+	path = site-lisp/sentence-highlight
+	url = https://github.com/emacsmirror/sentence-highlight.git
+	ignore = dirty
+[submodule "site-lisp/highlight-indentation"]
+	path = site-lisp/highlight-indentation
+	url = https://github.com/antonj/Highlight-Indentation-for-Emacs.git
+	ignore = dirty
+[submodule "site-lisp/fill-column-indicator"]
+	path = site-lisp/fill-column-indicator
+	url = https://github.com/alpaker/Fill-Column-Indicator.git
+	ignore = dirty
+[submodule "site-lisp/emacs-noflet"]
+	path = site-lisp/emacs-noflet
+	url = https://github.com/nicferrier/emacs-noflet.git
+	ignore = dirty
+[submodule "site-lisp/elfeed"]
+	path = site-lisp/elfeed
+	url = https://github.com/skeeto/elfeed.git
+	ignore = dirty
+[submodule "site-lisp/emacs-anzu"]
+	path = site-lisp/emacs-anzu
+	url = https://github.com/syohex/emacs-anzu.git
+	ignore = dirty
+[submodule "site-lisp/pkg-info.el"]
+	path = site-lisp/pkg-info.el
+	url = https://github.com/lunaryorn/pkg-info.el.git
+	ignore = dirty
+[submodule "site-lisp/f.el"]
+	path = site-lisp/f.el
+	url = https://github.com/rejeep/f.el.git
+	ignore = dirty
+[submodule "site-lisp/dash-at-point"]
+	path = site-lisp/dash-at-point
+	url = https://github.com/stanaka/dash-at-point.git
+	ignore = dirty
+[submodule "site-lisp/project-explorer"]
+	path = site-lisp/project-explorer
+	url = https://github.com/sabof/project-explorer.git
+	ignore = dirty
+[submodule "site-lisp/es-lib"]
+	path = site-lisp/es-lib
+	url = https://github.com/sabof/es-lib.git
+	ignore = dirty
+[submodule "site-lisp/git-modes"]
+	path = site-lisp/git-modes
+	url = https://github.com/magit/git-modes.git
+	ignore = dirty
