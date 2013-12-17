@@ -426,3 +426,11 @@
 	path = site-lisp/git-modes
 	url = https://github.com/magit/git-modes.git
 	ignore = dirty
+[submodule "site-lisp/epl"]
+	path = site-lisp/epl
+	url = https://github.com/cask/epl.git
+	ignore = dirty
+[submodule "site-lisp/projectile"]
+	path = site-lisp/projectile
+	url = https://github.com/bbatsov/projectile.git
+	ignore = dirty
