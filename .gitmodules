@@ -502,3 +502,7 @@
 	path = site-lisp/evernote-mode
 	url = https://github.com/pymander/evernote-mode.git
 	ignore = dirty
+[submodule "site-lisp/god-mode"]
+	path = site-lisp/god-mode
+	url = https://github.com/chrisdone/god-mode.git
+	ignore = dirty
