@@ -220,7 +220,7 @@
 	ignore = dirty
 [submodule "site-lisp/flycheck"]
 	path = site-lisp/flycheck
-	url = https://github.com/lunaryorn/flycheck.git
+	url = https://github.com/flycheck/flycheck.git
 	ignore = dirty
 [submodule "site-lisp/s.el"]
 	path = site-lisp/s.el
@@ -433,4 +433,72 @@
 [submodule "site-lisp/projectile"]
 	path = site-lisp/projectile
 	url = https://github.com/bbatsov/projectile.git
+	ignore = dirty
+[submodule "site-lisp/google-contacts.el"]
+	path = site-lisp/google-contacts.el
+	url = git://git.naquadah.org/google-contacts.el.git
+	ignore = dirty
+[submodule "site-lisp/offlineimap-el"]
+	path = site-lisp/offlineimap-el
+	url = git://git.naquadah.org/offlineimap-el.git
+	ignore = dirty
+[submodule "site-lisp/notmuch"]
+	path = site-lisp/notmuch
+	url = git://notmuchmail.org/git/notmuch
+	ignore = dirty
+[submodule "site-lisp/cider"]
+	path = site-lisp/cider
+	url = https://github.com/clojure-emacs/cider.git
+	ignore = dirty
+[submodule "site-lisp/emacs-maildir"]
+	path = site-lisp/emacs-maildir
+	url = https://github.com/nicferrier/emacs-maildir.git
+	ignore = dirty
+[submodule "site-lisp/httprepl.el"]
+	path = site-lisp/httprepl.el
+	url = https://github.com/gregsexton/httprepl.el.git
+	ignore = dirty
+[submodule "site-lisp/company-mode"]
+	path = site-lisp/company-mode
+	url = https://github.com/company-mode/company-mode.git
+	ignore = dirty
+[submodule "site-lisp/helm-mu"]
+	path = site-lisp/helm-mu
+	url = https://github.com/emacs-helm/helm-mu.git
+	ignore = dirty
+[submodule "site-lisp/ensime"]
+	path = site-lisp/ensime
+	url = https://github.com/aemoncannon/ensime.git
+	ignore = dirty
+[submodule "site-lisp/clj-refactor.el"]
+	path = site-lisp/clj-refactor.el
+	url = https://github.com/magnars/clj-refactor.el.git
+	ignore = dirty
+[submodule "site-lisp/site-lisp/scala-mode2"]
+	path = site-lisp/site-lisp/scala-mode2
+	url = https://github.com/hvesalai/scala-mode2.git
+	ignore = dirty
+[submodule "site-lisp/editorconfig"]
+	path = site-lisp/editorconfig
+	url = https://github.com/editorconfig/editorconfig-emacs.git
+	ignore = dirty
+[submodule "site-lisp/skewer-mode"]
+	path = site-lisp/skewer-mode
+	url = https://github.com/skeeto/skewer-mode.git
+	ignore = dirty
+[submodule "site-lisp/emacs-web-server"]
+	path = site-lisp/emacs-web-server
+	url = https://github.com/skeeto/emacs-web-server.git
+	ignore = dirty
+[submodule "site-lisp/todotxt.el"]
+	path = site-lisp/todotxt.el
+	url = https://github.com/rpdillon/todotxt.el.git
+	ignore = dirty
+[submodule "site-lisp/todotxt-mode"]
+	path = site-lisp/todotxt-mode
+	url = https://github.com/avillafiorita/todotxt-mode
+	ignore = dirty
+[submodule "site-lisp/evernote-mode"]
+	path = site-lisp/evernote-mode
+	url = https://github.com/pymander/evernote-mode.git
 	ignore = dirty
