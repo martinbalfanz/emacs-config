@@ -1019,6 +1019,25 @@ just images (e.g. pdf documents), I needed a way to access them."
     (setq coffee-tab-width 2)))
 
 
+;;;;_ , haml
+
+(use-package haml-mode
+  :load-path "haml-mode"
+  :commands haml-mode
+  :mode ("\\.haml$" . haml-mode))
+
+
+;;;;_ , slim
+
+(use-package slim-mode
+  :load-path "emacs-slim"
+  :commands slim-mode
+  :mode ("\\.slim$" . slim-mode)
+  :init
+  (progn
+    (add-hook 'slim-mode-hook 'highlight-indentation-current-column-mode)))
+
+
 ;;;;_ , css
 
 (use-package css-mode
