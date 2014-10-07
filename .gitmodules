@@ -506,3 +506,83 @@
 	path = site-lisp/god-mode
 	url = https://github.com/chrisdone/god-mode.git
 	ignore = dirty
+[submodule "site-lisp/tern"]
+	path = site-lisp/tern
+	url = https://github.com/marijnh/tern.git
+	ignore = dirty
+[submodule "site-lisp/wanderlust"]
+	path = site-lisp/wanderlust
+	url = https://github.com/wanderlust/wanderlust.git
+	ignore = dirty
+[submodule "site-lisp/semi"]
+	path = site-lisp/semi
+	url = https://github.com/wanderlust/semi
+	ignore = dirty
+[submodule "site-lisp/flim"]
+	path = site-lisp/flim
+	url = https://github.com/wanderlust/flim
+	ignore = dirty
+[submodule "site-lisp/apel"]
+	path = site-lisp/apel
+	url = https://github.com/wanderlust/apel.git
+	ignore = dirty
+[submodule "site-lisp/haskell-mode"]
+	path = site-lisp/haskell-mode
+	url = https://github.com/haskell/haskell-mode.git
+	ignore = dirty
+[submodule "site-lisp/git-timemachine"]
+	path = site-lisp/git-timemachine
+	url = https://github.com/pidu/git-timemachine.git
+	ignore = dirty
+[submodule "site-lisp/upword-mode"]
+	path = site-lisp/upword-mode
+	url = https://github.com/martinbalfanz/upword-mode.git
+	ignore = dirty
+[submodule "site-lisp/eschulte-web-server"]
+	path = site-lisp/eschulte-web-server
+	url = https://github.com/eschulte/emacs-web-server.git
+	ignore = dirty
+[submodule "site-lisp/org-ehtml"]
+	path = site-lisp/org-ehtml
+	url = https://github.com/eschulte/org-ehtml.git
+	ignore = dirty
+[submodule "site-lisp/highlight-symbol"]
+	path = site-lisp/highlight-symbol
+	url = https://github.com/nschum/highlight-symbol.el.git
+	ignore = dirty
+[submodule "site-lisp/highlight-defined"]
+	path = site-lisp/highlight-defined
+	url = https://github.com/Fanael/highlight-defined.git
+	ignore = dirty
+[submodule "site-lisp/color-identifiers-mode"]
+	path = site-lisp/color-identifiers-mode
+	url = https://github.com/ankurdave/color-identifiers-mode.git
+	ignore = dirty
+[submodule "site-lisp/highlight-parentheses"]
+	path = site-lisp/highlight-parentheses
+	url = https://github.com/nschum/highlight-parentheses.el.git
+	ignore = dirty
+[submodule "site-lisp/hl-sexp"]
+	path = site-lisp/hl-sexp
+	url = https://github.com/emacsmirror/hl-sexp.git
+	ignore = dirty
+[submodule "site-lisp/highlight-stages"]
+	path = site-lisp/highlight-stages
+	url = https://github.com/zk-phi/highlight-stages.git
+	ignore = dirty
+[submodule "site-lisp/rainbow-blocks"]
+	path = site-lisp/rainbow-blocks
+	url = https://github.com/istib/rainbow-blocks.git
+	ignore = dirty
+[submodule "site-lisp/paren-face"]
+	path = site-lisp/paren-face
+	url = https://github.com/tarsius/paren-face.git
+	ignore = dirty
+[submodule "site-lisp/highlight-escape-sequences"]
+	path = site-lisp/highlight-escape-sequences
+	url = https://github.com/dgutov/highlight-escape-sequences.git
+	ignore = dirty
+[submodule "site-lisp/highlight-numbers"]
+	path = site-lisp/highlight-numbers
+	url = https://github.com/Fanael/highlight-numbers.git
+	ignore = dirty
