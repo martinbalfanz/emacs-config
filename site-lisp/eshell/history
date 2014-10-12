@@ -1,0 +1,128 @@
+cd emacs-config/
+git submodule add https://github.com/emacs-helm/helm-mu.git site-lisp/help-mu
+ls
+mv site-lisp/help-mu/ site-lisp/helm-mu
+cd .git/modules/
+ls
+cd site-lisp/
+ls
+mv help-mu/ helm-mu
+cd ~/maildir/
+ls
+rm drafts/cur/
+rm drafts/cur/20140203-63f6ea-martins-mbp-13:2,DS
+open .
+ls
+ls
+cd ..
+cd sites-enabled/
+ls
+sudo find-file 001-trendmicro 
+cd ..
+ls
+cd sites-available/
+cd ..
+ls
+cd sites-enabled/
+ls
+cd ../.ssh/
+open .
+cd ../emacs-config/
+ls
+git submodule add https://github.com/aemoncannon/ensime.git site-lisp/ensime
+git submodule add https://github.com/magnars/clj-refactor.el.git site-lisp/clj-refactor.el
+cd site-lisp/ensime/
+ls
+cd src/
+ls
+cd ..
+cd ..
+git submodule add https://github.com/hvesalai/scala-mode2.git site-lisp/scala-mode2
+cd ~/emacs-config/
+ls
+cd site-lispvar/
+cd ..
+ls
+cd site-lisp/
+ls
+cd ..
+cd site-lisp/yasnippet/
+ls
+git pull
+git submodule init
+git submodule update
+cd ~/emacs-config/
+cd site-lisp
+ls
+cd ..
+git submodule add https://github.com/editorconfig/editorconfig-emacs.git site-lisp/editorconfig
+cd Downloads/
+mkdir udschal
+cd udschal/
+exit
+git submodule add https://github.com/skeeto/skewer-mode.git site-lisp/skewer-mode
+git submodule add https://github.com/skeeto/emacs-web-server.git site-lisp/emacs-web-server
+open .
+git submodule add https://github.com/chrisdone/god-mode.git site-lisp/god-mode
+ls
+python -m SimpleHTTPServer 8080
+mkdir views
+mkdir static
+cd views/
+ls
+cd ..
+ls
+git submodule add https://github.com/marijnh/tern.git site-lisp/tern
+cd emacs-config/
+ls
+ls site-lispvar/
+ls site-lisp
+git submodule add https://github.com/haskell/haskell-mode.git site-lisp/haskell-mode
+cd ~/tmp/
+git clone git@bitbucket.org:minglabs/storm-2014-digital.git
+ls
+cd storm-2014-digital/
+ls
+ack 1028
+ack --help
+cd ~/emacs-config/
+git submodule add https://github.com/pidu/git-timemachine.git site-lisp/git-timemachine
+cd /Applications/MAMP/htdocs/nemex/
+ls
+chmod 777 projects/
+cd projects/
+ls
+cd overviewofalldevsp/
+ls
+cd ..
+cd ..
+ls
+cd code/
+ls
+mkdir theme-mb
+cd theme-mb/
+git init
+cd ~/emacs-config/
+git submodule add https://github.com/nschum/highlight-symbol.el.git site-lisp/highlight-symbol
+git submodule add https://github.com/Fanael/highlight-defined.git site-lisp/highlight-defined
+git submodule add https://github.com/ankurdave/color-identifiers-mode.git site-lisp/color-identifiers-mode
+git submodule add https://github.com/nschum/highlight-parentheses.el.git site-lisp/highlight-parentheses
+git submodule add https://github.com/emacsmirror/hl-sexp.git site-lisp/hl-sexp
+git submodule add https://github.com/zk-phi/highlight-stages.git site-lisp/highlight-stages
+git submodule add https://github.com/istib/rainbow-blocks.git site-lisp/rainbow-blocks
+git submodule add https://github.com/tarsius/paren-face.git site-lisp/paren-face
+git submodule add https://github.com/dgutov/highlight-escape-sequences.git site-lisp/highlight-escape-sequences
+git submodule add https://github.com/Fanael/highlight-numbers.git site-lisp/highlight-numbers
+ls
+git submodule add https://github.com/yjwen/org-reveal.git site-lisp/org-reveal
+cd ~/Dropbox/
+ls
+cd notes/
+ls
+rm mingx-dev-strategy.html
+ls
+cd ..
+cd ..
+cd bin/
+chmod +x liefery-rewrite 
+chmod +x testscript 

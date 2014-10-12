@@ -1,0 +1,2 @@
+[paths]
+default = ssh://hg@bitbucket.org/ArneBab/kanban.el

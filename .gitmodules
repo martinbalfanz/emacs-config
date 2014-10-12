@@ -586,3 +586,7 @@
 	path = site-lisp/highlight-numbers
 	url = https://github.com/Fanael/highlight-numbers.git
 	ignore = dirty
+[submodule "site-lisp/org-reveal"]
+	path = site-lisp/org-reveal
+	url = https://github.com/yjwen/org-reveal.git
+	ignore = dirty
