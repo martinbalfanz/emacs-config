@@ -2338,11 +2338,18 @@ title without comments."
     (require 'calfw-org)
     (require 'calfw-ical)
 
+    (defun mb-update-calendars ()
+      (interactive)
+      (call-process "~/bin/updateCalendars"))
+
     (defun mb-open-calendar ()
       (interactive)
+      (mb-update-calendars)
       (cfw:open-calendar-buffer
        :contents-sources (list
-                          (cfw:org-create-source "Green")
+                          (cfw:org-create-source "YellowGreen")
+                          (cfw:ical-create-source "gmail" "~/Documents/calendars/gmail.ics" "DeepSkyBlue")
+                          (cfw:ical-create-source "ming" "~/Documents/calendars/ming.ics" "firebrick")
                           ;; (cfw:ical-create-source "business" "" "Red")
                           ;; (cfw:ical-create-source "MING" "" "Pink")
                           )))))
