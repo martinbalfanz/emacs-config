@@ -1888,7 +1888,7 @@ title without comments."
   :load-path "org-reveal"
   :config
   (progn
-    (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/2.5.0/")))
+    (setq org-reveal-root "file:///Users/martin/code/reveal.js")))
 
 ;;;;_ , highlight-numbers
 ;; (use-package highlight-numbers
