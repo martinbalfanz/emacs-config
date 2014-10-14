@@ -1,4 +1,3 @@
-/ssh:martin@78.47.222.157:/etc/apache2/sites-available
 /ssh:martin@78.47.222.157:/etc/apache2
 /ssh:martin@78.47.222.157:/etc/apache2/sites-enabled
 /Users/martin/.ssh

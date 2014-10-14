@@ -1,5 +1,3 @@
-cd emacs-config/
-git submodule add https://github.com/emacs-helm/helm-mu.git site-lisp/help-mu
 ls
 mv site-lisp/help-mu/ site-lisp/helm-mu
 cd .git/modules/
@@ -126,3 +124,5 @@ cd ..
 cd bin/
 chmod +x liefery-rewrite 
 chmod +x testscript 
+ls
+chmod +x updateCalendars 
