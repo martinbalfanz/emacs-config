@@ -1885,7 +1885,10 @@ title without comments."
 
 ;;;;_ , go-mode
 (use-package go-mode
-  :load-path "go-mode.el")
+  :load-path "go-mode.el"
+  :config
+  (progn
+    (setq tab-width 4)))
 
 ;;;;_ , org-reveal
 (use-package ox-reveal
