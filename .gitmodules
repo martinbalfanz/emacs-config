@@ -590,3 +590,7 @@
 	path = site-lisp/org-reveal
 	url = https://github.com/yjwen/org-reveal.git
 	ignore = dirty
+[submodule "site-lisp/go-mode.el"]
+	path = site-lisp/go-mode.el
+	url = https://github.com/dominikh/go-mode.el.git
+	ignore = dirty

@@ -1883,6 +1883,10 @@ title without comments."
 
 ;;;;_. LABS
 
+;;;;_ , go-mode
+(use-package go-mode
+  :load-path "go-mode.el")
+
 ;;;;_ , org-reveal
 (use-package ox-reveal
   :load-path "org-reveal"
