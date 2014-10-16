@@ -594,3 +594,11 @@
 	path = site-lisp/go-mode.el
 	url = https://github.com/dominikh/go-mode.el.git
 	ignore = dirty
+[submodule "site-lisp/sbt-mode"]
+	path = site-lisp/sbt-mode
+	url = https://github.com/hvesalai/sbt-mode.git
+	ignore = dirty
+[submodule "site-lisp/scala-mode2"]
+	path = site-lisp/scala-mode2
+	url = https://github.com/hvesalai/scala-mode2.git
+	ignore = dirty

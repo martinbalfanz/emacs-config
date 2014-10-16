@@ -2034,15 +2034,19 @@ title without comments."
   :load-path "editorconfig")
 
 ;;;;_ , scala-mode2
-;; (use-package scala-mode2
-;;   :load-path "scala-mode2"
-;;   :init
-;;   (progn
-;;     (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)))
+(use-package scala-mode2
+  :load-path "scala-mode2"
+  :init
+  (progn
+    ;; (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+    ))
 
-;; ;;;;_ , ensime
+(use-package sbt-mode
+  :load-path "sbt-mode")
+
+;;;;_ , ensime
 ;; (use-package ensime
-;;   :load-path "ensime/src/main/elisp")
+;;   :load-path "ensime/src")
 
 ;;;;_ , clj-refactor
 (use-package clj-refactor
