@@ -2440,6 +2440,7 @@ title without comments."
 (use-package nnir)
 (use-package gnus
   :init
+  :disabled t
   (progn
     ;; (setq gnus-select-method '(nntp "news.gmane.org"))
 
