@@ -906,8 +906,8 @@ prevents using commands with prefix arguments."
     (require 'org-mime)
     (require 'org-capture)
     (require 'org-toc)
-    (require 'org-special-blocks)
-    (require 'org-latex)
+    ;; (require 'org-special-blocks) ;; TODO check this
+    ;; (require 'org-latex)          ;; TODO check this
     (require 'ox-latex)
     (require 'ox-freemind)
 
@@ -928,6 +928,9 @@ prevents using commands with prefix arguments."
             ("n" "Note" entry (file+headline "backlogx.org" "Notes")
              "* %^{Brief Description} %^g\n   %?\n  Added: %U\n  %i\n  [[%F]]")))
 
+
+    (unless (boundp 'org-agenda-custom-commands)
+      (setq org-agenda-custom-commands '()))
 
     (add-to-list 'org-agenda-custom-commands
                  '("H" "Office and Home Lists"
