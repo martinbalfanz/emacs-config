@@ -344,7 +344,7 @@
 	ignore = dirty
 [submodule "site-lisp/ack-and-a-half"]
 	path = site-lisp/ack-and-a-half
-	url = https://github.com/jhelwig/ack-and-a-half.git
+	url = https://github.com/emacsmirror/ack-and-a-half
 	ignore = dirty
 [submodule "site-lisp/ack-el"]
 	path = site-lisp/ack-el
@@ -436,11 +436,11 @@
 	ignore = dirty
 [submodule "site-lisp/google-contacts.el"]
 	path = site-lisp/google-contacts.el
-	url = git://git.naquadah.org/google-contacts.el.git
+	url = https://github.com/jd/google-contacts.el.git
 	ignore = dirty
 [submodule "site-lisp/offlineimap-el"]
 	path = site-lisp/offlineimap-el
-	url = git://git.naquadah.org/offlineimap-el.git
+	url = https://github.com/jd/offlineimap.el.git
 	ignore = dirty
 [submodule "site-lisp/notmuch"]
 	path = site-lisp/notmuch
