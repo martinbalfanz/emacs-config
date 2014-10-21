@@ -1,4 +1,3 @@
-/ssh:martin@78.47.222.157:/etc/apache2
 /ssh:martin@78.47.222.157:/etc/apache2/sites-enabled
 /Users/martin/.ssh
 /Users/martin/org
@@ -30,3 +29,5 @@
 /Users/martin/Dropbox
 /Users/martin
 /Users/martin/bin
+~/emacs-config/site-lisp/theme-tomorrow
+/Users/martin/emacs-config/site-lisp/theme-tomorrow/GNU Emacs
