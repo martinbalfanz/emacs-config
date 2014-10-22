@@ -1596,13 +1596,30 @@ prevents using commands with prefix arguments."
 
 (use-package helm
   ;; :disabled t
+  :bind ("C-c h" . helm-command-prefix)
   :load-path "helm"
   :commands (helm-mini
              helm-mode
              helm-imenu)
+  :init
+  (progn
+    (require 'helm-config))
   :config
   (progn
-    (require 'helm-config)))
+    (define-key helm-command-map (kbd "o")     'helm-occur)
+    (define-key helm-command-map (kbd "g")     'helm-do-grep)
+    (define-key helm-command-map (kbd "C-c w") 'helm-wikipedia-suggest)
+    (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
+
+    (when (executable-find "curl")
+      (setq helm-google-suggest-use-curl-p t))
+
+    (setq helm-quick-update t
+          helm-split-window-in-side-p t
+          helm-buffers-fuzzy-matching t
+          helm-move-to-line-cycle-in-source t
+          helm-ff-search-library-in-sexp t
+          helm-ff-file-name-history-use-recentf t)))
 
 (use-package helm-mu
   :disabled t
