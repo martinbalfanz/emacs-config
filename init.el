@@ -1612,6 +1612,10 @@ prevents using commands with prefix arguments."
     (define-key helm-command-map (kbd "C-c w") 'helm-wikipedia-suggest)
     (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
 
+    (global-set-key (kbd "M-x") 'helm-M-x)
+    (global-set-key (kbd "C-x b") 'helm-mini)
+    (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
     (when (executable-find "curl")
       (setq helm-google-suggest-use-curl-p t))
 
@@ -1620,6 +1624,7 @@ prevents using commands with prefix arguments."
           helm-buffers-fuzzy-matching t
           helm-move-to-line-cycle-in-source t
           helm-ff-search-library-in-sexp t
+          helm-scroll-amount 8
           helm-ff-file-name-history-use-recentf t)))
 
 (use-package helm-mu
