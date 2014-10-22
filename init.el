@@ -1603,7 +1603,8 @@ prevents using commands with prefix arguments."
              helm-imenu)
   :init
   (progn
-    (require 'helm-config))
+    (require 'helm-config)
+    (global-unset-key (kbd "C-x c"))
   :config
   (progn
     (define-key helm-command-map (kbd "o")     'helm-occur)
