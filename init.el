@@ -1612,6 +1612,10 @@ prevents using commands with prefix arguments."
     (define-key helm-command-map (kbd "C-c w") 'helm-wikipedia-suggest)
     (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
 
+    (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+    (define-key helm-map (kbd "C-z")  'helm-select-action)
+
     (global-set-key (kbd "M-x") 'helm-M-x)
     (global-set-key (kbd "C-x b") 'helm-mini)
     (global-set-key (kbd "C-x C-f") 'helm-find-files)
