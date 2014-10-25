@@ -1604,7 +1604,7 @@ prevents using commands with prefix arguments."
   :init
   (progn
     (require 'helm-config)
-    (global-unset-key (kbd "C-x c"))
+    (global-unset-key (kbd "C-x c")))
   :config
   (progn
     (define-key helm-command-map (kbd "o")     'helm-occur)
