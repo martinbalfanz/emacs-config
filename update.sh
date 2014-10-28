@@ -27,10 +27,10 @@ cd org-mode
 make
 
 # make js2-mode
-# echo "building js2-mode"
-# cd $ModulesDir
-# cd js2-mode
-# make
+echo "building js2-mode"
+cd $ModulesDir
+cd js2-mode
+make
 
 # make magit
 echo "building magit"
