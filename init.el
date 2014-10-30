@@ -1388,6 +1388,26 @@ prevents using commands with prefix arguments."
 (use-package js2-mode
   :load-path "js2-mode"
   :mode ("\\.js$" . js2-mode)
+  :init
+  (progn
+    (setq-default js2-allow-rhino-new-expr-initializer nil)
+    (setq-default js2-auto-indent-p nil)
+    (setq-default js2-enter-indents-newline nil)
+    (setq-default js2-global-externs '("module" "require" "buster" "sinon" "assert" "refute" "setTimeout" "clearTimeout" "setInterval" "clearInterval" "location" "__dirname" "console" "JSON"))
+    (setq-default js2-idle-timer-delay 0.1)
+    (setq-default js2-indent-on-enter-key nil)
+    (setq-default js2-mirror-mode nil)
+    (setq-default js2-strict-inconsistent-return-warning nil)
+    (setq-default js2-auto-indent-p t)
+    (setq-default js2-include-rhino-externs nil)
+    (setq-default js2-include-gears-externs nil)
+    (setq-default js2-concat-multiline-strings 'eol)
+    (setq-default js2-rebind-eol-bol-keys nil)
+
+    ;; Let flycheck handle parse errors
+    (setq-default js2-show-parse-errors nil)
+    (setq-default js2-strict-missing-semi-warning nil)
+    (setq-default js2-strict-trailing-comma-warning t))
   :config
   (progn
     (setq js2-pretty-multiline-declarations t)
@@ -1834,7 +1854,7 @@ title without comments."
 (add-to-list 'custom-theme-load-path (expand-file-name "theme-solarized" user-emacs-directory))
 (add-to-list 'custom-theme-load-path (expand-file-name "theme-tomorrow/GNU Emacs" user-emacs-directory))
 (add-to-list 'custom-theme-load-path (expand-file-name "zenburn-emacs" user-emacs-directory))
-(add-to-list 'custom-theme-load-path (expand-file-name "themes" user-init-directory))
+;; (add-to-list 'custom-theme-load-path (expand-file-name "themes" user-init-directory))
 ;; (load-theme 'zenburn t)
 
 
