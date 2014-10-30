@@ -1429,6 +1429,7 @@ prevents using commands with prefix arguments."
 ;; M-p js2-highlight-vars-prev
 ;; M-r js2-highlight-vars-rename
 (use-package js2-highlight-vars
+  :disabled t
   :requires js2-mode
   :commands (js2-highlight-vars-mode)
   :init (add-hook 'js2-mode-hook 'js2-highlight-vars-mode t))
