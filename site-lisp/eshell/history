@@ -1,6 +1,3 @@
-ls
-rm drafts/cur/
-rm drafts/cur/20140203-63f6ea-martins-mbp-13:2,DS
 open .
 ls
 ls
@@ -126,3 +123,6 @@ ls
 cd GNU\ Emacs/
 ls
 chmod +x ~/bin/git-truncate 
+cd ~/emacs-config/
+ls
+./update.sh

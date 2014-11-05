@@ -1,5 +1,3 @@
-/Users/martin/.ssh
-/Users/martin/org
 /Users/martin/emacs-config/site-lisp/ensime/src
 /Users/martin/emacs-config/site-lisp/ensime
 /Users/martin/emacs-config/site-lispvar
@@ -30,4 +28,6 @@
 /Users/martin/bin
 ~/emacs-config/site-lisp/theme-tomorrow
 /Users/martin/emacs-config/site-lisp/theme-tomorrow/GNU Emacs
+/Users/martin/emacs-config
+/Users/martin/code/cedit
 /Users/martin/emacs-config

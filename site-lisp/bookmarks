@@ -4,9 +4,9 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
  (filename . "~/Dropbox/notes/todox.org")
- (front-context-string . "** TODO checkout")
- (rear-context-string . " for my project\n")
- (position . 16608))
+ (front-context-string . "*** TODO write M")
+ (rear-context-string . "0-19 Sun 22:21]\n")
+ (position . 4175))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/notes/runx-backlog.org")
  (front-context-string . "** long-term tes")
