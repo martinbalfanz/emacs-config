@@ -602,3 +602,7 @@
 	path = site-lisp/scala-mode2
 	url = https://github.com/hvesalai/scala-mode2.git
 	ignore = dirty
+[submodule "site-lisp/outorg"]
+	path = site-lisp/outorg
+	url = https://github.com/tj64/outorg.git
+	ignore = dirty

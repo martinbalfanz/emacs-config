@@ -2348,6 +2348,9 @@ title without comments."
   :load-path "keyinfo")
 
 ;;;;_ , outshine
+(use-package outorg
+  :load-path "outorg")
+
 (use-package outshine
   :load-path "outshine"
   :disabled t
