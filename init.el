@@ -910,6 +910,7 @@ prevents using commands with prefix arguments."
     ;; (require 'org-latex)          ;; TODO check this
     (require 'ox-latex)
     (require 'ox-freemind)
+    (require 'org-habit)
 
     (require 'org-mac-iCal)
 
@@ -936,6 +937,7 @@ prevents using commands with prefix arguments."
                  '("H" "Office and Home Lists"
                    ((agenda)
                     (tags-todo "office")
+                    (tags-todo "home")
                     (tags-todo "phone")
                     (tags-todo "email")
                     (tags-todo "lunchtime")
