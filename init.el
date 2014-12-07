@@ -60,6 +60,13 @@
   :load-path "diminish")
 
 
+;;;;_ , package.el and el-get
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
+
+
 ;;;;_ , OS X specific keybindings
 
 ;; only for carbon emacs
