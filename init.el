@@ -78,6 +78,12 @@
 (add-to-list 'el-get-recipe-path (expand-file-name "receipes" user-emacs-directory))
 (el-get 'sync)
 
+(setq mb-packages (append
+                   '(ace-jump-mode ;; A quick cursor location minor mode for emacs.
+                     )
+                   (mapcar 'el-get-source-name el-get-sources)))
+(el-get 'sync mb-packages)))
+
 
 ;;;;_ , OS X specific keybindings
 
@@ -361,13 +367,6 @@ Deletes whitespace at join."
 
 
 ;;;;_. Packages
-;;;;_ , ace-jump-mode
-
-(use-package ace-jump-mode
-  :load-path "ace-jump-mode"
-  :bind ("C-. j" . ace-jump-mode))
-
-
 ;;;;_ , expand-region
 
 (use-package expand-region
