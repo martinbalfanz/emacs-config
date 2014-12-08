@@ -66,6 +66,18 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 
+(add-to-list 'load-path (expand-file-name "el-get" user-init-directory))
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path (expand-file-name "receipes" user-emacs-directory))
+(el-get 'sync)
+
 
 ;;;;_ , OS X specific keybindings
 
