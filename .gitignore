@@ -6,6 +6,8 @@
 /.emacs.desktop
 /.session
 /auto-save-list
+/custom.el
+/ditaa*.jar
 /elpa
 /org-clock-save.el
 /recentf
