@@ -6,6 +6,7 @@
 /.emacs.desktop
 /.session
 /auto-save-list
+/elpa
 /org-clock-save.el
 /recentf
 /tramp
