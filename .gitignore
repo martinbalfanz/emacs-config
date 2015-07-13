@@ -5,10 +5,14 @@
 /.emacs-auth
 /.emacs.desktop
 /.session
+/.smex-items
+/ac-comphist.dat
 /auto-save-list
 /custom.el
 /ditaa*.jar
 /elpa
+/history
+/ido.last
 /org-clock-save.el
 /recentf
 /tramp
