@@ -1,0 +1,12 @@
+*.elc
+*~
+.*.lock
+/.Sync*
+/.emacs-auth
+/.emacs.desktop
+/.session
+/auto-save-list
+/org-clock-save.el
+/recentf
+/tramp
+\#*
