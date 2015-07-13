@@ -90,6 +90,7 @@
 
 (require 'init-misc)
 
+(require 'my-deft)
 (require 'init-dash)
 (require 'init-ledger)
 
