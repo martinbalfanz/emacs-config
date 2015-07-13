@@ -1,46 +1,3 @@
-open .
-ls
-ls
-cd ..
-cd sites-enabled/
-ls
-sudo find-file 001-trendmicro 
-cd ..
-ls
-cd sites-available/
-cd ..
-ls
-cd sites-enabled/
-ls
-cd ../.ssh/
-open .
-cd ../emacs-config/
-ls
-git submodule add https://github.com/aemoncannon/ensime.git site-lisp/ensime
-git submodule add https://github.com/magnars/clj-refactor.el.git site-lisp/clj-refactor.el
-cd site-lisp/ensime/
-ls
-cd src/
-ls
-cd ..
-cd ..
-git submodule add https://github.com/hvesalai/scala-mode2.git site-lisp/scala-mode2
-cd ~/emacs-config/
-ls
-cd site-lispvar/
-cd ..
-ls
-cd site-lisp/
-ls
-cd ..
-cd site-lisp/yasnippet/
-ls
-git pull
-git submodule init
-git submodule update
-cd ~/emacs-config/
-cd site-lisp
-ls
 cd ..
 git submodule add https://github.com/editorconfig/editorconfig-emacs.git site-lisp/editorconfig
 cd Downloads/
@@ -126,3 +83,46 @@ chmod +x ~/bin/git-truncate
 cd ~/emacs-config/
 ls
 ./update.sh
+git submodule add https://github.com/dimitri/el-get.git site-lisp/el-get
+touch .noindex
+ls
+ls -la
+cd ..
+cd ..
+ls
+mkdir info/queue && touch info/queue/.noindex
+ls info/queue/
+ls -la info/queue/
+cd info/
+ls
+cd queue/
+touch .noindex
+ls
+ll
+ls -la
+cd ..
+ls -la
+cd ..
+cd mailme/
+mkdir queue
+cd queue/
+touch .noindex
+ls -la
+cd ..
+cd ..
+cd me
+mkdir queue
+cd queue/
+ls
+touch .noindex
+cd ..
+cd ..
+cd ming/
+mkdir queue
+cd queue/
+touch .noindex
+cd ..
+cd ..
+ls
+ls drafts/
+ls draft/

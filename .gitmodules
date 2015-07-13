@@ -606,3 +606,7 @@
 	path = site-lisp/outorg
 	url = https://github.com/tj64/outorg.git
 	ignore = dirty
+[submodule "site-lisp/el-get"]
+	path = site-lisp/el-get
+	url = https://github.com/dimitri/el-get.git
+	ignore = dirty

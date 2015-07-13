@@ -1,4 +1,4 @@
-;; -*- emacs-lisp -*- <14/11/18 16:14:57 /Users/martin/emacs-config/site-lisp/tramp>
+;; -*- emacs-lisp -*- <15/03/10 14:08:21 /Users/martin/emacs-config/site-lisp/tramp>
 ;; Tramp connection history.  Don't change this file.
 ;; You can delete it, forcing Tramp to reapply the checks.
 
@@ -170,8 +170,6 @@
   ("file-exists" "test -e")
   ("id" "/usr/bin/id")
   ("gid-integer" 1002))
- (["scp" nil "ssh" nil nil]
-  nil)
  (["ssh" "pi" "192.168.1.172" nil nil]
   ("uname" "Linux 3.12.28+")
   ("test" "test")
@@ -193,4 +191,27 @@
   ("uid-integer" 1000)
   ("gvfs-monitor-dir" nil)
   ("inotifywait" nil)
-  ("~" "/home/pi")))
+  ("~" "/home/pi"))
+ (["ssh" "ming" "theneodifference.org" nil nil]
+  ("locale" "LC_ALL=en_US.utf8")
+  ("uname" "Linux 3.18.5-x86_64-linode52")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/sbin" "/usr/sbin" "/usr/local/bin" "/usr/local/sbin"))
+  ("remote-shell" "/bin/sh")
+  ("~" "/home/ming")
+  ("file-exists" "test -e")
+  ("stat" "\\stat")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 501)
+  ("gid-string" "ming")
+  ("perl-file-spec" t)
+  ("perl-cwd-realpath" t)
+  ("perl" "\\perl")
+  ("readlink" "\\readlink")
+  ("ls" "/bin/ls --color=never")
+  ("ls-dired" t)
+  ("git" "\\git")
+  ("uid-integer" 501))
+ (["ssh" nil "theneodifference.org" nil nil]
+  nil))
