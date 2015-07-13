@@ -12,6 +12,8 @@ for a change.
   23.3 in the future,  but my systems all run the latest stable.
 * Further programs will be required to get language-specific features
   to work.
+* Currently, Steve Purcell's emacs.d is a dependency.  I'm planning to
+  substiture it in the future with my own code.
 
 ## Similar configs
 
