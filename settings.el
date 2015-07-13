@@ -23,6 +23,7 @@
  '(google-contacts-organization-name ((t (:slant italic :height 1))) t)
  '(google-contacts-organization-title ((t (:height 1))) t)
  '(google-contacts-rel ((t (:weight bold :height 1))) t)
+ '(hackernews-link-face ((t (:foreground "dim gray"))))
  '(js2-highlight-vars-face ((t (:inherit highlight))) t)
  '(match ((t (:inherit highlight))))
  '(mu4e-flagged-face ((t (:inherit font-lock-constant-face :foreground "#990044" :weight bold))))
