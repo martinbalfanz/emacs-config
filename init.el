@@ -66,6 +66,35 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
 
+;; (use-package el-get
+;;   :load-path "el-get"
+;;   :init
+;;   (progn
+;;     (el-get 'sync)
+;;     (setq el-get-user-package-directory (expand-file-name "init-files" user-init-directory)
+;;           ;; el-get-sources '((:name magit
+;;           ;;                         :after (global-set-key (kbd "C-x C-z") 'magit-status))
+
+;;           ;;                  (:name asciidoc
+;;           ;;                         :type elpa
+;;           ;;                         :after (progn
+;;           ;;                                  (autoload 'doc-mode "doc-mode" nil t)
+;;           ;;                                  (add-to-list 'auto-mode-alist '("\\.adoc$" . doc-mode))
+;;           ;;                                  (add-hook 'doc-mode-hook
+;;           ;;                                            '(lambda ()
+;;           ;;                                               (turn-on-auto-fill)
+;;           ;;                                               (require 'asciidoc)))))
+
+;;           ;;                  (:name lisppaste :type elpa)
+
+;;           ;;                  (:name emacs-goodies-el :type apt-get))
+;;           mb-packages (append
+;;                        '(ace-jump-mode ;; A quick cursor location minor mode for emacs.
+;;                          )
+;;                        (mapcar 'el-get-source-name el-get-sources)))
+
+;;     (el-get 'sync mb-packages)))
+
 (add-to-list 'load-path (expand-file-name "el-get" user-init-directory))
 
 (unless (require 'el-get nil 'noerror)
@@ -75,14 +104,26 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-(add-to-list 'el-get-recipe-path (expand-file-name "receipes" user-emacs-directory))
+(add-to-list 'el-get-recipe-path (expand-file-name "receipes" user-init-directory))
+(require 'el-get-elpa)
+;; (require 'el-get-brew)
+;; (require 'el-get-github)
+;; (require 'el-get-emacsmirror)
+;; (require 'el-get-emacswiki)
+
+;; (el-get-elpa-build-local-recipes)
+;; (el-get-emacswiki-build-local-recipes)
 (el-get 'sync)
 
-(setq mb-packages (append
+
+(setq el-get-user-package-directory (expand-file-name "init-files" user-init-directory)
+      mb-packages (append
                    '(ace-jump-mode ;; A quick cursor location minor mode for emacs.
+                     mu4e-maildirs-extension ;; adds a maildir summary in mu4e-main-view
+                     sx
                      )
                    (mapcar 'el-get-source-name el-get-sources)))
-(el-get 'sync mb-packages)))
+(el-get 'sync mb-packages)
 
 
 ;;;;_ , OS X specific keybindings
@@ -114,7 +155,8 @@
 
 (setq-default cursor-type 'bar          ;; cursor style
               indent-tabs-mode nil      ;; indentation never inserts tabs
-              lisp-indent-offset nil)
+              lisp-indent-offset nil
+              line-spacing 2)
 
 (fset 'yes-or-no-p 'y-or-n-p)           ;; allow y or n as answers
 
@@ -929,14 +971,19 @@ prevents using commands with prefix arguments."
     (require 'ox-latex)
     (require 'ox-freemind)
     (require 'org-habit)
+    (require 'org-mobile)
 
     (require 'org-mac-iCal)
 
     (unless (boundp 'org-export-latex-classes)
       (setq org-export-latex-classes nil))
 
+    
+
     ;; (setq org-agenda-files (file-expand-wildcards "~/Dropbox/notes/*.org"))
-    (setq org-agenda-files '("~/Dropbox/notes/todox.org"))
+    (setq org-agenda-files '("~/Dropbox/notes/todox.org"
+                             "~/Dropbox/notes/backlogx.org"
+                             "~/Dropbox/notes/mingx-google-cal.org"))
     (setq org-default-notes-file "~/Dropbox/notes/backlogx.org")
 
     (setq org-capture-templates
@@ -992,7 +1039,8 @@ prevents using commands with prefix arguments."
           org-agenda-columns-add-appointments-to-effort-sum t
           org-agenda-default-appointment-duration 60
           org-startup-with-inline-images t
-          org-startup-with-latex-preview t)
+          org-startup-with-latex-preview t
+          org-speed-command t)
 
     (setq org-agenda-include-diary t)
 
@@ -1013,7 +1061,7 @@ prevents using commands with prefix arguments."
             ()
             "\\<IGNORE\\>"))
 
-    (setq org-mobile-directory "~/Dropbox/MobileOrg")
+    (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
 
     (setq org-mime-library 'semi
           org-src-fontify-natively t)
@@ -1051,6 +1099,7 @@ prevents using commands with prefix arguments."
 (require 'smtpmail)
 (setq send-mail-function 'smtpmail-send-it
       message-send-mail-function 'message-send-mail-with-sendmail
+      ;; message-send-mail-function 'message-smtpmail-send-it
       message-signature t
       message-signature-directory (expand-file-name "~/Documents/signatures/")
       message-signature-file "default.txt"
@@ -1064,11 +1113,13 @@ prevents using commands with prefix arguments."
       smptmail-debug-verb t
       smtpmail-warn-about-unknown-extensions t
       smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg")
+      smtpmail-queue-dir "~/mail/queue/cur"
 
       starttls-use-gnutls t
       starttls-extra-arguments '("--no-ca-verification")
 
-      sendmail-program "/usr/local/bin/msmtp")
+      ;; sendmail-program "/usr/local/bin/msmtp"
+      sendmail-program (expand-file-name "~/bin/msmtpq"))
 
 (use-package mu4e
   :load-path "mu/mu4e"
@@ -1155,10 +1206,24 @@ prevents using commands with prefix arguments."
     (defvar my-mu4e-account-alist
       '(("gmail"
          (user-mail-address "martin.balfanz@gmail.com")
+         (smtpmail-local-domain "gmail.com")
+         (smtpmail-default-smtp-server "smtp.gmail.com")
+         (smtpmail-smtp-server "smtp.gmail.com")
+         (smtpmail-stream-type starttls)
+         (smtpmail-smtp-service 587)
+         (smtpmail-smtp-user "martin.balfanz@gmail.com")
+         (smtpmail-auth-credentials (expand-file-name "~/.authinfo.gpg"))
+         (smtpmail-queue-dir "~/mail/gmail/queue/cur")
          (message-signature-file nil))
         ("info"
          (user-mail-address "info@martinbalfanz.com")
          (smtpmail-local-domain "martinbalfanz.com")
+         (smtpmail-default-smtp-server "smtp.gmail.com")
+         (smtpmail-smtp-server "smtp.gmail.com")
+         (smtpmail-stream-type starttls)
+         (smtpmail-smtp-service 587)
+         (smtpmail-smtp-user "info@martinbalfanz.com")
+         (smtpmail-queue-dir "~/mail/info/queue/cur")
          (message-signature-file "info.txt"))
         ("mailme"
          (user-mail-address "info@mailme.io")
@@ -1166,6 +1231,7 @@ prevents using commands with prefix arguments."
          (smtpmail-default-smtp-server "mail.gandi.net")
          (smtpmail-smtp-server "mail.gandi.net")
          (smtpmail-smtp-user "info@mailme.io")
+         (smtpmail-queue-dir "~/mail/mailme/queue/cur")
          (message-signature-file nil)
          (mu4e-sent-folder "/mailme/Sent")
          (mu4e-drafts-folder "/mailme/Drafts")
@@ -1173,10 +1239,22 @@ prevents using commands with prefix arguments."
         ("me"
          (user-mail-address "me@martinbalfanz.com")
          (message-signature-file nil)
-         (smtpmail-local-domain "martinbalfanz.com"))
+         (smtpmail-local-domain "martinbalfanz.com")
+         (smtpmail-default-smtp-server "smtp.gmail.com")
+         (smtpmail-smtp-server "smtp.gmail.com")
+         (smtpmail-stream-type starttls)
+         (smtpmail-smtp-service 587)
+         (smtpmail-smtp-user "me@martinbalfanz.com")
+         (smtpmail-queue-dir "~/mail/me/queue/cur"))
         ("ming"
          (user-mail-address "martin.balfanz@minglabs.com")
          (smtpmail-local-domain "minglabs.com")
+         (smtpmail-default-smtp-server "smtp.gmail.com")
+         (smtpmail-smtp-server "smtp.gmail.com")
+         (smtpmail-stream-type starttls)
+         (smtpmail-smtp-service 587)
+         (smtpmail-smtp-user "martin.balfanz@minglabs.com")
+         (smtpmail-queue-dir "~/mail/ming/queue/cur")
          (message-signature-file "ming.txt"))))
 
     (add-hook 'mu4e-index-updated-hook
@@ -1618,6 +1696,7 @@ prevents using commands with prefix arguments."
     (add-to-list 'auto-mode-alist '("\\.html$" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.htm$" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.erb$" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.php$" . web-mode))
 
     (add-hook 'web-mode-hook
               (lambda () (setq web-mode-markup-indent-offset 2
@@ -1682,6 +1761,7 @@ prevents using commands with prefix arguments."
 
 (use-package fuzzy
   :load-path "fuzzy-el"
+  :disabled t
   :init
   (turn-on-fuzzy-isearch))
 
@@ -1718,7 +1798,8 @@ prevents using commands with prefix arguments."
     (defvar deft-export-directory (expand-file-name "~/Dropbox/notes")
       "Directory where readable format is exported.")
 
-    (setq deft-extension "org"
+    (setq deft-extensions '("org" "markdown" "md" "tex")
+          deft-recursive t
           deft-text-mode 'org-mode
           deft-strip-title-regexp "^#.TITLE:[ ]*"
           deft-auto-save-interval 15.0
@@ -1954,6 +2035,10 @@ title without comments."
 
 ;;;;_. LABS
 
+;;;;_ , taskjuggler-mode
+(use-package taskjuggler-mode
+  :load-path "taskjuggler-mode")
+
 ;;;;_ , go-mode
 (use-package go-mode
   :load-path "go-mode.el"
@@ -2001,7 +2086,7 @@ title without comments."
   :load-path "highlight-parentheses"
   :init
   (progn
-    (global-highlight-parentheses-mode 1)
+    ;; (global-highlight-parentheses-mode 1)
     ;; (add-hook 'after-init-hook 'global-highlight-parentheses-mode)
     ))
 
@@ -2162,7 +2247,8 @@ title without comments."
   :load-path "projectile"
   :init
   (progn
-    (projectile-global-mode)))
+    ;; (projectile-global-mode)
+    ))
 
 ;;;;_ , project-explorer
 (use-package es-lib
@@ -2392,9 +2478,10 @@ title without comments."
   :init
   (progn
     (setq global-hl-line-mode nil)
-    (hl-line-when-idle-interval 30)
+    ;; (hl-line-when-idle-interval 30)
 
-    (toggle-hl-line-when-idle 1)))
+    ;; (toggle-hl-line-when-idle 1)
+    ))
 
 ;;;;_ , yaml-mode
 (use-package yaml-mode
