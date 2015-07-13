@@ -103,4 +103,4 @@ Deletes whitespace at join."
           (rename-file filename new-name t)
           (set-visited-file-name new-name t t)))))))
 
-(provide 'my-util)
+(provide 'my-utils)
