@@ -1,0 +1,3 @@
+* my emacs config
+
+  Please be aware that this branch will be deprecated soon.
