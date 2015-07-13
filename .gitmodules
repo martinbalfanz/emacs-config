@@ -1,0 +1,3 @@
+[submodule "site-lisp/purcell/emacs.d"]
+	path = site-lisp/purcell/emacs.d
+	url = https://github.com/purcell/emacs.d.git
