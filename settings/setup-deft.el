@@ -62,4 +62,4 @@ title without comments."
       ("C-p" deft-previous-line)
       ("C-u C-<return>" deft-new-file-default-name))))
 
-(provide 'my-deft)
+(provide 'setup-deft)

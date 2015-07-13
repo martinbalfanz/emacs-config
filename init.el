@@ -3,7 +3,7 @@
 (when (version< emacs-version "24")
   (error "This configuration is intended to work with Emacs 24+. Please upgrade."))
 
-(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "settings" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp/purcell/emacs.d/lisp/" user-emacs-directory))
 
 (let ((benchmarking (expand-file-name "site-lisp/purcell/emacs.d/lisp/init-benchmarking.el" user-emacs-directory)))
@@ -17,7 +17,7 @@
 ;;--------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (require 'init-utils)
-(require 'my-utils)
+(require 'setup-utils)
 (require 'init-site-lisp)
 (require 'init-elpa)
 (require 'init-exec-path)
@@ -91,7 +91,7 @@
 
 (require 'init-misc)
 
-(require 'my-deft)
+(require 'setup-deft)
 (require 'init-dash)
 (require 'init-ledger)
 
