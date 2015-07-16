@@ -92,6 +92,7 @@
 (require 'init-misc)
 
 (require 'setup-deft)
+(require 'setup-projectile)
 (require 'init-dash)
 (require 'init-ledger)
 
