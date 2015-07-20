@@ -6,4 +6,4 @@
 (require 'projectile)
 (projectile-global-mode t)
 
-(provide 'init-projectile)
+(provide 'setup-projectile)
