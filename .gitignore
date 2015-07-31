@@ -1,6 +1,7 @@
 *.elc
 *~
 .*.lock
+.DS_Store
 /.Sync*
 /.emacs-auth
 /.emacs.desktop
