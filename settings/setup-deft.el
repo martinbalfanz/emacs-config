@@ -12,7 +12,7 @@
     "Default filename for new files without SLUG."
     (format-time-string "%Y-%m-%d-%H%M%S"))
 
-  (setq deft-extensions '("org" "markdown" "md" "tex")
+  (setq deft-extensions '("org" "markdown" "md" "tex" "txt")
         deft-recursive t
         deft-text-mode 'org-mode
         deft-strip-title-regexp "^#.TITLE:[ ]*"
