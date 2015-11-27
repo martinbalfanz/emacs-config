@@ -35,7 +35,7 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
-(require 'init-proxies)
+;; (require 'init-proxies)
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
