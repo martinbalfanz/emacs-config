@@ -53,6 +53,8 @@
 (require 'init-mmm)
 
 (require 'init-editing-utils)
+(require 'init-whitespace)
+(require 'init-fci)
 
 (require 'init-vc)
 (require 'init-darcs)
@@ -74,6 +76,7 @@
 (require 'init-haml)
 (require 'init-python-mode)
 (require 'init-haskell)
+(require 'init-elm)
 (require 'init-ruby-mode)
 (require 'init-rails)
 (require 'init-sql)
@@ -81,7 +84,7 @@
 (require 'init-paredit)
 (require 'init-lisp)
 (require 'init-slime)
-(when (>= emacs-major-version 24)
+(unless (version<= emacs-version "24.2")
   (require 'init-clojure)
   (require 'init-clojure-cider))
 (require 'init-common-lisp)
@@ -105,18 +108,30 @@
   (require-package 'osx-location))
 (require-package 'regex-tool)
 
-;; emacsclient config
-;;--------------------------------------------------------------------------
+;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
 (require 'server)
 (unless (server-running-p)
   (server-start))
 
 
-;; customization
-;;--------------------------------------------------------------------------
+;;----------------------------------------------------------------------------
+;; Variables configured via the interactive 'customize' interface
+;;----------------------------------------------------------------------------
 (when (file-exists-p custom-file)
   (load custom-file))
 
+
+;;----------------------------------------------------------------------------
+;; Allow users to provide an optional "init-local" containing personal settings
+;;----------------------------------------------------------------------------
+(when (file-exists-p (expand-file-name "init-local.el" user-emacs-directory))
+  (error "Please move init-local.el to ~/.emacs.d/lisp"))
+(require 'init-local nil t)
+
+
+;;----------------------------------------------------------------------------
 ;; Locales (setting them earlier in this file doesn't work in X)
 ;;----------------------------------------------------------------------------
 (require 'init-locales)
