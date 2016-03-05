@@ -1,3 +1,4 @@
+;;; mb init
 ;;; This file is the entry point.  It bootstraps the configuration
 
 (when (version< emacs-version "24")
@@ -74,7 +75,7 @@
 ;; (require 'init-html)
 (require 'init-css)
 (require 'init-haml)
-(require 'init-python-mode)
+;; (require 'init-python-mode)
 (require 'init-haskell)
 (require 'init-elm)
 (require 'init-ruby-mode)
@@ -97,6 +98,7 @@
 (require 'setup-deft)
 (require 'setup-projectile)
 (require 'setup-html)
+(require 'setup-python)
 (require 'init-dash)
 (require 'init-ledger)
 
