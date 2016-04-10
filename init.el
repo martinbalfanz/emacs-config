@@ -96,6 +96,7 @@
 (require 'init-misc)
 
 (require 'setup-deft)
+(require 'setup-org)
 (require 'setup-projectile)
 (require 'setup-html)
 (require 'setup-python)
