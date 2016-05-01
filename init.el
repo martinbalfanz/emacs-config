@@ -7,16 +7,24 @@
 (add-to-list 'load-path (expand-file-name "settings" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "site-lisp/purcell/emacs.d/lisp/" user-emacs-directory))
 
-(let ((benchmarking (expand-file-name "site-lisp/purcell/emacs.d/lisp/init-benchmarking.el" user-emacs-directory)))
-  (when (file-exists-p benchmarking)
-    (require 'init-benchmarking benchmarking)))
+(require 'init-benchmarking) ;; Measure startup time
 
 (defconst *spell-check-support-enabled* nil)
 (defconst *is-a-mac* (eq system-type 'darwin))
 
+;;----------------------------------------------------------------------------
+;; Temporarily reduce garbage collection during startup
+;;----------------------------------------------------------------------------
+(defconst sanityinc/initial-gc-cons-threshold gc-cons-threshold
+  "Initial value of `gc-cons-threshold' at start-up time.")
+(setq gc-cons-threshold (* 128 1024 1024))
+(add-hook 'after-init-hook
+          (lambda () (setq gc-cons-threshold sanityinc/initial-gc-cons-threshold)))
+
 ;; bootstrap
 ;;--------------------------------------------------------------------------
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(require 'init-compat)
 (require 'init-utils)
 (require 'setup-utils)
 (require 'init-site-lisp)
@@ -36,7 +44,6 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
-;; (require 'init-proxies)
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
@@ -47,7 +54,7 @@
 (require 'init-recentf)
 (require 'init-ido)
 (require 'init-hippie-expand)
-(require 'init-auto-complete)
+(require 'init-company)
 (require 'init-windows)
 ;; (require 'init-sessions)
 (require 'init-fonts)
@@ -76,7 +83,8 @@
 (require 'init-css)
 (require 'init-haml)
 ;; (require 'init-python-mode)
-(require 'init-haskell)
+(unless (version<= emacs-version "24.3")
+  (require 'init-haskell))
 (require 'init-elm)
 (require 'init-ruby-mode)
 (require 'init-rails)
