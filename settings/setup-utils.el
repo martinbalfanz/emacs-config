@@ -103,4 +103,9 @@ Deletes whitespace at join."
           (rename-file filename new-name t)
           (set-visited-file-name new-name t t)))))))
 
+(defun insert-current-date ()
+  "Insert current date in the form Y-m-d."
+  (interactive)
+  (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+
 (provide 'setup-utils)
