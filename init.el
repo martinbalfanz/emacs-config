@@ -108,6 +108,7 @@
 (require 'setup-projectile)
 (require 'setup-html)
 (require 'setup-python)
+(require 'setup-circe)
 (require 'init-dash)
 (require 'init-ledger)
 
