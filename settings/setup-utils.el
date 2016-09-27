@@ -108,4 +108,14 @@ Deletes whitespace at join."
   (interactive)
   (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 
+(defun jcs-kill-a-buffer (askp)
+  (interactive "P")
+  (if askp
+      (kill-buffer (funcall completing-read-function
+                            "Kill buffer: "
+                            (mapcar #'buffer-name (buffer-list))))
+    (kill-this-buffer)))
+
+(global-set-key (kbd "C-x k") 'jcs-kill-a-buffer)
+
 (provide 'setup-utils)
