@@ -131,6 +131,7 @@
 (require-package 'ranger)
 (require-package 'focus)
 (require-package 'yaml-mode)
+(require-package 'restclient)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
