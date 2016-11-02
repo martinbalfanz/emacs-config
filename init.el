@@ -102,7 +102,8 @@
 (unless (version<= emacs-version "24.2")
   (require 'init-clojure)
   ;; (require 'init-clojure-cider)
-  (require 'setup-inf-clojure))
+  ;; (require 'setup-inf-clojure)
+  )
 (require 'init-common-lisp)
 
 (when *spell-check-support-enabled*
@@ -111,7 +112,7 @@
 (require 'init-misc)
 
 (require 'setup-deft)
-(require 'setup-org)
+;; (require 'setup-org)
 ;; (require 'setup-projectile)
 (require 'setup-html)
 (require 'setup-python)
@@ -129,6 +130,7 @@
 (require-package 'regex-tool)
 (require-package 'ranger)
 (require-package 'focus)
+(require-package 'yaml-mode)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
