@@ -132,6 +132,7 @@
 (require-package 'focus)
 (require-package 'yaml-mode)
 (require-package 'restclient)
+(require-package 'paradox)
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
