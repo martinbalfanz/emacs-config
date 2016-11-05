@@ -117,6 +117,7 @@
 (require 'setup-html)
 (require 'setup-python)
 (require 'setup-circe)
+(require 'setup-ivy)
 (require 'init-dash)
 (require 'init-ledger)
 
