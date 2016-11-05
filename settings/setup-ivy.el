@@ -1,4 +1,5 @@
 (require-package 'ivy)
+(require-package 'flx)
 (ivy-mode 1)
 (diminish 'ivy-mode)
 (setq ivy-use-virtual-buffers t
@@ -7,6 +8,8 @@
       ivy-initial-inputs-alist '((counsel-M-x . "^")
                                  (man . "^")
                                  (woman . "^")))
+(setq-default ivy-re-builders-alist
+              '((t . ivy--regex-fuzzy)))
 
 (add-hook 'after-init-hook
           (lambda ()
@@ -16,6 +19,7 @@
             (ivy-mode 1)))
 
 (require-package 'counsel)
+(require-package 'counsel-projectile)
 (setq-default counsel-mode-override-describe-bindings t)
 (diminish 'counsel-mode)
 (global-set-keys '(("M-x" counsel-M-x)
